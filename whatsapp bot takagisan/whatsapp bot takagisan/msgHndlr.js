@@ -83,6 +83,21 @@ module.exports = msgHandler = async (client, message) => {
         if (isBlocked) return
         //if (!isOwner) return
         switch(command) {
+        //Bot Commands
+        case '!help':
+        case '!menu':
+            client.sendText(from, help)
+            break
+        case '!readme':
+            client.reply(from, readme, id)
+            break
+        case '!about':
+            client.sendLinkWithAutoPreview(from, 'Bot_Doujinmoee ', info)
+            break
+        
+        case '!snk':
+            client.reply(from, snk, id)
+            break
         case '!sticker':
         case '!stiker':
             if (isMedia && type === 'image') {
@@ -105,9 +120,31 @@ module.exports = msgHandler = async (client, message) => {
                     client.reply(from, mess.error.St, id)
             }
             break
+             case '#ownerbot':
+            client.sendContact(from, '6283191735552@c.us')
+            break
+            case '#botstat': {
+            const loadedMsg = await client.getAmountOfLoadedMessages()
+            const chatIds = await client.getAllChatIds()
+            const groups = await client.getAllGroups()
+            client.sendText(from, `Status :\n- *${loadedMsg}* Loaded Messages\n- *${groups.length}* Group Chats\n- *${chatIds.length - groups.length}* Personal Chats\n- *${chatIds.length}* Total Chats`)
+            break
+        }
 
-       
-          case '!stickergif':
+       case '!lihatblock':
+            let hih = `Oni-chan Silahkan Dilihat\nJumlah : ${blockNumber.length}\n`
+            for (let i of blockNumber) {
+                hih += `➸ @${i.replace(/@c.us/g,'')}\n`
+            }
+            client.sendTextWithMentions(from, hih, id)
+            break
+        case '!donasi':
+        case '!donate':
+            client.sendLinkWithAutoPreview(from, '*Silahkan Bantu Donasi Bot..Dengan Cara Dibawah Ini*', donate)
+            break
+             //Bot Commands
+             //Groups Commands
+        case '!stickergif':
         case '!stikergif':
             if (!isMe) return
             if (isMedia || isQuotedVideo) {
@@ -161,192 +198,9 @@ module.exports = msgHandler = async (client, message) => {
                 await client.reply(from, 'Maaf, command sticker giphy hanya bisa menggunakan link dari giphy.  [Giphy Only]', id)
             }
             break
-        
-        case '!donasi':
-        case '!donate':
-            client.sendLinkWithAutoPreview(from, '*Silahkan Bantu Donasi Bot..Dengan Cara Dibawah Ini*', donate)
-            break
-        case '!tts':
-            if (args.length === 1) return client.reply(from, 'Gunakan Perintah *!tts [id, en, jp, ar] [teks]*, contoh *!tts id Oni-chan*')
-            const ttsId = require('node-gtts')('id')
-            const ttsEn = require('node-gtts')('en')
-        const ttsJp = require('node-gtts')('ja')
-            const ttsAr = require('node-gtts')('ar')
-            const dataText = body.slice(8)
-            if (dataText === '') return client.reply(from, 'Bakajanaino?', id)
-            if (dataText.length > 500) return client.reply(from, 'Gomenne onichan teks terlalu panjang!', id)
-            var dataBhs = body.slice(5, 7)
-            if (dataBhs == 'id') {
-                ttsId.save('./media/tts/resId.mp3', dataText, function () {
-                    client.sendPtt(from, './media/tts/resId.mp3', id)
-                })
-            } else if (dataBhs == 'en') {
-                ttsEn.save('./media/tts/resEn.mp3', dataText, function () {
-                    client.sendPtt(from, './media/tts/resEn.mp3', id)
-                })
-            } else if (dataBhs == 'jp') {
-                ttsJp.save('./media/tts/resJp.mp3', dataText, function () {
-                    client.sendPtt(from, './media/tts/resJp.mp3', id)
-                })
-        } else if (dataBhs == 'ar') {
-                ttsAr.save('./media/tts/resAr.mp3', dataText, function () {
-                    client.sendPtt(from, './media/tts/resAr.mp3', id)
-                })
-            } else {
-                client.reply(from, 'Masukkan kode bahasa : *{id}* untuk bahasa indonesia, *{en}* untuk bahasa inggris, *{jp}* untuk bahasa jepang, dan *{ar}* untuk bahasa arab', id)
-            }
-            break
-         case '!nulis':
-            if (!isMe) return
-            if (args.length == 0) return client.reply(from, `Membuat bot menulis teks yang dikirim menjadi gambar\nPemakaian: ${prefix}nulis [teks]\n\ncontoh: ${prefix}nulis i love you 3000`, id)
-            const nulisq = body.slice(7)
-            const nulisp = await rugaapi.tulis(nulisq)
-            await client.sendImage(from, `${nulisp}`, '', 'Nih...', id)
-            .catch(() => {
-                client.reply(from, 'Ada yang Error!', id)
-            })
-            break
-        case '!mode':
-            if (!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(..*', id)
-            if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
-            if (args.length === 1) return client.reply(from, 'Pilih *premium* atau *trial!*', id)
-            if (args[1].toLowerCase() === 'premium') {
-                nsfw_.push(chat.id)
-                fs.writeFileSync('./lib/NSFW.json', JSON.stringify(nsfw_))
-                client.reply(from, '*oni-chan Sugoi..!!* *premium* perintah berhasil di aktifkan di group ini! kirim perintah *!premium*', id)
-            } else if (args[1].toLowerCase() === 'trial') {
-                nsfw_.splice(chat.id, 1)
-                fs.writeFileSync('./lib/NSFW.json', JSON.stringify(nsfw_))
-                client.reply(from, '*Sumimasen* *trial* perintah berhasil di aktifkan di group ini!', id)
-            } else {
-                client.reply(from, 'Silahkan dipilih [premium] [trial]!', id)
-            }
-            break
-       case '!welcome':
-            if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
-            if (!isGroupAdmins) return client.reply(from, 'DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!', id)
-            if (args.length === 1) return client.reply(from, 'Pilih aktifkan atau nonaktifkan!', id)
-            if (args[1].toLowerCase() === 'aktifkan') {
-                welkom.push(chat.id)
-                fs.writeFileSync('./lib/welcome.json', JSON.stringify(welkom))
-                client.reply(from, 'Fitur welcome berhasil di aktifkan di group ini!', id)
-            } else if (args[1].toLowerCase() === 'nonaktifkan') {
-                welkom.splice(chat.id, 1)
-                fs.writeFileSync('./lib/welcome.json', JSON.stringify(welkom))
-                client.reply(from, 'Fitur welcome berhasil di nonaktifkan di group ini!', id)
-            } else {
-                client.reply(from, 'Silahkan dipilih [aktifkan] [nonaktifkan]!', id)
-            }
-            break
-        case '!premium':
-            if (!isNsfw) return
-            client.reply(from, '1. *!lolicon* (Memanggil Doujin Pdf)\n2. *!randomdoujin* (Memanggil Doujin Pdf)\n3. *!botstat*\n4.*!menusurah*\n5. *!yuri*\n6. *!darkjokes*\n7. *!milfsan* (Memanggil Doujin Pdf)\n8. *!menuringtone*\n9. *!randomsongs* (jangan dipake lagi diupdate)\n10. *!lewd*\n11. *!cosplay*\n12. *!nekonime*\n13. *!ahegao*\n14. *!infoseiyu*\n15. *!infonime*\n16. *!randomanime*\n17. *!yaoi*\n18. *!bganime*\n19. *!subreddit*\n20. *!sauce* (Mencari sauce )\n21. *!Karakter* (Mencari sauce Karakter)\n22. *!mecha*\n {Mungkin ada beberapa fitur perlu waktu untuk mngirim,jadi sabar} {SEBELUM MENGGUNAKAN FITUR INI LIHAT *!Readme*} \n Etto..Oni-chan Amari ōkunai', id)
-            break
-        case 'brainly':
-            if(args.length >= 1){
-                function BrainlySearch(pertanyaan, amount,cb){
-                    brainly(pertanyaan.toString(),Number(amount)).then(res => { 
-                        let brainlyResult=[];   
-                    res.forEach(ask=>{
-                        let opt={
-                            pertanyaan:ask.pertanyaan,
-                            fotoPertanyaan:ask.questionMedia,
-                        }
-                        ask.jawaban.forEach(answer=>{
-                            opt.jawaban={
-                                judulJawaban:answer.text,
-                                fotoJawaban:answer.media
-                            }
-                        })
-                        brainlyResult.push(opt)
-                        })  
-                        return brainlyResult    
-                    }).then(x=>{
-                        cb(x)   
-                    }).catch(err=>{
-                        console.log(`${err}`.error)
-                    })
-                    }
-                    const brainly = require('brainly-scraper')
-                    let tanya = body.slice(9)
-                    console.log(tanya.length-1)
-                    let jum = Number(tanya.split('.')[1]) || 2
-                    if(Number(tanya[tanya.length-1])){
-                        tanya
-                    }
-                    let quest = body.slice(9)
-                    client.reply(from, `*Pertanyaan : ${quest.split(' .')[0]}*\n*Jumlah jawaban : ${Number(jum)}*`, message.id)
-                    BrainlySearch(quest.split(' .')[0],Number(jum), function(res){
-                        console.log(res)
-                        res.forEach(x=>{
-                            client.reply(from, `*foto pertanyaan*\n${x.fotoPertanyaan.join('\n')}\n*pertanyaan :*\n${x.pertanyaan}\n\n*jawaban :*\n${x.jawaban.judulJawaban}\n\n*foto jawaban*\n${x.jawaban.fotoJawaban.join('\n')}`, message.id)
-                        })
-                    })
-            } else {
-                client.reply(from, 'Usage :\n!brainly <pertanyaan> <.jumlah>\n\nEx : \n!brainly NKRI .2', message.id)
-            }
-            break
-       case '!wait':
-       case '/wait':
-       case '#wait':
-            if (isMedia && type === 'image' || quotedMsg && quotedMsg.type === 'image') {
-                if (isMedia) {
-                    var mediaData = await decryptMedia(message, uaOverride)
-                } else {
-                    var mediaData = await decryptMedia(quotedMsg, uaOverride)
-                }
-                const fetch = require('node-fetch')
-                const imgBS4 = `data:${mimetype};base64,${mediaData.toString('base64')}`
-                client.reply(from, 'oni-chan tunggu bentar....', id)
-                fetch('https://trace.moe/api/search', {
-                    method: 'POST',
-                    body: JSON.stringify({ image: imgBS4 }),
-                    headers: { "Content-Type": "application/json" }
-                })
-                .then(respon => respon.json())
-                .then(resolt => {
-                    if (resolt.docs && resolt.docs.length <= 0) {
-                        client.reply(from, '*Sumimasen oni-chan*', id)
-                    }
-                    const { is_adult, title, title_chinese, title_romaji, title_english, episode, similarity, filename, at, tokenthumb, anilist_id } = resolt.docs[0]
-                    teks = ''
-                    if (similarity < 0.92) {
-                        teks = '*Onegaishimasu* :\n\n'
-                    }
-                    teks += `➸ *Title Japanese* : ${title}\n➸ *Title chinese* : ${title_chinese}\n➸ *Title Romaji* : ${title_romaji}\n➸ *Title English* : ${title_english}\n`
-                    teks += `➸ *Ecchi* : ${is_adult}\n`
-                    teks += `➸ *Eps* : ${episode.toString()}\n`
-                    teks += `➸ *Kesamaan* : ${(similarity * 100).toFixed(1)}%\n`
-                    var video = `https://media.trace.moe/video/${anilist_id}/${encodeURIComponent(filename)}?t=${at}&token=${tokenthumb}`;
-                    client.sendFileFromUrl(from, video, 'nimek.mp4', teks, id).catch(() => {
-                        client.reply(from, teks, id)
-                    })
-                })
-                .catch(() => {
-                    client.reply(from, 'Error !', id)
-                })
-            } else {
-                client.sendFile(from, './media/img/tutod.jpg', 'Tutor.jpg', 'Oni-chan lihat contoh', id)
-            }
-            break
-        case '!createmaker':
-
-            arg = body.trim().split('|')
-            if (arg.length >= 4) {
-                client.reply(from, mess.wait, id)
-                const quotes = encodeURIComponent(arg[1])
-                const author = encodeURIComponent(arg[2])
-                const theme = encodeURIComponent(arg[3])
-                await quotemaker(quotes, author, theme).then(amsu => {
-                    client.sendFile(from, amsu, 'quotesmaker.jpg','').catch(() => {
-                       client.reply(from, mess.error.Qm, id)
-                    })
-                })
-            } else {
-                client.reply(from, 'Caranya: \n!createmaker |teks|author|background\n\nContoh :\n!createmaker |ini contoh|oni-chan|random', id)
-            }
-            break   
+                 break   
         case '!linkgroup':
+        case '!linkgrup':
             if (!isBotGroupAdmins) return client.reply(from, 'Bot harus jadi admin dulu desu', id)
             if (isGroupMsg) {
                 const inviteLink = await client.getGroupInviteLink(groupId);
@@ -355,17 +209,82 @@ module.exports = msgHandler = async (client, message) => {
                 client.reply(from, '*Onichan Gomenasai harus di group desu:(*', id)
             }
             break
-        case '!bc':
-            if (!isOwner) return client.reply(from, 'Bot harus jadi *Owner* desu', id)
-            let msg = body.slice(4)
-            const chatz = await client.getAllChatIds()
-            for (let ids of chatz) {
-                var cvk = await client.getChatById(ids)
-                if (!cvk.isReadOnly) await client.sendText(ids, `[ 🎀 𝐻𝑒𝓁𝓁🏵 🎀 Saya Bot_Doujinmoee ]\n\n${msg}`)
-            }
-            client.reply(from, 'Broadcast Success!', id)
+            case '!memeindo':
+     if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
+            const memeindo = fs.readFileSync('./lib/memeindo.json')
+            const memeindoJson = JSON.parse(memeindo)
+            const memeindoIndex = Math.floor(Math.random() * memeindoJson.length)
+            const memeindoKey = memeindoJson[memeindoIndex]
+            client.sendFileFromUrl(from, memeindoKey.image, 'memeindo.jpg', memeindoKey.teks)
             break
-        case '!adminlist':
+             case '!meme':
+         if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
+            if (!isGroupAdmins) return client.reply(from, 'DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!', id)
+            const response = await axios.get('https://meme-api.herokuapp.com/gimme/wholesomeanimemes');
+            const { postlink, title, subreddit, url, nsfw, spoiler } = response.data
+            client.sendFileFromUrl(from, `${url}`, 'meme.jpg', `${title}`)
+        break
+         case '!kick':
+            if (!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(*', id)
+            if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!!!*', id)
+            if (!isBotGroupAdmins) return client.reply(from, 'Bot harus jadi *Admin*', id)
+            if (mentionedJidList.length === 0) return client.reply(from, 'cara menggunakan, kirim perintah lalu *!kick* @tagmember', id)
+            await client.sendText(from, `Jā matane,Oni-chan:\n${mentionedJidList.join('\n')}`)
+            for (let i = 0; i < mentionedJidList.length; i++) {
+                if (groupAdmins.includes(mentionedJidList[i])) return client.reply(from, mess.error.Ki, id)
+                await client.removeParticipant(groupId, mentionedJidList[i])
+            }
+            break
+        case '!out':
+            if(!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(*', message.id)
+            if(!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOKAN MAKE FITUR ADMIN!!!*', message.id)
+            client.sendText(from,'Mattane Oni-chan')
+            client.leaveGroup(groupId)
+            break
+        case '!promote':
+            if (!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(*', id)
+            if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!!!*', id)
+            if (!isBotGroupAdmins) return client.reply(from, 'Onichan Baka Baka Anone aku haru jadi *Admin*', id)
+            if (mentionedJidList.length === 0) return client.reply(from, 'Untuk menggunakan fitur ini, kirim perintah *!promote* @tagmember', id)
+            if (mentionedJidList.length >= 2) return client.reply(from, 'Gomenasai oni-chan..cuman bisa 1', id)
+            if (groupAdmins.includes(mentionedJidList[0])) return client.reply(from, 'Etto..oni-chan dia sudah jadi admin', id)
+            await client.promoteParticipant(groupId, mentionedJidList[0])
+            await client.sendTextWithMentions(from, `*Wakatta  Oni-chan, menambahkan @${mentionedJidList[0]} sebagai admin.`)
+            break
+         case '!demote':
+            if (!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(*', id)
+            if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!!!*', id)
+            if (!isBotGroupAdmins) return client.reply(from, 'Bot harus jadi *Admin*', id)
+            if (mentionedJidList.length === 0) return client.reply(from, 'Oni-chan kirim perintah lalu *!demote* @tagadmin', id)
+            if (mentionedJidList.length >= 2) return client.reply(from, 'Gomenasai oni-chan cuman bisa 1 orang.', id)
+            if (!groupAdmins.includes(mentionedJidList[0])) return client.reply(from, 'Etto..oni-chan dia bukan admin desu..', id)
+            await client.demoteParticipant(groupId, mentionedJidList[0])
+            await client.sendTextWithMentions(from, ` *Wakatta Oni Chan* , menurunkan jabawan desu @${mentionedJidList[0]}.`)
+            break
+
+       case '!join':
+            if (chat.id == invitegrp) {
+            if (args.length == 0) return client.reply(from, 'Bakajanaino?IZIN DULU KE > :083191735552', message.id)
+            const link = body.slice(6)
+            const minMem = 30
+            const isLink = link.match(/(https:\/\/chat.whatsapp.com)/gi)
+            const check = await client.inviteInfo(link)
+            if (!isLink) return client.reply(from, 'Where\'s the link?IZIN DULU KE > :083191735552', message.id)
+            if (check.size < minMem) return client.reply(from, 'Gomenasai Oni-chan group kurang 20 IZIN DULU KE > :083191735552', message.id)
+            await client.joinGroupViaLink(link).then( async () => {
+                await client.reply(from, '*Ikuzo O Ni Chan* ✨️', message.id)
+            }).catch(error => {
+                client.reply(from, 'Sumimasen 💔️IZIN DULU KE > :083191735552', message.id)
+            })
+            }
+            break
+        case '!delete':
+            if (!quotedMsg) return client.reply(from, 'Bakaaaa..!!, Oni-chan perintah *!delete [tagpesanbot]*', id)
+            if (!quotedMsgObj.fromMe) return client.reply(from, 'Baka baka Baka!!, Anone tidak bisa menghapus', id)
+            client.deleteMessage(quotedMsgObj.chatId, quotedMsgObj.id, false)
+            break
+        
+         case '!adminlist':
             if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
             let mimin = ''
             for (let admon of groupAdmins) {
@@ -387,7 +306,7 @@ module.exports = msgHandler = async (client, message) => {
                 hehe += '╠➥'
                 hehe += ` @${groupMem[i].id.replace(/@c.us/g, '')}\n`
             }
-            hehe += '╚═〘 🎀 𝐻𝑒𝓁𝓁🏵 🎀 Saya Bot_Doujinmoee 〙'
+            hehe += '╚═〘 🎀 𝐻𝑒𝓁𝓁🏵 🎀 Saya Bot_Takagisan 〙'
             await client.sendTextWithMentions(from, hehe)
             break
         case '!kickall':
@@ -449,111 +368,128 @@ module.exports = msgHandler = async (client, message) => {
                     loop(0)
                 }
                 insert(author, type, content, pushname, from, argv)
-                break
-        case '!kick':
-            if (!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(*', id)
-            if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!!!*', id)
-            if (!isBotGroupAdmins) return client.reply(from, 'Bot harus jadi *Admin*', id)
-            if (mentionedJidList.length === 0) return client.reply(from, 'cara menggunakan, kirim perintah lalu *!kick* @tagmember', id)
-            await client.sendText(from, `Jā matane,Oni-chan:\n${mentionedJidList.join('\n')}`)
-            for (let i = 0; i < mentionedJidList.length; i++) {
-                if (groupAdmins.includes(mentionedJidList[i])) return client.reply(from, mess.error.Ki, id)
-                await client.removeParticipant(groupId, mentionedJidList[i])
+                break 
+                case '!welcome':
+            if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
+            if (!isGroupAdmins) return client.reply(from, 'DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!', id)
+            if (args.length === 1) return client.reply(from, 'Pilih aktifkan atau nonaktifkan!', id)
+            if (args[1].toLowerCase() === 'aktifkan') {
+                welkom.push(chat.id)
+                fs.writeFileSync('./lib/welcome.json', JSON.stringify(welkom))
+                client.reply(from, 'Fitur welcome berhasil di aktifkan di group ini!', id)
+            } else if (args[1].toLowerCase() === 'nonaktifkan') {
+                welkom.splice(chat.id, 1)
+                fs.writeFileSync('./lib/welcome.json', JSON.stringify(welkom))
+                client.reply(from, 'Fitur welcome berhasil di nonaktifkan di group ini!', id)
+            } else {
+                client.reply(from, 'Silahkan dipilih [aktifkan] [nonaktifkan]!', id)
             }
             break
-        case '!out':
-            if(!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(*', message.id)
-            if(!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOKAN MAKE FITUR ADMIN!!!*', message.id)
-            client.sendText(from,'Mattane Oni-chan')
-            client.leaveGroup(groupId)
-            break
-        case '!promote':
-            if (!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(*', id)
-            if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!!!*', id)
-            if (!isBotGroupAdmins) return client.reply(from, 'Onichan Baka Baka Anone aku haru jadi *Admin*', id)
-            if (mentionedJidList.length === 0) return client.reply(from, 'Untuk menggunakan fitur ini, kirim perintah *!promote* @tagmember', id)
-            if (mentionedJidList.length >= 2) return client.reply(from, 'Gomenasai oni-chan..cuman bisa 1', id)
-            if (groupAdmins.includes(mentionedJidList[0])) return client.reply(from, 'Etto..oni-chan dia sudah jadi admin', id)
-            await client.promoteParticipant(groupId, mentionedJidList[0])
-            await client.sendTextWithMentions(from, `*Wakatta  Oni-chan, menambahkan @${mentionedJidList[0]} sebagai admin.`)
-            break
-         case '!demote':
-            if (!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(*', id)
-            if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!!!*', id)
-            if (!isBotGroupAdmins) return client.reply(from, 'Bot harus jadi *Admin*', id)
-            if (mentionedJidList.length === 0) return client.reply(from, 'Oni-chan kirim perintah lalu *!demote* @tagadmin', id)
-            if (mentionedJidList.length >= 2) return client.reply(from, 'Gomenasai oni-chan cuman bisa 1 orang.', id)
-            if (!groupAdmins.includes(mentionedJidList[0])) return client.reply(from, 'Etto..oni-chan dia bukan admin desu..', id)
-            await client.demoteParticipant(groupId, mentionedJidList[0])
-            await client.sendTextWithMentions(from, ` *Wakatta Oni Chan* , menurunkan jabawan desu @${mentionedJidList[0]}.`)
+            //Group Commands
+            //Anime Commands
+             case '!wait':
+            if (isMedia && type === 'image' || quotedMsg && quotedMsg.type === 'image') {
+                if (isMedia) {
+                    var mediaData = await decryptMedia(message, uaOverride)
+                } else {
+                    var mediaData = await decryptMedia(quotedMsg, uaOverride)
+                }
+                const fetch = require('node-fetch')
+                const imgBS4 = `data:${mimetype};base64,${mediaData.toString('base64')}`
+                client.reply(from, 'oni-chan tunggu bentar....', id)
+                fetch('https://trace.moe/api/search', {
+                    method: 'POST',
+                    body: JSON.stringify({ image: imgBS4 }),
+                    headers: { "Content-Type": "application/json" }
+                })
+                .then(respon => respon.json())
+                .then(resolt => {
+                    if (resolt.docs && resolt.docs.length <= 0) {
+                        client.reply(from, '*Sumimasen oni-chan*', id)
+                    }
+                    const { is_adult, title, title_chinese, title_romaji, title_english, episode, similarity, filename, at, tokenthumb, anilist_id } = resolt.docs[0]
+                    teks = ''
+                    if (similarity < 0.92) {
+                        teks = '*Onegaishimasu* :\n\n'
+                    }
+                    teks += `➸ *Title Japanese* : ${title}\n➸ *Title chinese* : ${title_chinese}\n➸ *Title Romaji* : ${title_romaji}\n➸ *Title English* : ${title_english}\n`
+                    teks += `➸ *Ecchi* : ${is_adult}\n`
+                    teks += `➸ *Eps* : ${episode.toString()}\n`
+                    teks += `➸ *Kesamaan* : ${(similarity * 100).toFixed(1)}%\n`
+                    var video = `https://media.trace.moe/video/${anilist_id}/${encodeURIComponent(filename)}?t=${at}&token=${tokenthumb}`;
+                    client.sendFileFromUrl(from, video, 'nimek.mp4', teks, id).catch(() => {
+                        client.reply(from, teks, id)
+                    })
+                })
+                .catch(() => {
+                    client.reply(from, 'Error !', id)
+                })
+            } else {
+                client.sendFile(from, './media/img/tutod.jpg', 'Tutor.jpg', 'Oni-chan lihat contoh', id)
+            }
             break
 
-       case '!join':
-            if (chat.id == invitegrp) {
-            if (args.length == 0) return client.reply(from, 'Bakajanaino?', message.id)
-            const link = body.slice(6)
-            const minMem = 30
-            const isLink = link.match(/(https:\/\/chat.whatsapp.com)/gi)
-            const check = await client.inviteInfo(link)
-            if (!isLink) return client.reply(from, 'Where\'s the link?', message.id)
-            if (check.size < minMem) return client.reply(from, 'Gomenasai Oni-chan group kurang 20', message.id)
-            await client.joinGroupViaLink(link).then( async () => {
-                await client.reply(from, '*Ikuzo O Ni Chan* ✨️', message.id)
-            }).catch(error => {
-                client.reply(from, 'Sumimasen 💔️', message.id)
-            })
-            }
+        case '!dog':
+            const list = ["https://cdn.shibe.online/shibes/247d0ac978c9de9d9b66d72dbdc65f2dac64781d.jpg","https://cdn.shibe.online/shibes/1cf322acb7d74308995b04ea5eae7b520e0eae76.jpg","https://cdn.shibe.online/shibes/1ce955c3e49ae437dab68c09cf45297d68773adf.jpg","https://cdn.shibe.online/shibes/ec02bee661a797518d37098ab9ad0c02da0b05c3.jpg","https://cdn.shibe.online/shibes/1e6102253b51fbc116b887e3d3cde7b5c5083542.jpg","https://cdn.shibe.online/shibes/f0c07a7205d95577861eee382b4c8899ac620351.jpg","https://cdn.shibe.online/shibes/3eaf3b7427e2d375f09fc883f94fa8a6d4178a0a.jpg","https://cdn.shibe.online/shibes/c8b9fcfde23aee8d179c4c6f34d34fa41dfaffbf.jpg","https://cdn.shibe.online/shibes/55f298bc16017ed0aeae952031f0972b31c959cb.jpg","https://cdn.shibe.online/shibes/2d5dfe2b0170d5de6c8bc8a24b8ad72449fbf6f6.jpg","https://cdn.shibe.online/shibes/e9437de45e7cddd7d6c13299255e06f0f1d40918.jpg","https://cdn.shibe.online/shibes/6c32141a0d5d089971d99e51fd74207ff10751e7.jpg","https://cdn.shibe.online/shibes/028056c9f23ff40bc749a95cc7da7a4bb734e908.jpg","https://cdn.shibe.online/shibes/4fb0c8b74dbc7653e75ec1da597f0e7ac95fe788.jpg","https://cdn.shibe.online/shibes/125563d2ab4e520aaf27214483e765db9147dcb3.jpg","https://cdn.shibe.online/shibes/ea5258fad62cebe1fedcd8ec95776d6a9447698c.jpg","https://cdn.shibe.online/shibes/5ef2c83c2917e2f944910cb4a9a9b441d135f875.jpg","https://cdn.shibe.online/shibes/6d124364f02944300ae4f927b181733390edf64e.jpg","https://cdn.shibe.online/shibes/92213f0c406787acd4be252edb5e27c7e4f7a430.jpg","https://cdn.shibe.online/shibes/40fda0fd3d329be0d92dd7e436faa80db13c5017.jpg","https://cdn.shibe.online/shibes/e5c085fc427528fee7d4c3935ff4cd79af834a82.jpg","https://cdn.shibe.online/shibes/f83fa32c0da893163321b5cccab024172ddbade1.jpg","https://cdn.shibe.online/shibes/4aa2459b7f411919bf8df1991fa114e47b802957.jpg","https://cdn.shibe.online/shibes/2ef54e174f13e6aa21bb8be3c7aec2fdac6a442f.jpg","https://cdn.shibe.online/shibes/fa97547e670f23440608f333f8ec382a75ba5d94.jpg","https://cdn.shibe.online/shibes/fb1b7150ed8eb4ffa3b0e61ba47546dd6ee7d0dc.jpg","https://cdn.shibe.online/shibes/abf9fb41d914140a75d8bf8e05e4049e0a966c68.jpg","https://cdn.shibe.online/shibes/f63e3abe54c71cc0d0c567ebe8bce198589ae145.jpg","https://cdn.shibe.online/shibes/4c27b7b2395a5d051b00691cc4195ef286abf9e1.jpg","https://cdn.shibe.online/shibes/00df02e302eac0676bb03f41f4adf2b32418bac8.jpg","https://cdn.shibe.online/shibes/4deaac9baec39e8a93889a84257338ebb89eca50.jpg","https://cdn.shibe.online/shibes/199f8513d34901b0b20a33758e6ee2d768634ebb.jpg","https://cdn.shibe.online/shibes/f3efbf7a77e5797a72997869e8e2eaa9efcdceb5.jpg","https://cdn.shibe.online/shibes/39a20ccc9cdc17ea27f08643b019734453016e68.jpg","https://cdn.shibe.online/shibes/e67dea458b62cf3daa4b1e2b53a25405760af478.jpg","https://cdn.shibe.online/shibes/0a892f6554c18c8bcdab4ef7adec1387c76c6812.jpg","https://cdn.shibe.online/shibes/1b479987674c9b503f32e96e3a6aeca350a07ade.jpg","https://cdn.shibe.online/shibes/0c80fc00d82e09d593669d7cce9e273024ba7db9.jpg","https://cdn.shibe.online/shibes/bbc066183e87457b3143f71121fc9eebc40bf054.jpg","https://cdn.shibe.online/shibes/0932bf77f115057c7308ef70c3de1de7f8e7c646.jpg","https://cdn.shibe.online/shibes/9c87e6bb0f3dc938ce4c453eee176f24636440e0.jpg","https://cdn.shibe.online/shibes/0af1bcb0b13edf5e9b773e34e54dfceec8fa5849.jpg","https://cdn.shibe.online/shibes/32cf3f6eac4673d2e00f7360753c3f48ed53c650.jpg","https://cdn.shibe.online/shibes/af94d8eeb0f06a0fa06f090f404e3bbe86967949.jpg","https://cdn.shibe.online/shibes/4b55e826553b173c04c6f17aca8b0d2042d309fb.jpg","https://cdn.shibe.online/shibes/a0e53593393b6c724956f9abe0abb112f7506b7b.jpg","https://cdn.shibe.online/shibes/7eba25846f69b01ec04de1cae9fed4b45c203e87.jpg","https://cdn.shibe.online/shibes/fec6620d74bcb17b210e2cedca72547a332030d0.jpg","https://cdn.shibe.online/shibes/26cf6be03456a2609963d8fcf52cc3746fcb222c.jpg","https://cdn.shibe.online/shibes/c41b5da03ad74b08b7919afc6caf2dd345b3e591.jpg","https://cdn.shibe.online/shibes/7a9997f817ccdabac11d1f51fac563242658d654.jpg","https://cdn.shibe.online/shibes/7221241bad7da783c3c4d84cfedbeb21b9e4deea.jpg","https://cdn.shibe.online/shibes/283829584e6425421059c57d001c91b9dc86f33b.jpg","https://cdn.shibe.online/shibes/5145c9d3c3603c9e626585cce8cffdfcac081b31.jpg","https://cdn.shibe.online/shibes/b359c891e39994af83cf45738b28e499cb8ffe74.jpg","https://cdn.shibe.online/shibes/0b77f74a5d9afaa4b5094b28a6f3ee60efcb3874.jpg","https://cdn.shibe.online/shibes/adccfdf7d4d3332186c62ed8eb254a49b889c6f9.jpg","https://cdn.shibe.online/shibes/3aac69180f777512d5dabd33b09f531b7a845331.jpg","https://cdn.shibe.online/shibes/1d25e4f592db83039585fa480676687861498db8.jpg","https://cdn.shibe.online/shibes/d8349a2436420cf5a89a0010e91bf8dfbdd9d1cc.jpg","https://cdn.shibe.online/shibes/eb465ef1906dccd215e7a243b146c19e1af66c67.jpg","https://cdn.shibe.online/shibes/3d14e3c32863195869e7a8ba22229f457780008b.jpg","https://cdn.shibe.online/shibes/79cedc1a08302056f9819f39dcdf8eb4209551a3.jpg","https://cdn.shibe.online/shibes/4440aa827f88c04baa9c946f72fc688a34173581.jpg","https://cdn.shibe.online/shibes/94ea4a2d4b9cb852e9c1ff599f6a4acfa41a0c55.jpg","https://cdn.shibe.online/shibes/f4478196e441aef0ada61bbebe96ac9a573b2e5d.jpg","https://cdn.shibe.online/shibes/96d4db7c073526a35c626fc7518800586fd4ce67.jpg","https://cdn.shibe.online/shibes/196f3ed10ee98557328c7b5db98ac4a539224927.jpg","https://cdn.shibe.online/shibes/d12b07349029ca015d555849bcbd564d8b69fdbf.jpg","https://cdn.shibe.online/shibes/80fba84353000476400a9849da045611a590c79f.jpg","https://cdn.shibe.online/shibes/94cb90933e179375608c5c58b3d8658ef136ad3c.jpg","https://cdn.shibe.online/shibes/8447e67b5d622ef0593485316b0c87940a0ef435.jpg","https://cdn.shibe.online/shibes/c39a1d83ad44d2427fc8090298c1062d1d849f7e.jpg","https://cdn.shibe.online/shibes/6f38b9b5b8dbf187f6e3313d6e7583ec3b942472.jpg","https://cdn.shibe.online/shibes/81a2cbb9a91c6b1d55dcc702cd3f9cfd9a111cae.jpg","https://cdn.shibe.online/shibes/f1f6ed56c814bd939645138b8e195ff392dfd799.jpg","https://cdn.shibe.online/shibes/204a4c43cfad1cdc1b76cccb4b9a6dcb4a5246d8.jpg","https://cdn.shibe.online/shibes/9f34919b6154a88afc7d001c9d5f79b2e465806f.jpg","https://cdn.shibe.online/shibes/6f556a64a4885186331747c432c4ef4820620d14.jpg","https://cdn.shibe.online/shibes/bbd18ae7aaf976f745bc3dff46b49641313c26a9.jpg","https://cdn.shibe.online/shibes/6a2b286a28183267fca2200d7c677eba73b1217d.jpg","https://cdn.shibe.online/shibes/06767701966ed64fa7eff2d8d9e018e9f10487ee.jpg","https://cdn.shibe.online/shibes/7aafa4880b15b8f75d916b31485458b4a8d96815.jpg","https://cdn.shibe.online/shibes/b501169755bcf5c1eca874ab116a2802b6e51a2e.jpg","https://cdn.shibe.online/shibes/a8989bad101f35cf94213f17968c33c3031c16fc.jpg","https://cdn.shibe.online/shibes/f5d78feb3baa0835056f15ff9ced8e3c32bb07e8.jpg","https://cdn.shibe.online/shibes/75db0c76e86fbcf81d3946104c619a7950e62783.jpg","https://cdn.shibe.online/shibes/8ac387d1b252595bbd0723a1995f17405386b794.jpg","https://cdn.shibe.online/shibes/4379491ef4662faa178f791cc592b52653fb24b3.jpg","https://cdn.shibe.online/shibes/4caeee5f80add8c3db9990663a356e4eec12fc0a.jpg","https://cdn.shibe.online/shibes/99ef30ea8bb6064129da36e5673649e957cc76c0.jpg","https://cdn.shibe.online/shibes/aeac6a5b0a07a00fba0ba953af27734d2361fc10.jpg","https://cdn.shibe.online/shibes/9a217cfa377cc50dd8465d251731be05559b2142.jpg","https://cdn.shibe.online/shibes/65f6047d8e1d247af353532db018b08a928fd62a.jpg","https://cdn.shibe.online/shibes/fcead395cbf330b02978f9463ac125074ac87ab4.jpg","https://cdn.shibe.online/shibes/79451dc808a3a73f99c339f485c2bde833380af0.jpg","https://cdn.shibe.online/shibes/bedf90869797983017f764165a5d97a630b7054b.jpg","https://cdn.shibe.online/shibes/dd20e5801badd797513729a3645c502ae4629247.jpg","https://cdn.shibe.online/shibes/88361ee50b544cb1623cb259bcf07b9850183e65.jpg","https://cdn.shibe.online/shibes/0ebcfd98e8aa61c048968cb37f66a2b5d9d54d4b.jpg"]
+            let kya = list[Math.floor(Math.random() * list.length)]
+            client.sendFileFromUrl(from, kya, 'Dog.jpeg', ' *Kyōdai no inu*')
             break
-        case '!delete':
-           
-           
-            if (!quotedMsg) return client.reply(from, 'Bakaaaa..!!, Oni-chan perintah *!delete [tagpesanbot]*', id)
-            if (!quotedMsgObj.fromMe) return client.reply(from, 'Baka baka Baka!!, Anone tidak bisa menghapus', id)
-            client.deleteMessage(quotedMsgObj.chatId, quotedMsgObj.id, false)
+        case '#cat':
+            q2 = Math.floor(Math.random() * 900) + 300;
+            q3 = Math.floor(Math.random() * 900) + 300;
+            client.sendFileFromUrl(from, 'http://placekitten.com/'+q3+'/'+q2, 'neko.png',' *Kyōdai no neko!* ')
             break
-        case '!ss':
+            case '#quotenime': 
+            const quoteanime = fs.readFileSync('./lib/quoteanime.json')
+            const quoteanimeJson = JSON.parse(quoteanime)
+            const quoteanimeIndex = Math.floor(Math.random() * quoteanimeJson.length)
+            const quoteanimeKey = quoteanimeJson[quoteanimeIndex]
+            client.reply(from, `➸ *Quotes* : ${quoteanimeKey.quote}\n➸ *Karakter* : ${quoteanimeKey.by}`, id)
+            break 
+     case '!pokemon':
+     if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
+            q7 = Math.floor(Math.random() * 890) + 1;
+            client.sendFileFromUrl(from, 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/'+q7+'.png','Pokemon.png','.', id)
+            break
+             case '!husbu':
+             if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
+            const diti = fs.readFileSync('./lib/husbu.json')
+            const ditiJsin = JSON.parse(diti)
+            const rindIndix = Math.floor(Math.random() * ditiJsin.length)
+            const rindKiy = ditiJsin[rindIndix]
+            client.sendFileFromUrl(from, rindKiy.image, 'Husbu.jpg', rindKiy.teks, id)
+            break
+            case '!loli': 
+             if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
+            const loli = fs.readFileSync('./lib/loli.json')
+            const loliJson = JSON.parse(loli)
+            const loliIndex = Math.floor(Math.random() * loliJson.length)
+            const loliKey = loliJson[loliIndex]
+            client.sendFileFromUrl(from, loliKey.image, 'loli.jpg', loliKey.teks)
+            break
+            case '!waifu': 
+            if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
+            const waifu = fs.readFileSync('./lib/waifu.json')
+            const waifuJson = JSON.parse(waifu)
+            const randIndex = Math.floor(Math.random() * waifuJson.length)
+            const randKey = waifuJson[randIndex]
+            client.sendFileFromUrl(from, randKey.image, 'Waifu.jpg', randKey.teks)
+            break
+             case '!milf':  
+     if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
+            const milf = fs.readFileSync('./lib/milf.json')
+            const milfJson = JSON.parse(milf)
+            const milfIndex = Math.floor(Math.random() * milfJson.length)
+            const milfKey = milfJson[milfIndex]
+            client.sendFileFromUrl(from, milfKey.image, 'milf.jpg', milfKey.teks)
+            break
+            //Anime Commands
+            //Other Commands
+            case '!ss':
             const sesPic = await client.getSnapshot()
             client.sendFile(from, sesPic, 'session.png', 'Oni-chan Ecchi..:(', id)
             break
-        case '!lirik':
-            if (args.length == 1) return client.reply(from, 'Kirim perintah *!lirik [optional]*, contoh *!lirik Shiawase*', id)
-            const lagu = body.slice(7)
-            const lirik = await liriklagu(lagu)
-            client.reply(from, lirik, id)
-            break
-        break
-        case '!botstat': {
-            const loadedMsg = await client.getAmountOfLoadedMessages()
-            const chatIds = await client.getAllChatIds()
-            const groups = await client.getAllGroups()
-            client.sendText(from, `Status :\n- *${loadedMsg}* Loaded Messages\n- *${groups.length}* Group Chats\n- *${chatIds.length - groups.length}* Personal Chats\n- *${chatIds.length}* Total Chats`)
-            break
-        }
-        case '!daftardaerah':
-            const listDaerah = await get('https://mhankbarbar.herokuapp.com/daerah').json()
-            client.reply(from, listDaerah.result, id)
-            break
-        case '!lihatblock':
-            let hih = `Oni-chan Silahkan Dilihat\nJumlah : ${blockNumber.length}\n`
-            for (let i of blockNumber) {
-                hih += `➸ @${i.replace(/@c.us/g,'')}\n`
-            }
-            client.sendTextWithMentions(from, hih, id)
-            break
-        case '!jadwalshalat':
-            if (args.length === 1) return client.reply(from, '[❗] Kirim perintah *!jadwalShalat [daerah]*\ncontoh : *!jadwalShalat Tangerang*\nUntuk list daerah kirim perintah *!listDaerah*')
-            const daerah = body.slice(14)
-            const jadwalShalat = await get.get(`https://mhankbarbar.herokuapp.com/api/jadwalshalat?daerah=${daerah}&apiKey=${apiKey}`).json()
-            if (jadwalShalat.error) return client.reply(from, jadwalShalat.error, id)
-            const { Imsyak, Subuh, Dhuha, Dzuhur, Ashar, Maghrib, Isya } = await jadwalShalat
-            arrbulan = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
-            tgl = new Date().getDate()
-            bln = new Date().getMonth()
-            thn = new Date().getFullYear()
-            const resultJadwal = `Jadwal shalat di ${daerah}, ${tgl}-${arrbulan[bln]}-${thn}\n\nImsyak : ${Imsyak}\nSubuh : ${Subuh}\nDhuha : ${Dhuha}\nDzuhur : ${Dzuhur}\nAshar : ${Ashar}\nMaghrib : ${Maghrib}\nIsya : ${Isya}`
-            client.reply(from, resultJadwal, id)
-            break
-        case '!daftarchannel':
+            case '!#aftarchannel':
             client.reply(from, listChannel, id)
             break
         case '!jadwaltv':
@@ -566,22 +502,382 @@ module.exports = msgHandler = async (client, message) => {
             const jadwalNow = await get.get('https://api.haipbis.xyz/jadwaltvnow').json()
             client.reply(from, `Jam : ${jadwalNow.jam}\n\nJadwalTV : ${jadwalNow.jadwalTV}`, id)
             break
+            case '!quotes':
+            const quotes = await get.get('https://mhankbarbar.herokuapp.com/api/randomquotes').json()
+            client.reply(from, `➸ *Quotes* : ${quotes.quotes}\n➸ *Author* : ${quotes.author}`, id)
+            break
+             case '!brainly':
+            if(args.length >= 1){
+                function BrainlySearch(pertanyaan, amount,cb){
+                    brainly(pertanyaan.toString(),Number(amount)).then(res => { 
+                        let brainlyResult=[];   
+                    res.forEach(ask=>{
+                        let opt={
+                            pertanyaan:ask.pertanyaan,
+                            fotoPertanyaan:ask.questionMedia,
+                        }
+                        ask.jawaban.forEach(answer=>{
+                            opt.jawaban={
+                                judulJawaban:answer.text,
+                                fotoJawaban:answer.media
+                            }
+                        })
+                        brainlyResult.push(opt)
+                        })  
+                        return brainlyResult    
+                    }).then(x=>{
+                        cb(x)   
+                    }).catch(err=>{
+                        console.log(`${err}`.error)
+                    })
+                    }
+                    const brainly = require('brainly-scraper')
+                    let tanya = body.slice(9)
+                    console.log(tanya.length-1)
+                    let jum = Number(tanya.split('.')[1]) || 2
+                    if(Number(tanya[tanya.length-1])){
+                        tanya
+                    }
+                    let quest = body.slice(9)
+                    client.reply(from, `*Pertanyaan : ${quest.split(' .')[0]}*\n*Jumlah jawaban : ${Number(jum)}*`, message.id)
+                    BrainlySearch(quest.split(' .')[0],Number(jum), function(res){
+                        console.log(res)
+                        res.forEach(x=>{
+                            client.reply(from, `*foto pertanyaan*\n${x.fotoPertanyaan.join('\n')}\n*pertanyaan :*\n${x.pertanyaan}\n\n*jawaban :*\n${x.jawaban.judulJawaban}\n\n*foto jawaban*\n${x.jawaban.fotoJawaban.join('\n')}`, message.id)
+                        })
+                    })
+            } else {
+                client.reply(from, 'Usage :\n!brainly <pertanyaan> <.jumlah>\n\nEx : \n!brainly NKRI .2', message.id)
+            }
+            break 
+             case '!createmaker':
+
+            arg = body.trim().split('|')
+            if (arg.length >= 4) {
+                client.reply(from, mess.wait, id)
+                const quotes = encodeURIComponent(arg[1])
+                const author = encodeURIComponent(arg[2])
+                const theme = encodeURIComponent(arg[3])
+                await quotemaker(quotes, author, theme).then(amsu => {
+                    client.sendFile(from, amsu, 'quotesmaker.jpg','').catch(() => {
+                       client.reply(from, mess.error.Qm, id)
+                    })
+                })
+            } else {
+                client.reply(from, 'Caranya: \n!createmaker |teks|author|background\n\nContoh :\n!createmaker |ini contoh|oni-chan|random', id)
+            } 
+            case '!jadwalshalat':
+            if (args.length === 1) return client.reply(from, '[❗] Kirim perintah *!jadwalShalat [daerah]*\ncontoh : *!jadwalShalat Tangerang*\nUntuk list daerah kirim perintah *!listDaerah*')
+            const daerah = body.slice(14)
+            const jadwalShalat = await get.get(`https://mhankbarbar.herokuapp.com/api/jadwalshalat?daerah=${daerah}&apiKey=${apiKey}`).json()
+            if (jadwalShalat.error) return client.reply(from, jadwalShalat.error, id)
+            const { Imsyak, Subuh, Dhuha, Dzuhur, Ashar, Maghrib, Isya } = await jadwalShalat
+            arrbulan = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+            tgl = new Date().getDate()
+            bln = new Date().getMonth()
+            thn = new Date().getFullYear()
+            const resultJadwal = `Jadwal shalat di ${daerah}, ${tgl}-${arrbulan[bln]}-${thn}\n\nImsyak : ${Imsyak}\nSubuh : ${Subuh}\nDhuha : ${Dhuha}\nDzuhur : ${Dzuhur}\nAshar : ${Ashar}\nMaghrib : ${Maghrib}\nIsya : ${Isya}`
+            client.reply(from, resultJadwal, id)
+            break
+            case '!lirik':
+            if (args.length == 1) return client.reply(from, 'Kirim perintah *!lirik [optional]*, contoh *!lirik Shiawase*', id)
+            const lagu = body.slice(7)
+            const lirik = await liriklagu(lagu)
+            client.reply(from, lirik, id)
+            break
+        case '!tts':
+            if (args.length === 1) return client.reply(from, 'Gunakan Perintah *!tts [id, en, jp, ar] [teks]*, contoh *!tts id Oni-chan*')
+            const ttsId = require('node-gtts')('id')
+            const ttsEn = require('node-gtts')('en')
+        const ttsJp = require('node-gtts')('ja')
+            const ttsAr = require('node-gtts')('ar')
+            const dataText = body.slice(8)
+            if (dataText === '') return client.reply(from, 'Bakajanaino?', id)
+            if (dataText.length > 500) return client.reply(from, 'Gomenne onichan teks terlalu panjang!', id)
+            var dataBhs = body.slice(5, 7)
+            if (dataBhs == 'id') {
+                ttsId.save('./media/tts/resId.mp3', dataText, function () {
+                    client.sendPtt(from, './media/tts/resId.mp3', id)
+                })
+            } else if (dataBhs == 'en') {
+                ttsEn.save('./media/tts/resEn.mp3', dataText, function () {
+                    client.sendPtt(from, './media/tts/resEn.mp3', id)
+                })
+            } else if (dataBhs == 'jp') {
+                ttsJp.save('./media/tts/resJp.mp3', dataText, function () {
+                    client.sendPtt(from, './media/tts/resJp.mp3', id)
+                })
+        } else if (dataBhs == 'ar') {
+                ttsAr.save('./media/tts/resAr.mp3', dataText, function () {
+                    client.sendPtt(from, './media/tts/resAr.mp3', id)
+                })
+            } else {
+                client.reply(from, 'Masukkan kode bahasa : *{id}* untuk bahasa indonesia, *{en}* untuk bahasa inggris, *{jp}* untuk bahasa jepang, dan *{ar}* untuk bahasa arab', id)
+            }
+            break
+             case '!takagisan':
+            client.reply(from, '*Onegaishimasu*\n1. *!vn1*\n2. *!vn2*\n3. *!vn3*\n4. *!vn4*\n5. *!vn5*\n6. *!vn6*\n', id)
+            break
+
+    case '!vn6':
+    case '!vn 6':
+            client.sendPtt(from, './media/Takagisan6.mp3',)
+            break
+    case '!vn5':
+    case '!vn 5':
+            client.sendPtt(from, './media/Takagisan5.mp3',)
+            break
+    case '!vn4':
+    case '!vn 4':
+            client.sendPtt(from, './media/Takagisan4.mp3',)
+            break
+    case '!vn3':
+    case '!vn 3':
+            client.sendPtt(from, './media/Takagisan3.mp3',)
+            break
+    case '!vn2':
+    case '!vn 2':
+            client.sendPtt(from, './media/Takagisan2.mp3',)
+            break
+           
+
+    case '!vn1':
+            client.sendPtt(from, './media/Takagisan.mp3',)
+            break
+            case '#ringtone':
+    if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)   
+            const ringtone = fs.readFileSync('./lib/ringtone.json')
+            const ringtoneJson = JSON.parse(ringtone)
+            const ringtoneIndex = Math.floor(Math.random() * ringtoneJson.length)
+            const ringtoneKey = ringtoneJson[ringtoneIndex]
+            client.sendFileFromUrl(from, ringtoneKey.mp3, 'ringtoneloli.mp3', ringtoneKey.teks)
+            break
+             //Other Commands
+             //Islam Commands
+              case 'listsurah':
+            try {
+                axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
+                .then((response) => {
+                    let hehex = '╔══✪〘 List Surah 〙✪══\n'
+                    for (let i = 0; i < response.data.data.length; i++) {
+                        hehex += '╠➥ '
+                        hehex += response.data.data[i].name.transliteration.id.toLowerCase() + '\n'
+                            }
+                        hehex += '╚═〘 *Takagisan Bot* 〙'
+                    aruga.reply(from, hehex, id)
+                })
+            } catch(err) {
+                aruga.reply(from, err, id)
+            }
+            break
+            case '!infosurah':
+            if (args.length == 0) return aruga.reply(from, `*_${prefix}infosurah <nama surah>_*\nMenampilkan informasi lengkap mengenai surah tertentu. Contoh penggunan: ${prefix}infosurah al-baqarah`, message.id)
+                var responseh = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
+                var { data } = responseh.data
+                var idx = data.findIndex(function(post, index) {
+                  if((post.name.transliteration.id.toLowerCase() == args[0].toLowerCase())||(post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()))
+                    return true;
+                });
+                var pesan = ""
+                pesan = pesan + "Nama : "+ data[idx].name.transliteration.id + "\n" + "Asma : " +data[idx].name.short+"\n"+"Arti : "+data[idx].name.translation.id+"\n"+"Jumlah ayat : "+data[idx].numberOfVerses+"\n"+"Nomor surah : "+data[idx].number+"\n"+"Jenis : "+data[idx].revelation.id+"\n"+"Keterangan : "+data[idx].tafsir.id
+                aruga.reply(from, pesan, message.id)
+              break
+             case '!surah':
+              if (args.length == 0) return aruga.reply(from, `*_${prefix}surah <nama surah> <ayat>_*\nMenampilkan ayat Al-Quran tertentu beserta terjemahannya dalam bahasa Indonesia. Contoh penggunaan : ${prefix}surah al-baqarah 1\n\n*_${prefix}|surah nama surah| |ayat| en/id_*\nMenampilkan ayat Al-Quran tertentu beserta terjemahannya dalam bahasa Inggris / Indonesia. Contoh penggunaan : ${prefix}surah al-baqarah 1 id`, message.id)
+                var responseh = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
+                var { data } = responseh.data
+                var idx = data.findIndex(function(post, index) {
+                  if((post.name.transliteration.id.toLowerCase() == args[0].toLowerCase())||(post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()))
+                    return true;
+                });
+                nmr = data[idx].number
+                if(!isNaN(nmr)) {
+                  var responseh2 = await axios.get('https://api.quran.sutanlab.id/surah/'+nmr+"/"+args[1])
+                  var {data} = responseh2.data
+                  var last = function last(array, n) {
+                    if (array == null) return void 0;
+                    if (n == null) return array[array.length - 1];
+                    return array.slice(Math.max(array.length - n, 0));
+                  };
+                  bhs = last(args)
+                  pesan = ""
+                  pesan = pesan + data.text.arab + "\n\n"
+                  if(bhs == "en") {
+                    pesan = pesan + data.translation.en
+                  } else {
+                    pesan = pesan + data.translation.id
+                  }
+                  pesan = pesan + "\n\n(Q.S. "+data.surah.name.transliteration.id+":"+args[1]+")"
+                  aruga.reply(from, pesan, message.id)
+                }
+              break
+             case '!tafsir':
+             if (args.length == 0) return aruga.reply(from, `*_${prefix}tafsir |nama surah| |ayat|_*\nMenampilkan ayat Al-Quran tertentu beserta terjemahan dan tafsirnya dalam bahasa Indonesia. Contoh penggunaan : ${prefix}tafsir al-baqarah 1`, message.id)
+                var responsh = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
+                var {data} = responsh.data
+                var idx = data.findIndex(function(post, index) {
+                  if((post.name.transliteration.id.toLowerCase() == args[0].toLowerCase())||(post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()))
+                    return true;
+                });
+                nmr = data[idx].number
+                if(!isNaN(nmr)) {
+                  var responsih = await axios.get('https://api.quran.sutanlab.id/surah/'+nmr+"/"+args[1])
+                  var {data} = responsih.data
+                  pesan = ""
+                  pesan = pesan + "Tafsir Q.S. "+data.surah.name.transliteration.id+":"+args[1]+"\n\n"
+                  pesan = pesan + data.text.arab + "\n\n"
+                  pesan = pesan + "_" + data.translation.id + "_" + "\n\n" +data.tafsir.id.long
+                  aruga.reply(from, pesan, message.id)
+              }
+              break
+            case '!alaudio':
+            if (args.length == 0) return aruga.reply(from, `*_${prefix}ALaudio <nama surah>_*\nMenampilkan tautan dari audio surah tertentu. Contoh penggunaan : ${prefix}ALaudio al-fatihah\n\n*_${prefix}ALaudio |nama surah| |ayat_*\nMengirim audio surah dan ayat tertentu beserta terjemahannya dalam bahasa Indonesia. Contoh penggunaan : ${prefix}ALaudio al-fatihah 1\n\n*_${prefix}ALaudio |nama surah| |ayat| en_*\nMengirim audio surah dan ayat tertentu beserta terjemahannya dalam bahasa Inggris. Contoh penggunaan : ${prefix}ALaudio al-fatihah 1 en`, message.id)
+              ayat = "ayat"
+              bhs = ""
+                var responseh = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
+                var surah = responseh.data
+                var idx = surah.data.findIndex(function(post, index) {
+                  if((post.name.transliteration.id.toLowerCase() == args[0].toLowerCase())||(post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()))
+                    return true;
+                });
+                nmr = surah.data[idx].number
+                if(!isNaN(nmr)) {
+                  if(args.length > 2) {
+                    ayat = args[1]
+                  }
+                  if (args.length == 2) {
+                    var last = function last(array, n) {
+                      if (array == null) return void 0;
+                      if (n == null) return array[array.length - 1];
+                      return array.slice(Math.max(array.length - n, 0));
+                    };
+                    ayat = last(args)
+                  } 
+                  pesan = ""
+                  if(isNaN(ayat)) {
+                    var responsih2 = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah/'+nmr+'.json')
+                    var {name, name_translations, number_of_ayah, number_of_surah,  recitations} = responsih2.data
+                    pesan = pesan + "Audio Quran Surah ke-"+number_of_surah+" "+name+" ("+name_translations.ar+") "+ "dengan jumlah "+ number_of_ayah+" ayat\n"
+                    pesan = pesan + "Dilantunkan oleh "+recitations[0].name+" : "+recitations[0].audio_url+"\n"
+                    pesan = pesan + "Dilantunkan oleh "+recitations[1].name+" : "+recitations[1].audio_url+"\n"
+                    pesan = pesan + "Dilantunkan oleh "+recitations[2].name+" : "+recitations[2].audio_url+"\n"
+                    client.reply(from, pesan, message.id)
+                  } else {
+                    var responsih2 = await axios.get('https://api.quran.sutanlab.id/surah/'+nmr+"/"+ayat)
+                    var {data} = responsih2.data
+                    var last = function last(array, n) {
+                      if (array == null) return void 0;
+                      if (n == null) return array[array.length - 1];
+                      return array.slice(Math.max(array.length - n, 0));
+                    };
+                    bhs = last(args)
+                    pesan = ""
+                    pesan = pesan + data.text.arab + "\n\n"
+                    if(bhs == "en") {
+                      pesan = pesan + data.translation.en
+                    } else {
+                      pesan = pesan + data.translation.id
+                    }
+                    pesan = pesan + "\n\n(Q.S. "+data.surah.name.transliteration.id+":"+args[1]+")"
+                    await client.sendFileFromUrl(from, data.audio.secondary[0])
+                    await client.reply(from, pesan, message.id)
+                  }
+              }
+              break
+              //Islam Commands
+               //Anime Walpaper
+    case '!randomwalpaper' :
+    case '!walpaperrandom' :
+    case '!wallpaperrandom' :
+    case '!randomwallpaper' :
+            q4 = Math.floor(Math.random() * 800) + 100;
+            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/beautiful-android-'+q4,'Wallpaper.png','SILAHKAN DIAMBIL')
+            break
+
+    case '!walpaper' :
+    case '!wallpaper' :
+            q4 = Math.floor(Math.random() * 800) + 100;
+            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/anime-'+q4,'Anime Wallpaper.png','Silahkan Ambil')
+            break
+    case '!happygirl' :
+    case '!HappyGirl' :
+            q4 = Math.floor(Math.random() * 800) + 100;
+            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/happy-anime-girl-'+q4,'Anime Happy Girl.png','Silahkan Ambil')
+            break
+    case '!happyboy' :
+    case '!HappyBoy' :
+            q4 = Math.floor(Math.random() * 800) + 100;
+            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/happy-anime-boy-'+q4,'Anime Happy Boy.png','Silahkan Ambil')
+            break
+    case '!sadgirl' :
+    case '!SadGirl' :
+            q4 = Math.floor(Math.random() * 800) + 100;
+            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/anime-sad-girl-'+q4,'Anime sad girl.png','Silahkan Ambil')
+            break
+    case '!sadboy' :
+    case '!SadBoy' :
+            q4 = Math.floor(Math.random() * 800) + 100;
+            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/anime-sad-boy-'+q4,'Anime sad boy.png','Here is your wallpaper')
+            break 
+
+    case '!dh' :
+            q4 = Math.floor(Math.random() * 800) + 100;
+            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/anime-boy-'+q4,'Husbu Wallpaper.png','Here is your wallpaper')
+            break
+    case '!dw' :
+            q4 = Math.floor(Math.random() * 800) + 100;
+            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/waifu-'+q4,'Waifu Wallpaper.png','Here is your wallpaper')
+            break
+             //Anime Walpaper
+         case '!nulis':
+            if (!isMe) return
+            if (args.length == 0) return client.reply(from, `Membuat bot menulis teks yang dikirim menjadi gambar\nPemakaian: ${prefix}nulis [teks]\n\ncontoh: ${prefix}nulis i love you 3000`, id)
+            const nulisq = body.slice(7)
+            const nulisp = await rugaapi.tulis(nulisq)
+            await client.sendImage(from, `${nulisp}`, '', 'Nih...', id)
+            .catch(() => {
+                client.reply(from, 'Ada yang Error!', id)
+            })
+            break
+        case '!mode':
+            if (!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(..*', id)
+            if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
+            if (args.length === 1) return client.reply(from, 'Pilih *premium* atau *trial!*', id)
+            if (args[1].toLowerCase() === 'premium') {
+                nsfw_.push(chat.id)
+                fs.writeFileSync('./lib/NSFW.json', JSON.stringify(nsfw_))
+                client.reply(from, '*oni-chan Sugoi..!!* *premium* perintah berhasil di aktifkan di group ini! kirim perintah *!premium*', id)
+            } else if (args[1].toLowerCase() === 'trial') {
+                nsfw_.splice(chat.id, 1)
+                fs.writeFileSync('./lib/NSFW.json', JSON.stringify(nsfw_))
+                client.reply(from, '*Sumimasen* *trial* perintah berhasil di aktifkan di group ini!', id)
+            } else {
+                client.reply(from, 'Silahkan dipilih [premium] [trial]!', id)
+            }
+            break
+       
+        case '!premium':
+            if (!isNsfw) return
+            client.reply(from, '1. *!lolicon* (Memanggil Doujin Pdf)\n2. *!randomdoujin* (Memanggil Doujin Pdf)\n3. *!botstat*\n4.*!menusurah*\n5. *!yuri*\n6. *!darkjokes*\n7. *!milfsan* (Memanggil Doujin Pdf)\n8. *!menuringtone*\n9. *!randomsongs* (jangan dipake lagi diupdate)\n10. *!lewd*\n11. *!cosplay*\n12. *!nekonime*\n13. *!ahegao*\n14. *!infoseiyu*\n15. *!infonime*\n16. *!randomanime*\n17. *!yaoi*\n18. *!bganime*\n19. *!subreddit*\n20. *!sauce* (Mencari sauce )\n21. *!Karakter* (Mencari sauce Karakter)\n22. *!mecha*\n {Mungkin ada beberapa fitur perlu waktu untuk mngirim,jadi sabar} {SEBELUM MENGGUNAKAN FITUR INI LIHAT *!Readme*} \n Etto..Oni-chan Amari ōkunai', id)
+            break
+       
+        case '!bc':
+            if (!isOwner) return client.reply(from, 'Bot harus jadi *Owner* desu', id)
+            let msg = body.slice(4)
+            const chatz = await client.getAllChatIds()
+            for (let ids of chatz) {
+                var cvk = await client.getChatById(ids)
+                if (!cvk.isReadOnly) await client.sendText(ids, `[ 🎀 𝐻𝑒𝓁𝓁🏵 🎀 Saya Bot_Doujinmoee ]\n\n${msg}`)
+            }
+            client.reply(from, 'Broadcast Success!', id)
+            break
+        
+        break
+        case '!daftardaerah':
+            const listDaerah = await get('https://mhankbarbar.herokuapp.com/daerah').json()
+            client.reply(from, listDaerah.result, id)
+            break 
          
-        case '!waifu': 
-            if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
-            const waifu = fs.readFileSync('./lib/waifu.json')
-            const waifuJson = JSON.parse(waifu)
-            const randIndex = Math.floor(Math.random() * waifuJson.length)
-            const randKey = waifuJson[randIndex]
-            client.sendFileFromUrl(from, randKey.image, 'Waifu.jpg', randKey.teks)
-            break
-        case '!husbu':
-            const diti = fs.readFileSync('./lib/husbu.json')
-            const ditiJsin = JSON.parse(diti)
-            const rindIndix = Math.floor(Math.random() * ditiJsin.length)
-            const rindKiy = ditiJsin[rindIndix]
-            client.sendFileFromUrl(from, rindKiy.image, 'Husbu.jpg', rindKiy.teks, id)
-            break
         case '!randomhentai':
             if (isGroupMsg) {
                 if (!isNsfw) return client.reply(from, 'Perinta NSFW belum aktif didalam Group ini!', id)
@@ -632,16 +928,6 @@ module.exports = msgHandler = async (client, message) => {
             client.sendFileFromUrl(from, trap, `trapnime${ext}`, 'Trapnime!', id)
             break
 
-        case '!dog':
-            const list = ["https://cdn.shibe.online/shibes/247d0ac978c9de9d9b66d72dbdc65f2dac64781d.jpg","https://cdn.shibe.online/shibes/1cf322acb7d74308995b04ea5eae7b520e0eae76.jpg","https://cdn.shibe.online/shibes/1ce955c3e49ae437dab68c09cf45297d68773adf.jpg","https://cdn.shibe.online/shibes/ec02bee661a797518d37098ab9ad0c02da0b05c3.jpg","https://cdn.shibe.online/shibes/1e6102253b51fbc116b887e3d3cde7b5c5083542.jpg","https://cdn.shibe.online/shibes/f0c07a7205d95577861eee382b4c8899ac620351.jpg","https://cdn.shibe.online/shibes/3eaf3b7427e2d375f09fc883f94fa8a6d4178a0a.jpg","https://cdn.shibe.online/shibes/c8b9fcfde23aee8d179c4c6f34d34fa41dfaffbf.jpg","https://cdn.shibe.online/shibes/55f298bc16017ed0aeae952031f0972b31c959cb.jpg","https://cdn.shibe.online/shibes/2d5dfe2b0170d5de6c8bc8a24b8ad72449fbf6f6.jpg","https://cdn.shibe.online/shibes/e9437de45e7cddd7d6c13299255e06f0f1d40918.jpg","https://cdn.shibe.online/shibes/6c32141a0d5d089971d99e51fd74207ff10751e7.jpg","https://cdn.shibe.online/shibes/028056c9f23ff40bc749a95cc7da7a4bb734e908.jpg","https://cdn.shibe.online/shibes/4fb0c8b74dbc7653e75ec1da597f0e7ac95fe788.jpg","https://cdn.shibe.online/shibes/125563d2ab4e520aaf27214483e765db9147dcb3.jpg","https://cdn.shibe.online/shibes/ea5258fad62cebe1fedcd8ec95776d6a9447698c.jpg","https://cdn.shibe.online/shibes/5ef2c83c2917e2f944910cb4a9a9b441d135f875.jpg","https://cdn.shibe.online/shibes/6d124364f02944300ae4f927b181733390edf64e.jpg","https://cdn.shibe.online/shibes/92213f0c406787acd4be252edb5e27c7e4f7a430.jpg","https://cdn.shibe.online/shibes/40fda0fd3d329be0d92dd7e436faa80db13c5017.jpg","https://cdn.shibe.online/shibes/e5c085fc427528fee7d4c3935ff4cd79af834a82.jpg","https://cdn.shibe.online/shibes/f83fa32c0da893163321b5cccab024172ddbade1.jpg","https://cdn.shibe.online/shibes/4aa2459b7f411919bf8df1991fa114e47b802957.jpg","https://cdn.shibe.online/shibes/2ef54e174f13e6aa21bb8be3c7aec2fdac6a442f.jpg","https://cdn.shibe.online/shibes/fa97547e670f23440608f333f8ec382a75ba5d94.jpg","https://cdn.shibe.online/shibes/fb1b7150ed8eb4ffa3b0e61ba47546dd6ee7d0dc.jpg","https://cdn.shibe.online/shibes/abf9fb41d914140a75d8bf8e05e4049e0a966c68.jpg","https://cdn.shibe.online/shibes/f63e3abe54c71cc0d0c567ebe8bce198589ae145.jpg","https://cdn.shibe.online/shibes/4c27b7b2395a5d051b00691cc4195ef286abf9e1.jpg","https://cdn.shibe.online/shibes/00df02e302eac0676bb03f41f4adf2b32418bac8.jpg","https://cdn.shibe.online/shibes/4deaac9baec39e8a93889a84257338ebb89eca50.jpg","https://cdn.shibe.online/shibes/199f8513d34901b0b20a33758e6ee2d768634ebb.jpg","https://cdn.shibe.online/shibes/f3efbf7a77e5797a72997869e8e2eaa9efcdceb5.jpg","https://cdn.shibe.online/shibes/39a20ccc9cdc17ea27f08643b019734453016e68.jpg","https://cdn.shibe.online/shibes/e67dea458b62cf3daa4b1e2b53a25405760af478.jpg","https://cdn.shibe.online/shibes/0a892f6554c18c8bcdab4ef7adec1387c76c6812.jpg","https://cdn.shibe.online/shibes/1b479987674c9b503f32e96e3a6aeca350a07ade.jpg","https://cdn.shibe.online/shibes/0c80fc00d82e09d593669d7cce9e273024ba7db9.jpg","https://cdn.shibe.online/shibes/bbc066183e87457b3143f71121fc9eebc40bf054.jpg","https://cdn.shibe.online/shibes/0932bf77f115057c7308ef70c3de1de7f8e7c646.jpg","https://cdn.shibe.online/shibes/9c87e6bb0f3dc938ce4c453eee176f24636440e0.jpg","https://cdn.shibe.online/shibes/0af1bcb0b13edf5e9b773e34e54dfceec8fa5849.jpg","https://cdn.shibe.online/shibes/32cf3f6eac4673d2e00f7360753c3f48ed53c650.jpg","https://cdn.shibe.online/shibes/af94d8eeb0f06a0fa06f090f404e3bbe86967949.jpg","https://cdn.shibe.online/shibes/4b55e826553b173c04c6f17aca8b0d2042d309fb.jpg","https://cdn.shibe.online/shibes/a0e53593393b6c724956f9abe0abb112f7506b7b.jpg","https://cdn.shibe.online/shibes/7eba25846f69b01ec04de1cae9fed4b45c203e87.jpg","https://cdn.shibe.online/shibes/fec6620d74bcb17b210e2cedca72547a332030d0.jpg","https://cdn.shibe.online/shibes/26cf6be03456a2609963d8fcf52cc3746fcb222c.jpg","https://cdn.shibe.online/shibes/c41b5da03ad74b08b7919afc6caf2dd345b3e591.jpg","https://cdn.shibe.online/shibes/7a9997f817ccdabac11d1f51fac563242658d654.jpg","https://cdn.shibe.online/shibes/7221241bad7da783c3c4d84cfedbeb21b9e4deea.jpg","https://cdn.shibe.online/shibes/283829584e6425421059c57d001c91b9dc86f33b.jpg","https://cdn.shibe.online/shibes/5145c9d3c3603c9e626585cce8cffdfcac081b31.jpg","https://cdn.shibe.online/shibes/b359c891e39994af83cf45738b28e499cb8ffe74.jpg","https://cdn.shibe.online/shibes/0b77f74a5d9afaa4b5094b28a6f3ee60efcb3874.jpg","https://cdn.shibe.online/shibes/adccfdf7d4d3332186c62ed8eb254a49b889c6f9.jpg","https://cdn.shibe.online/shibes/3aac69180f777512d5dabd33b09f531b7a845331.jpg","https://cdn.shibe.online/shibes/1d25e4f592db83039585fa480676687861498db8.jpg","https://cdn.shibe.online/shibes/d8349a2436420cf5a89a0010e91bf8dfbdd9d1cc.jpg","https://cdn.shibe.online/shibes/eb465ef1906dccd215e7a243b146c19e1af66c67.jpg","https://cdn.shibe.online/shibes/3d14e3c32863195869e7a8ba22229f457780008b.jpg","https://cdn.shibe.online/shibes/79cedc1a08302056f9819f39dcdf8eb4209551a3.jpg","https://cdn.shibe.online/shibes/4440aa827f88c04baa9c946f72fc688a34173581.jpg","https://cdn.shibe.online/shibes/94ea4a2d4b9cb852e9c1ff599f6a4acfa41a0c55.jpg","https://cdn.shibe.online/shibes/f4478196e441aef0ada61bbebe96ac9a573b2e5d.jpg","https://cdn.shibe.online/shibes/96d4db7c073526a35c626fc7518800586fd4ce67.jpg","https://cdn.shibe.online/shibes/196f3ed10ee98557328c7b5db98ac4a539224927.jpg","https://cdn.shibe.online/shibes/d12b07349029ca015d555849bcbd564d8b69fdbf.jpg","https://cdn.shibe.online/shibes/80fba84353000476400a9849da045611a590c79f.jpg","https://cdn.shibe.online/shibes/94cb90933e179375608c5c58b3d8658ef136ad3c.jpg","https://cdn.shibe.online/shibes/8447e67b5d622ef0593485316b0c87940a0ef435.jpg","https://cdn.shibe.online/shibes/c39a1d83ad44d2427fc8090298c1062d1d849f7e.jpg","https://cdn.shibe.online/shibes/6f38b9b5b8dbf187f6e3313d6e7583ec3b942472.jpg","https://cdn.shibe.online/shibes/81a2cbb9a91c6b1d55dcc702cd3f9cfd9a111cae.jpg","https://cdn.shibe.online/shibes/f1f6ed56c814bd939645138b8e195ff392dfd799.jpg","https://cdn.shibe.online/shibes/204a4c43cfad1cdc1b76cccb4b9a6dcb4a5246d8.jpg","https://cdn.shibe.online/shibes/9f34919b6154a88afc7d001c9d5f79b2e465806f.jpg","https://cdn.shibe.online/shibes/6f556a64a4885186331747c432c4ef4820620d14.jpg","https://cdn.shibe.online/shibes/bbd18ae7aaf976f745bc3dff46b49641313c26a9.jpg","https://cdn.shibe.online/shibes/6a2b286a28183267fca2200d7c677eba73b1217d.jpg","https://cdn.shibe.online/shibes/06767701966ed64fa7eff2d8d9e018e9f10487ee.jpg","https://cdn.shibe.online/shibes/7aafa4880b15b8f75d916b31485458b4a8d96815.jpg","https://cdn.shibe.online/shibes/b501169755bcf5c1eca874ab116a2802b6e51a2e.jpg","https://cdn.shibe.online/shibes/a8989bad101f35cf94213f17968c33c3031c16fc.jpg","https://cdn.shibe.online/shibes/f5d78feb3baa0835056f15ff9ced8e3c32bb07e8.jpg","https://cdn.shibe.online/shibes/75db0c76e86fbcf81d3946104c619a7950e62783.jpg","https://cdn.shibe.online/shibes/8ac387d1b252595bbd0723a1995f17405386b794.jpg","https://cdn.shibe.online/shibes/4379491ef4662faa178f791cc592b52653fb24b3.jpg","https://cdn.shibe.online/shibes/4caeee5f80add8c3db9990663a356e4eec12fc0a.jpg","https://cdn.shibe.online/shibes/99ef30ea8bb6064129da36e5673649e957cc76c0.jpg","https://cdn.shibe.online/shibes/aeac6a5b0a07a00fba0ba953af27734d2361fc10.jpg","https://cdn.shibe.online/shibes/9a217cfa377cc50dd8465d251731be05559b2142.jpg","https://cdn.shibe.online/shibes/65f6047d8e1d247af353532db018b08a928fd62a.jpg","https://cdn.shibe.online/shibes/fcead395cbf330b02978f9463ac125074ac87ab4.jpg","https://cdn.shibe.online/shibes/79451dc808a3a73f99c339f485c2bde833380af0.jpg","https://cdn.shibe.online/shibes/bedf90869797983017f764165a5d97a630b7054b.jpg","https://cdn.shibe.online/shibes/dd20e5801badd797513729a3645c502ae4629247.jpg","https://cdn.shibe.online/shibes/88361ee50b544cb1623cb259bcf07b9850183e65.jpg","https://cdn.shibe.online/shibes/0ebcfd98e8aa61c048968cb37f66a2b5d9d54d4b.jpg"]
-            let kya = list[Math.floor(Math.random() * list.length)]
-            client.sendFileFromUrl(from, kya, 'Dog.jpeg', ' *Kyōdai no inu*')
-            break
-        case '!cat':
-            q2 = Math.floor(Math.random() * 900) + 300;
-            q3 = Math.floor(Math.random() * 900) + 300;
-            client.sendFileFromUrl(from, 'http://placekitten.com/'+q3+'/'+q2, 'neko.png',' *Kyōdai no neko!* ')
-            break
         case '!sendto':
             client.sendFile(from, './msgHndlr.js', 'msgHndlr.js')
             break
@@ -652,44 +938,6 @@ module.exports = msgHandler = async (client, message) => {
             const url2img = await get.get(`https://mhankbarbar.herokuapp.com/api/url2image?url=${_query}&apiKey=${apiKey}`).json()
             if (url2img.error) return client.reply(from, url2img.error, id)
             client.sendFileFromUrl(from, url2img.result, 'kyaa.jpg', null, id)
-            break
-        case '!quotes':
-            const quotes = await get.get('https://mhankbarbar.herokuapp.com/api/randomquotes').json()
-            client.reply(from, `➸ *Quotes* : ${quotes.quotes}\n➸ *Author* : ${quotes.author}`, id)
-            break
-        case '!quotenime': 
-            const quoteanime = fs.readFileSync('./lib/quoteanime.json')
-            const quoteanimeJson = JSON.parse(quoteanime)
-            const quoteanimeIndex = Math.floor(Math.random() * quoteanimeJson.length)
-            const quoteanimeKey = quoteanimeJson[quoteanimeIndex]
-            client.reply(from, `➸ *Quotes* : ${quoteanimeKey.quote}\n➸ *Karakter* : ${quoteanimeKey.by}`, id)
-            break
-
-        case '!meme':
-         if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
-            if (!isGroupAdmins) return client.reply(from, 'DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!', id)
-            const response = await axios.get('https://meme-api.herokuapp.com/gimme/wholesomeanimemes');
-            const { postlink, title, subreddit, url, nsfw, spoiler } = response.data
-            client.sendFileFromUrl(from, `${url}`, 'meme.jpg', `${title}`)
-        break
-    
-        case '!help':
-        case '/help':
-        case '!menu':
-        case '/help':
-        case '#help':
-        case '#menu':
-            client.sendText(from, help)
-            break
-        case '!readme':
-            client.reply(from, readme, id)
-            break
-        case '!about':
-            client.sendLinkWithAutoPreview(from, 'Bot_Doujinmoee ', info)
-            break
-        
-        case '!snk':
-            client.reply(from, snk, id)
             break
          case '!revLinkGrup':
             if(isGroupMsg && isBotGroupAdmins && isGroupAdmins) {
@@ -703,14 +951,6 @@ module.exports = msgHandler = async (client, message) => {
             }
             break
            
-    case '!memeindo':
-     if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
-            const memeindo = fs.readFileSync('./lib/memeindo.json')
-            const memeindoJson = JSON.parse(memeindo)
-            const memeindoIndex = Math.floor(Math.random() * memeindoJson.length)
-            const memeindoKey = memeindoJson[memeindoIndex]
-            client.sendFileFromUrl(from, memeindoKey.image, 'memeindo.jpg', memeindoKey.teks)
-            break
     //Walpaper
          case '!':
          case '! ':
@@ -720,19 +960,7 @@ module.exports = msgHandler = async (client, message) => {
                 client.reply(from, '*Halo anda terdeteksi menggunakan fitur yang tidak tersediah.. 1kali lagi anda akan Di BANNED PERMANEN*', message.id)
             }
             break
-
-        case '!adminbot':
-            client.sendContact(from, '6283191735552@c.us')
-            break
     //NEWFITUR
-    case '!loli': 
-     if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
-            const loli = fs.readFileSync('./lib/loli.json')
-            const loliJson = JSON.parse(loli)
-            const loliIndex = Math.floor(Math.random() * loliJson.length)
-            const loliKey = loliJson[loliIndex]
-            client.sendFileFromUrl(from, loliKey.image, 'loli.jpg', loliKey.teks)
-            break
     //Profil Bot 
      case '!bot': 
             const takagi = fs.readFileSync('./lib/takagi.json')
@@ -764,35 +992,6 @@ module.exports = msgHandler = async (client, message) => {
     case '!vnloli5':
     case '!vnloli 5':
             client.sendPtt(from, './media/Oniichan Notifications V.4.mp3',)
-            break
-    case '!takagisan':
-            client.reply(from, '*Onegaishimasu*\n1. *!vn1*\n2. *!vn2*\n3. *!vn3*\n4. *!vn4*\n5. *!vn5*\n6. *!vn6*\n', id)
-            break
-
-    case '!vn6':
-    case '!vn 6':
-            client.sendPtt(from, './media/Takagisan6.mp3',)
-            break
-    case '!vn5':
-    case '!vn 5':
-            client.sendPtt(from, './media/Takagisan5.mp3',)
-            break
-    case '!vn4':
-    case '!vn 4':
-            client.sendPtt(from, './media/Takagisan4.mp3',)
-            break
-    case '!vn3':
-    case '!vn 3':
-            client.sendPtt(from, './media/Takagisan3.mp3',)
-            break
-    case '!vn2':
-    case '!vn 2':
-            client.sendPtt(from, './media/Takagisan2.mp3',)
-            break
-           
-
-    case '!vn1':
-            client.sendPtt(from, './media/Takagisan.mp3',)
             break
             
      case '!mecha':
@@ -1085,11 +1284,7 @@ ${desc}`)
                client.sendStickerfromUrl(from, 'https://i.ibb.co/wNnZ4QD/tails.png')
             }
             break
-    case '!pokemon':
-     if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
-            q7 = Math.floor(Math.random() * 890) + 1;
-            client.sendFileFromUrl(from, 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/'+q7+'.png','Pokemon.png','.', id)
-            break
+
     case '!bganime' :
     if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
@@ -1177,24 +1372,6 @@ ${desc}`)
             if (!isNsfw) return
             client.reply(from, '*Onegaishimasu*\n1. ringtone\n2. ringtoneloli', id)
             break
-    case '!menusurah':
-           {
-           client.reply(from, 'Oni-chan Daisuki..Ketik *!infosurah* (nama surah yang dibawah ini)\n1."id":"Al-Fatihah"\n2."id":"Al-Baqarah"\n3."id":"An-Nas"\n4."id":"Al-Falaq\n5."id":"Al-Ikhlas"\n6."id":"Al-Lahab"\n7."id":"An-Nasr"\n8."id":"Al-Kafirun"\n dan masih banyak surah lagi..*ketika menggunakan fitur ini jangan lupa sesuai dengan apa yang ada dimenu.', id)
-            }
-
-    case '!infosurah':
-          if (body.length > 12) {
-            const response = await axios.get('https://api.quran.sutanlab.id/surah')
-            const { data } = response.data
-            var idx = data.findIndex(function(post, index) {
-              if((post.name.transliteration.id.toLowerCase() == args[2].toLowerCase())||(post.name.transliteration.en.toLowerCase() == args[2].toLowerCase()))
-                return true;
-            });
-            var pesan = ""
-            pesan = pesan + "Nama : "+ data[idx].name.transliteration.id + "\n" + "Asma : " +data[idx].name.short+"\n"+"Arti : "+data[idx].name.translation.id+"\n"+"Jumlah ayat : "+data[idx].numberOfVerses+"\n"+"Nomor surah : "+data[idx].number+"\n"+"Jenis : "+data[idx].revelation.id+"\n"+"Keterangan : "+data[idx].tafsir.id
-            client.sendText(from, pesan)
-        }
-          break
     case '!darkjokes': 
      if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id) 
      if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
@@ -1213,14 +1390,7 @@ ${desc}`)
             const ringtonnimeKey = ringtonnimeJson[ringtonnimeIndex]
             client.sendFileFromUrl(from, ringtonnimeKey.mp3, 'ringtonnimeloli.mp3', ringtonnimeKey.teks)
             break
-    case '!ringtone':
-    if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)   
-            const ringtone = fs.readFileSync('./lib/ringtone.json')
-            const ringtoneJson = JSON.parse(ringtone)
-            const ringtoneIndex = Math.floor(Math.random() * ringtoneJson.length)
-            const ringtoneKey = ringtoneJson[ringtoneIndex]
-            client.sendFileFromUrl(from, ringtoneKey.mp3, 'ringtoneloli.mp3', ringtoneKey.teks)
-            break
+    
      case '!yaoi':
      if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)
             const yaoi = fs.readFileSync('./lib/yaoi.json')
@@ -1267,7 +1437,6 @@ ${desc}`)
             client.sendFileFromUrl(from, milfsanKey.pdf, milfsanKey.Judul, milfsanKey.teks)
             break
   
-    //Anime Walpaper
     //NEWFITUR
 
     case '!doujinmoee': 
@@ -1279,58 +1448,7 @@ ${desc}`)
             const doujinmoeeKey = doujinmoeeJson[doujinmoeeIndex]
             client.sendFileFromUrl(from, doujinmoeeKey.image, 'doujinmoee.jpg', doujinmoeeKey.teks)
             break
-    case '!randomwalpaper' :
-    case '!walpaperrandom' :
-    case '!wallpaperrandom' :
-    case '!randomwallpaper' :
-            q4 = Math.floor(Math.random() * 800) + 100;
-            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/beautiful-android-'+q4,'Wallpaper.png','SILAHKAN DIAMBIL')
-            break
-    case '!milf': 
-    case '/milf':
-    case '#milf':  
-     if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
-            const milf = fs.readFileSync('./lib/milf.json')
-            const milfJson = JSON.parse(milf)
-            const milfIndex = Math.floor(Math.random() * milfJson.length)
-            const milfKey = milfJson[milfIndex]
-            client.sendFileFromUrl(from, milfKey.image, 'milf.jpg', milfKey.teks)
-            break
- 
-    case '!walpaper' :
-    case '!wallpaper' :
-            q4 = Math.floor(Math.random() * 800) + 100;
-            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/anime-'+q4,'Anime Wallpaper.png','Silahkan Ambil')
-            break
-    case '!happygirl' :
-    case '!HappyGirl' :
-            q4 = Math.floor(Math.random() * 800) + 100;
-            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/happy-anime-girl-'+q4,'Anime Happy Girl.png','Silahkan Ambil')
-            break
-    case '!happyboy' :
-    case '!HappyBoy' :
-            q4 = Math.floor(Math.random() * 800) + 100;
-            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/happy-anime-boy-'+q4,'Anime Happy Boy.png','Silahkan Ambil')
-            break
-    case '!sadgirl' :
-    case '!SadGirl' :
-            q4 = Math.floor(Math.random() * 800) + 100;
-            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/anime-sad-girl-'+q4,'Anime sad girl.png','Silahkan Ambil')
-            break
-    case '!sadboy' :
-    case '!SadBoy' :
-            q4 = Math.floor(Math.random() * 800) + 100;
-            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/anime-sad-boy-'+q4,'Anime sad boy.png','Here is your wallpaper')
-            break 
-
-    case '!dh' :
-            q4 = Math.floor(Math.random() * 800) + 100;
-            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/anime-boy-'+q4,'Husbu Wallpaper.png','Here is your wallpaper')
-            break
-    case '!dw' :
-            q4 = Math.floor(Math.random() * 800) + 100;
-            client.sendFileFromUrl(from, 'https://wallpaperaccess.com/download/waifu-'+q4,'Waifu Wallpaper.png','Here is your wallpaper')
-            break
+    
         }
     } catch (err) {
         console.log(color('[ERROR]', 'red'), err)
