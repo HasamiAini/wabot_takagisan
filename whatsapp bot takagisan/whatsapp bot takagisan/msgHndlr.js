@@ -116,10 +116,10 @@ module.exports = msgHandler = async (client, message) => {
                     client.reply(from, mess.error.St, id)
             }
             break
-             case '#ownerbot':
+             case '!ownerbot':
             client.sendContact(from, '6283191735552@c.us')
             break
-            case '#botstat': {
+            case '!botstat': {
             const loadedMsg = await client.getAmountOfLoadedMessages()
             const chatIds = await client.getAllChatIds()
             const groups = await client.getAllGroups()
@@ -497,6 +497,8 @@ module.exports = msgHandler = async (client, message) => {
             const milfKey = milfJson[milfIndex]
             client.sendFileFromUrl(from, milfKey.image, 'milf.jpg', milfKey.teks)
             break
+                //Download Commands
+           //LAGI ERROR BUAT FITUR DOWNLOADNYA..:( 
             //Anime Commands
             //Other Commands
             case '!ss':
