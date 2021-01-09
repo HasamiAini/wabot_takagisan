@@ -1,8 +1,4 @@
-/*
-* "Wahai orang-orang yang beriman, mengapakah kamu mengatakan sesuatu yang tidak kamu kerjakan?
-* Amat besar kebencian di sisi Allah bahwa kamu mengatakan apa-apa yang tidak kamu kerjakan."
-* (QS ash-Shaff: 2-3).
-*/
+//THANKS FOR DOWNLOAD
 const { decryptMedia } = require('@open-wa/wa-decrypt')
 const fs = require('fs-extra')
 const axios = require('axios')
@@ -861,7 +857,110 @@ module.exports = msgHandler = async (client, message) => {
             }
             break
     //NEWFITUR
-                
+             case '!logoteks':
+        if (!isGroupMsg) return client.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
+            if (!isGroupAdmins) return client.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
+            if (!isBotGroupAdmins) return client.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
+            if (args.length === 1) return client.reply(from, `Kirim perintah *#logoteks [ |kalimat1|kalimat2 ]*,\n\n contoh : *#bot |takagisan| vers.4.5*`, id)
+            argz = body.trim().split('|')
+            if (argz.length >= 2) {
+                client.reply(from, `*Chottomatte Onichan Lagi Dibuat*`, id)
+                const lpornhub = argz[1]
+                const lpornhub2 = argz[2]   
+                if (lpornhub > 10) return client.reply(from, 'Baka..!Kalimat1 Kepanjangan*\n_Maksimal 10 huruf!_', id)
+                if (lpornhub2 > 10) return client.reply(from, '*Baka..!Kalimat2 Kepanjangan*\n_Maksimal 10 huruf!_', id)
+                client.sendFileFromUrl(from, `https://docs-jojo.herokuapp.com/api/phblogo?text1=${lpornhub}&text2=${lpornhub2}`)
+            } else {
+                await client.reply(from, `Hadeh Onichan BAKAJANAINO?\n[❗] Kirim perintah *#logoteks [ |Teks1| Teks2 ]*,\n\n contoh : *#bot |takagisan| vers.4.5*`, id)
+            }
+            break
+                case 'games':
+                case 'game':
+    client.reply(from, 'Sebelum bermain berjanjilah akan melaksanakan apapun perintah yang diberikan.\n\nSilahkan Pilih:\n➥ #kebenaran\n➥ #tantangan', id)
+    break
+    case 'kebenaran':
+    case 'truth':
+    if (!isGroupMsg) return client.reply(from, menuId.textPrem())
+            fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/kebenaran.txt')
+            .then(res => res.text())
+            .then(body => {
+                let truthx = body.split('\n')
+                let truthz = truthx[Math.floor(Math.random() * truthx.length)]
+                client.reply(from, truthz, id)
+            })
+            .catch(() => {
+                client.reply(from, 'Hayolohhh, ada yang error!!', id)
+            })
+            break
+    case 'tantangan':
+    case 'dare':
+    if (!isGroupMsg) return client.reply(from, menuId.textPrem())
+            fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/tantangan.txt')
+            .then(res => res.text())
+            .then(body => {
+                let darex = body.split('\n')
+                let darez = darex[Math.floor(Math.random() * darex.length)]
+                client.reply(from, darez, id)
+            })
+            .catch(() => {
+                client.reply(from, 'Oh Tidak Onichan Ada Yang Error!', id)
+            })
+            break
+                case '!nolink':
+                   if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
+                    if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
+                    if (!isBotGroupAdmins) return client.reply(from, 'Gomenasai Bot Harus Jadi Admin', id)
+                    if (args[0] == 'on') {
+                        var cek = antilink.includes(chatId);
+                        if(cek){
+                            return client.reply(from, '*Anti Group Link Detector* sudah aktif di grup ini', id) //if number already exists on database
+                        } else {
+                            antilink.push(chatId)
+                            fs.writeFileSync('./lib/helper/antilink.json', JSON.stringify(antilink))
+                            client.reply(from, '*[Anti Group Link]* telah di aktifkan\nSetiap member grup yang mengirim pesan mengandung link grup akan di kick oleh bot!', id)
+                        }
+                    } else if (args[0] == 'off') {
+                        var cek = antilink.includes(chatId);
+                        if(!cek){
+                            return client.reply(from, '*Anti Group Link Detector* sudah non-aktif di grup ini', id) //if number already exists on database
+                        } else {
+                            let nixx = antilink.indexOf(chatId)
+                            antilink.splice(nixx, 1)
+                            fs.writeFileSync('./lib/helper/antilink.json', JSON.stringify(antilink))
+                            client.reply(from, '*[Anti Group Link]* telah di nonaktifkan\n', id)
+                        }
+                    } else {
+                        client.reply(from, `pilih on / off\n\n*[Anti Group Link]*\nSetiap member grup yang mengirim pesan mengandung link grup akan di kick oleh bot!`, id)
+                    }
+                    break
+           case '!antispamsticker':
+            case '!antisticker':
+                    if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
+                    if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
+                    if (!isBotGroupAdmins) return client.reply(from, 'Gomenasai Bot Harus Jadi Admin', id)
+                    if (args[0] == 'aktif') {
+                        var cek = antisticker.includes(chatId);
+                        if(cek){
+                            return client.reply(from, '*Pendeteksi Spam Sticker* sudah Dihidupkan di grup ini', id) //if number already exists on database
+                        } else {
+                            antisticker.push(chatId)
+                            fs.writeFileSync('./lib/helper/antisticker.json', JSON.stringify(antisticker))
+                            client.reply(from, '*{Pendeteksi Spam Sticker}* telah aktif\n*Jika Spam Sticker 7kali Member Akan Dikick Bot..!*', id)
+                        }
+                    } else if (args[0] == 'nonaktifkan') {
+                        var cek = antilink.includes(chatId);
+                        if(cek){
+                            return client.reply(from, '*Pendeteksi Spam Sticker* sudah Dimatikan di grup ini', id) //if number already exists on database
+                        } else {
+                            let nixx = antisticker.indexOf(chatId)
+                            antisticker.splice(nixx, 1)
+                            fs.writeFileSync('./lib/helper/antisticker.json', JSON.stringify(antisticker))
+                            client.reply(from, '*[Pendeteksi Spam Sticker]* telah di nonaktifkan\n', id)
+                        }
+                    } else {
+                        client.reply(from, `pilih aktif atau nonaktifkan\n\n*[Pendeteksi Spam Sticker]*\nSetiap member grup yang spam sticker akan di kick oleh bot!`, id)
+                    }
+                    break      
     //Profil Bot 
      case '!bot': 
             const takagi = fs.readFileSync('./lib/takagi.json')
@@ -1103,7 +1202,6 @@ Plan to Read: ${jikan.manga_stats.plan_to_read}`
 
 ${desc}`)
         break
-    c
     case '!ban':
             if(!isbotadmin) return client.reply(from, 'Only Bot admins can use this CMD, Baka!', message.id)
             for (let i = 0; i < mentionedJidList.length; i++) {
