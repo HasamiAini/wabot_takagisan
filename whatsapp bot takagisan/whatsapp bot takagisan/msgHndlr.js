@@ -1431,14 +1431,23 @@ ${desc}`)
             client.sendFileFromUrl(from, infoseiyuKey.image, 'infoseiyu.jpg', `*${infoseiyuKey.teks}*`)
             break
 
-    case '!nekonime':
-            const nekonime = await get.get('https://mhankbarbar.herokuapp.com/api/nekonime').json()
-            if (nekonime.result.endsWith('.png')) {
-                var ext = '.png'
+   case '!neko':
+        if (!isGroupMsg) return client.reply(from, 'Gomenasai（>﹏<）Fitur Ini Harus Digroup..!', id)
+            if (args.length == 0) return client.reply(from, `Untuk menggunakan !nekonime\nSilahkan ketik: !nekonime \nContoh: !nekonime `, id)
+            if (args[0] == 'nime') {
+                fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/' + args[0] + '.txt')
+                .then(res => res.text())
+                .then(body => {
+                    let randomkpop = body.split('\n')
+                    let randomkpopx = randomkpop[Math.floor(Math.random() * randomkpop.length)]
+                    client.sendFileFromUrl(from, randomkpopx, '', '*DRAMA*\n*BY:Bot_Takagisan Vers.4.5*\nSupport Bot..*Owner Bot:08319173552*\n*!donasi*', id)
+                })
+                .catch(() => {
+                    client.reply(from, '*Gomenasai Onichan Ada yang error!*', id)
+                })
             } else {
-                var ext = '.jpg'
+                client.reply(from, `Gomenasai Onichan Bukan seperti itu !nekonime untuk memanggil perintah`)
             }
-            client.sendFileFromUrl(from, nekonime.result, `Nekonime${ext}`, '*Awali Harimu Dengan Yang Manis-manis!*', id)
             break
     case '!ahegao': 
     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)   
