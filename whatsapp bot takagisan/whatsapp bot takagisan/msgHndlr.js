@@ -1433,7 +1433,7 @@ ${desc}`)
 
    case '!neko':
         if (!isGroupMsg) return client.reply(from, 'Gomenasai（>﹏<）Fitur Ini Harus Digroup..!', id)
-            if (args.length == 0) return client.reply(from, `Untuk menggunakan !nekonime\nSilahkan ketik: !nekonime \nContoh: !nekonime `, id)
+            if (args.length == 0) return client.reply(from, `Untuk menggunakannya\nSilahkan ketik: !neko nime \nContoh: !neko nime `, id)
             if (args[0] == 'nime') {
                 fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/' + args[0] + '.txt')
                 .then(res => res.text())
@@ -1446,7 +1446,7 @@ ${desc}`)
                     client.reply(from, '*Gomenasai Onichan Ada yang error!*', id)
                 })
             } else {
-                client.reply(from, `Gomenasai Onichan Bukan seperti itu !nekonime untuk memanggil perintah`)
+                client.reply(from, `Gomenasai Onichan Bukan seperti itu !neko nime untuk memanggil perintah`)
             }
             break
     case '!ahegao': 
