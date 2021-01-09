@@ -15,7 +15,9 @@ const { stdout } = require('process')
 const nsfw_ = JSON.parse(fs.readFileSync('./lib/NSFW.json'))
 const welkom = JSON.parse(fs.readFileSync('./lib/welcome.json'))
 const { RemoveBgResult, removeBackgroundFromImageBase64, removeBackgroundFromImageFile } = require('remove.bg')
-
+let antisticker = JSON.parse(fs.readFileSync('./lib/helper/antisticker.json'))
+let stickerspam = JSON.parse(fs.readFileSync('./lib/helper/stickerspam.json'))
+let antilink = JSON.parse(fs.readFileSync('./lib/helper/antilink.json'))
 
 const errorurl = 'https://steamuserimages-a.akamaihd.net/ugc/954087817129084207/5B7E46EE484181A676C02DFCAD48ECB1C74BC423/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false'
 const errorurl2 = 'https://steamuserimages-a.akamaihd.net/ugc/954087817129084207/5B7E46EE484181A676C02DFCAD48ECB1C74BC423/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false'
@@ -927,6 +929,23 @@ module.exports = msgHandler = async (client, message) => {
             }
             break
     //NEWFITUR
+                case 'drama':
+            if (args.length == 0) return aruga.reply(from, `Untuk menggunakan !drama\nSilahkan ketik: $!drama [query]\nContoh: !drama twitter\n\nquery yang tersedia:\ntwitter`, id)
+            if (args[0] == 'twitter') {
+                fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/' + args[0] + '.txt')
+                .then(res => res.text())
+                .then(body => {
+                    let randomkpop = body.split('\n')
+                    let randomkpopx = randomkpop[Math.floor(Math.random() * randomkpop.length)]
+                    client.sendFileFromUrl(from, randomkpopx, '', '*DRAMA*\n*BY:Bot_Takagisan Vers.4.5*\nSupport Bot..*Owner Bot:08319173552*\n*!donasi*', id)
+                })
+                .catch(() => {
+                    client.reply(from, '*Gomenasai Onichan Ada yang error!*', id)
+                })
+            } else {
+                client.reply(from, `Gomenasai Onichan Bukan seperti itu !drama untuk melihat list Perintah`)
+            }
+            break
                 case '!semangat':
             fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/motivasi.txt')
             .then(res => res.text())
@@ -1314,7 +1333,7 @@ ${desc}`)
                 client.reply(from, 'Succes ban target!', message.id)
             }
             break
-     case '!covid':
+    case '!covid':
             arg = body.trim().split(' ')
             console.log(...arg[1])
             var slicedArgs = Array.prototype.slice.call(arg, 1);
