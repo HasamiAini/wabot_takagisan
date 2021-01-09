@@ -922,7 +922,19 @@ module.exports = msgHandler = async (client, message) => {
             }
             break
     //NEWFITUR
-                 case 'fakta':
+                case '!semangat':
+            fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/motivasi.txt')
+            .then(res => res.text())
+            .then(body => {
+                let splitmotivasi = body.split('\n')
+                let randommotivasi = splitmotivasi[Math.floor(Math.random() * splitmotivasi.length)]
+                client.reply(from, randommotivasi, id)
+            })
+            .catch(() => {
+                client.reply(from, '*Gomenasai Onichan Ada yang error!*', id)
+            })
+            break
+                 case '!fakta':
                 case 'faktaunik':
             fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/faktanya.txt')
             .then(res => res.text())
