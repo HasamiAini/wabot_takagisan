@@ -965,9 +965,8 @@ module.exports = msgHandler = async (client, message) => {
             })
             break
              case '!logoteks':
-        if (!isGroupMsg) return client.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
-            if (!isGroupAdmins) return client.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
-            if (!isBotGroupAdmins) return client.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
+        if (!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(..*', id)
+            if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
             if (args.length === 1) return client.reply(from, `Kirim perintah *#logoteks [ |kalimat1|kalimat2 ]*,\n\n contoh : *#bot |takagisan| vers.4.5*`, id)
             argz = body.trim().split('|')
             if (argz.length >= 2) {
@@ -1014,9 +1013,8 @@ module.exports = msgHandler = async (client, message) => {
             })
             break
                 case '!nolink':
-                   if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
-                    if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
-                    if (!isBotGroupAdmins) return client.reply(from, 'Gomenasai Bot Harus Jadi Admin', id)
+                  if (!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(..*', id)
+            if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
                     if (args[0] == 'on') {
                         var cek = antilink.includes(chatId);
                         if(cek){
@@ -1042,9 +1040,8 @@ module.exports = msgHandler = async (client, message) => {
                     break
            case '!antispamsticker':
             case '!antisticker':
-                    if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
-                    if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
-                    if (!isBotGroupAdmins) return client.reply(from, 'Gomenasai Bot Harus Jadi Admin', id)
+                if (!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(..*', id)
+            if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
                     if (args[0] == 'aktif') {
                         var cek = antisticker.includes(chatId);
                         if(cek){
@@ -1198,7 +1195,7 @@ Plan to Read: ${jikan.manga_stats.plan_to_read}`
                }
             }
             break
-    case '!anime':
+    case '!myanime':
             const keyword = message.body.replace('!#anime', '')
             try {
             const data = await fetch(
@@ -1435,7 +1432,6 @@ ${desc}`)
             break
 
     case '!nekonime':
-    if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)   
             const nekonime = await get.get('https://mhankbarbar.herokuapp.com/api/nekonime').json()
             if (nekonime.result.endsWith('.png')) {
                 var ext = '.png'
