@@ -47,6 +47,8 @@ function help( pushname ) {
 ┠➵ *!add*
 ➪☾ ⌨️Others Commands⌨️ ☽
  ➥╿➵ *!brainly*
+ ➥╿➵ *!faktaunik*
+ ➥╿➵ *!bijak*
  ➥╿➵ *!logoteks*
  ➥╿➵ *!puisi*
  ➥╿➵ *!quotes*
