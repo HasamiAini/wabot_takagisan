@@ -430,7 +430,7 @@ module.exports = msgHandler = async (client, message) => {
             let kya = list[Math.floor(Math.random() * list.length)]
             client.sendFileFromUrl(from, kya, 'Dog.jpeg', ' *Kyōdai no inu*')
             break
-        case '#cat':
+        case '!cat':
             q2 = Math.floor(Math.random() * 900) + 300;
             q3 = Math.floor(Math.random() * 900) + 300;
             client.sendFileFromUrl(from, 'http://placekitten.com/'+q3+'/'+q2, 'neko.png',' *Kyōdai no neko!* ')
@@ -1440,7 +1440,7 @@ ${desc}`)
                 .then(body => {
                     let randomkpop = body.split('\n')
                     let randomkpopx = randomkpop[Math.floor(Math.random() * randomkpop.length)]
-                    client.sendFileFromUrl(from, randomkpopx, '', '*DRAMA*\n*BY:Bot_Takagisan Vers.4.5*\nSupport Bot..*Owner Bot:08319173552*\n*!donasi*', id)
+                    client.sendFileFromUrl(from, randomkpopx, '', '*KAWAI DESU..*\n*BY:Bot_Takagisan Vers.4.5*\nSupport Bot..*Owner Bot:08319173552*\n*!donasi*', id)
                 })
                 .catch(() => {
                     client.reply(from, '*Gomenasai Onichan Ada yang error!*', id)
