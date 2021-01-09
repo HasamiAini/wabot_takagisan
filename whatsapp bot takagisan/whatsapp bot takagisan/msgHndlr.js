@@ -498,7 +498,54 @@ module.exports = msgHandler = async (client, message) => {
             client.sendFileFromUrl(from, milfKey.image, 'milf.jpg', milfKey.teks)
             break
                 //Download Commands
-           //LAGI ERROR BUAT FITUR DOWNLOADNYA..:( 
+           case '!ytmp3':
+            if (args.length === 1) return client.reply(from, 'Kirim perintah *!ytmp3 [linkYt]*, untuk contoh silahkan kirim perintah *!readme*')
+            let isLinks = args[1].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
+            if (!isLinks) return client.reply(from, mess.error.Iv, id)
+            try {
+                client.reply(from, mess.wait, id)
+                const resp = await get.get(`https://mhankbarbars.herokuapp.com/api/yta?url=${args[1]}&apiKey=${apiKey}`).json()
+                if (resp.error) {
+                    client.reply(from, resp.error, id)
+                } else {
+                    const { title, thumb, filesize, result } = await resp
+                    if (Number(filesize.split(' MB')[0]) >= 30.00) return client.reply(from, 'Maaf durasi video sudah melebihi batas maksimal!', id)
+                    client.sendFileFromUrl(from, thumb, 'thumb.jpg', `➸ *Title* : ${title}\n➸ *Filesize* : ${filesize}\n\nSilahkan tunggu sebentar proses pengiriman file membutuhkan waktu beberapa menit.`, id)
+                    await client.sendFileFromUrl(from, result, `${title}.mp3`, '', id).catch(() => client.reply(from, mess.error.Yt3, id))
+                    //await client.sendAudio(from, result, id)
+                }
+            } catch (err) {
+                client.sendText(ownerNumber[0], 'Error ytmp3 : '+ err)
+                client.reply(from, mess.error.Yt3, id)
+            }
+            break
+        case '!ytmp4':
+            if (args.length === 1) return client.reply(from, 'Kirim perintah *!ytmp4 [linkYt]*, untuk contoh silahkan kirim perintah *!readme*')
+            let isLin = args[1].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
+            if (!isLin) return client.reply(from, mess.error.Iv, id)
+            try {
+                client.reply(from, mess.wait, id)
+                const ytv = await get.get(`https://mhankbarbars.herokuapp.com/api/ytv?url=${args[1]}&apiKey=${apiKey}`).json()
+                if (ytv.error) {
+                    client.reply(from, ytv.error, id)
+                } else {
+                    if (Number(ytv.filesize.split(' MB')[0]) > 40.00) return client.reply(from, 'Maaf durasi video sudah melebihi batas maksimal!', id)
+                    client.sendFileFromUrl(from, ytv.thumb, 'thumb.jpg', `➸ *Title* : ${ytv.title}\n➸ *Filesize* : ${ytv.filesize}\n\nSilahkan tunggu sebentar proses pengiriman file membutuhkan waktu beberapa menit.`, id)
+                    await client.sendFileFromUrl(from, ytv.result, `${ytv.title}.mp4`, '', id).catch(() => client.reply(from, mess.error.Yt4, id))
+                }
+            } catch (er) {
+                client.sendText(ownerNumber[0], 'Error ytmp4 : '+ er)
+                client.reply(from, mess.error.Yt4, id)
+            }
+            break 
+                 case '!fb':
+            if (args.length === 1) return client.reply(from, 'Kirim perintah *!fb [linkFb]* untuk contoh silahkan kirim perintah *!readme*', id)
+            if (!args[1].includes('facebook.com')) return client.reply(from, mess.error.Iv, id)
+            client.reply(from, mess.wait, id)
+            const epbe = await get.get(`https://mhankbarbars.herokuapp.com/api/epbe?url=${args[1]}&apiKey=${apiKey}`).json()
+            if (epbe.error) return client.reply(from, epbe.error, id)
+            client.sendFileFromUrl(from, epbe.result, 'epbe.mp4', epbe.title, id)
+            break
             //Anime Commands
             //Other Commands
             case '!ss':
@@ -507,6 +554,22 @@ module.exports = msgHandler = async (client, message) => {
             break
             case '!#aftarchannel':
             client.reply(from, listChannel, id)
+            break
+                case '!ig':
+            if (args.length === 1) return client.reply(from, 'Kirim perintah *!ig [linkIg]* untuk contoh silahkan kirim perintah *!readme*')
+            if (!args[1].match(isUrl) && !args[1].includes('instagram.com')) return client.reply(from, mess.error.Iv, id)
+            try {
+                client.reply(from, mess.wait, id)
+                const resp = await get.get(`https://mhankbarbars.herokuapp.com/api/ig?url=${args[1]}&apiKey=${apiKey}`).json()
+                if (resp.result.includes('.mp4')) {
+                    var ext = '.mp4'
+                } else {
+                    var ext = '.jpg'
+                }
+                await client.sendFileFromUrl(from, resp.result, `igeh${ext}`, '', id)
+            } catch {
+                client.reply(from, mess.error.Ig, id)
+                }
             break
         case '!jadwaltv':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!jadwalTv [channel]*', id)
@@ -745,7 +808,7 @@ module.exports = msgHandler = async (client, message) => {
        
         case '!premium':
             if (!isNsfw) return
-            client.reply(from, '1. *!lolicon* (Memanggil Doujin Pdf)\n2. *!randomdoujin* (Memanggil Doujin Pdf)\n3. *!botstat*\n4.*!menusurah*\n5. *!yuri*\n6. *!darkjokes*\n7. *!milfsan* (Memanggil Doujin Pdf)\n8. *!menuringtone*\n9. *!randomsongs* (jangan dipake lagi diupdate)\n10. *!lewd*\n11. *!cosplay*\n12. *!nekonime*\n13. *!ahegao*\n14. *!infoseiyu*\n15. *!infonime*\n16. *!randomanime*\n17. *!yaoi*\n18. *!bganime*\n19. *!subreddit*\n20. *!sauce* (Mencari sauce )\n21. *!Karakter* (Mencari sauce Karakter)\n22. *!mecha*\n {Mungkin ada beberapa fitur perlu waktu untuk mngirim,jadi sabar} {SEBELUM MENGGUNAKAN FITUR INI LIHAT *!Readme*} \n Etto..Oni-chan Amari ōkunai', id)
+            client.reply(from, 'Daftar Melalui Nomor Ini Desu >083191735552 atau wa.me/6283191735552', id)
             break
        
         case '!bc':
