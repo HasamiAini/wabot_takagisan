@@ -859,6 +859,31 @@ module.exports = msgHandler = async (client, message) => {
             }
             break
     //NEWFITUR
+                 case 'fakta':
+                case 'faktaunik':
+            fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/faktanya.txt')
+            .then(res => res.text())
+            .then(body => {
+                let splitnix = body.split('\n')
+                let randomnix = splitnix[Math.floor(Math.random() * splitnix.length)]
+                client.reply(from, randomnix, id)
+            })
+            .catch(() => {
+                client.reply(from, '*Gomenasai Onichan Ada yang error!*', id)
+            })
+            break
+                case '!bijak':
+            fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/katabijak.txt')
+            .then(res => res.text())
+            .then(body => {
+                let splitbijak = body.split('\n')
+                let randombijak = splitbijak[Math.floor(Math.random() * splitbijak.length)]
+                client.reply(from, randombijak, id)
+            })
+            .catch(() => {
+                client.reply(from, '*Gomenasai Onichan Ada yang error!*', id)
+            })
+            break
              case '!logoteks':
         if (!isGroupMsg) return client.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
             if (!isGroupAdmins) return client.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
