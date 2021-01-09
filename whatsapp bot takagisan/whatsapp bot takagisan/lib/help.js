@@ -1,3 +1,4 @@
+//LINK GITHUB TOLONG JANGAN DIHAPUS...
 const botname = '*Bot_Takagisan*'
 const prefix = '#'
 function help( pushname ) {
@@ -7,6 +8,8 @@ function help( pushname ) {
   ╿
   ┡➪☾ ⌨️BOT Commands⌨️ ☽
   ┠➵ *!help*
+  ┠➵ *!ban*
+  ┠➵ *!unban*
   ┠➵ *!readme*
   ┠➵ *!about*
   ┠➵ *!snk*
@@ -14,12 +17,19 @@ function help( pushname ) {
   ┠➵ *!donasi*
   ┠➵ *!ownerbot*
   ┠➵ *!botstat*
+  ┠➵ *!bot*
   ┠➵ *!lihatblock*
   ╿
 ➪☾ ⌨️Group Commands⌨️ ☽
 ┠➵ *!stickergif*
+╿➵ *!costom*
+┠➵ *!groupinfo*
+╿➵ *!profile*
 ┠➵ *!stikergiphy*
 ┠➵ *!memeindo*
+┠➵ *!game*
+┠➵ *!antisticker*
+┠➵ *!nolink*
 ┠➵ *!linkgroup*
 ┠➵ *!memeindo*
 ┠➵ *!meme*
@@ -37,6 +47,8 @@ function help( pushname ) {
 ┠➵ *!add*
 ➪☾ ⌨️Others Commands⌨️ ☽
  ➥╿➵ *!brainly*
+ ➥╿➵ *!logoteks*
+ ➥╿➵ *!puisi*
  ➥╿➵ *!quotes*
  ➥╿➵ *!createmaker*
  ➥╿➵ *!jadwalshalat*
@@ -55,6 +67,11 @@ function help( pushname ) {
  ➪☾ ⌨️Anime Commands⌨️ ☽
  ➥╿➵ *!wait* (Mencari Sauce Anime)
  ➥╿➵ *!dog*
+ ➥╿➵ *!user*
+ ➥╿➵ *!mecha*
+ ➥╿➵ *!bganime*
+ ➥╿➵ *!karakter*
+ ➥╿➵ *!anime*
  ➥╿➵ *!cat*
  ➥╿➵ *!quotenime*
  ➥╿➵ *!pokemon*
