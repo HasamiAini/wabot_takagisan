@@ -81,6 +81,7 @@ function help( pushname ) {
  ➥╿➵ *!milf*
  ➥╿➵ *!loli*
  ➥╿➵ *!husbu*
+ ➥╿➵ *!neko nime*
  ➪☾ ⌨️Islam Commands⌨️ ☽
  ➥╿➵ *!listsurah*
  ➥╿➵ *!infosurah*
