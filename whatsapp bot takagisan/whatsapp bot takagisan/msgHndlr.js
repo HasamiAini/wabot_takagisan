@@ -839,8 +839,19 @@ module.exports = msgHandler = async (client, message) => {
                 client.reply(from, 'Fitur ini hanya bisa di gunakan ketika bot menjadi admin', message.id)
             }
             break
-           
-    //Walpaper
+          //ERROR
+                case '!puisi':
+            fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/puisi.txt')
+            .then(res => res.text())
+            .then(body => {
+                let splitnix = body.split('\n')
+                let randomnix = splitnix[Math.floor(Math.random() * splitnix.length)]
+                client.reply(from, randomnix, id)
+            })
+            .catch(() => {
+                client.reply(from, '*Gomenasai Onichan Ada yang error!*', id)
+            })
+            break
          case '!':
          case '! ':
          case ' !':
@@ -850,6 +861,7 @@ module.exports = msgHandler = async (client, message) => {
             }
             break
     //NEWFITUR
+                
     //Profil Bot 
      case '!bot': 
             const takagi = fs.readFileSync('./lib/takagi.json')
