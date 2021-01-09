@@ -57,7 +57,12 @@ you've just cloned!!
 | Other  |                     Feature                     |
 | :------------: | :---------------------------------------------: |
 |       ✅        |   Get a random meme             |
+|       ✅        |   LogoTeks             |
+|       ✅        |   Game                 |
 |       ✅        |   Text to speech                |
+|       ✅        |   MemeIndo               |
+|       ✅        |   KPOP               |
+|       ✅        |   Puisi               |
 |       ✅        |   Get a random waifu images     |
 |       ✅        |   Get a random quotes           |
 |       ✅        |   Get a random anime quotes     |
@@ -65,6 +70,7 @@ you've just cloned!!
 |       ✅        |   Weather's report's     |
 |       ✅        |   Wikipedia                 |
 |       ✅        |   Anime searcher    |
+|       ✅        |   Walpaper               |
 |       ✅        |   Get a random cat images       |
 |       ✅        |   Get a random dog images       |
 |      And        |   Others...                     |
@@ -73,6 +79,13 @@ you've just cloned!!
 | Group Only  |                     Feature                     |
 | :------------: | :---------------------------------------------: |
 |       ✅        |   Promote User                  |
+|       ✅        |   Anti Spam Sticker                  |
+|       ✅        |   Promote User                  |
+|       ✅        |   Anti Link Group                  |
+|       ✅        |   Banned Member                  |
+|       ✅        |   Unbanned Member                  |
+|       ✅        |   Promote User                  |
+|       ✅        |   Profile Group                  |
 |       ✅        |   Demote User                   |
 |       ✅        |   Kick User                     |
 |       ✅        |   Add User                      |
