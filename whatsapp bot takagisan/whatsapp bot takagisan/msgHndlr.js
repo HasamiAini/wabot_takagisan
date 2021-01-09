@@ -435,13 +435,18 @@ module.exports = msgHandler = async (client, message) => {
             q3 = Math.floor(Math.random() * 900) + 300;
             client.sendFileFromUrl(from, 'http://placekitten.com/'+q3+'/'+q2, 'neko.png',' *Kyōdai no neko!* ')
             break
-            case '#quotenime': 
-            const quoteanime = fs.readFileSync('./lib/quoteanime.json')
-            const quoteanimeJson = JSON.parse(quoteanime)
-            const quoteanimeIndex = Math.floor(Math.random() * quoteanimeJson.length)
-            const quoteanimeKey = quoteanimeJson[quoteanimeIndex]
-            client.reply(from, `➸ *Quotes* : ${quoteanimeKey.quote}\n➸ *Karakter* : ${quoteanimeKey.by}`, id)
-            break 
+           case '!quotenime':
+            fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/quotenime.txt')
+            .then(res => res.text())
+            .then(body => {
+                let splitmotivasi = body.split('\n')
+                let randommotivasi = splitmotivasi[Math.floor(Math.random() * splitmotivasi.length)]
+                client.reply(from, randommotivasi, id)
+            })
+            .catch(() => {
+                client.reply(from, '*Gomenasai Onichan Ada yang error!*', id)
+            })
+            break
       case 'kpop':
         if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
             if (args.length == 0) return client.reply(from, `Untuk menggunakan ${prefix}kpop\nSilahkan ketik: ${prefix}kpop [query]\nContoh: ${prefix}kpop bts\n\nquery yang tersedia:\nblackpink, exo, bts, twice`, id)
