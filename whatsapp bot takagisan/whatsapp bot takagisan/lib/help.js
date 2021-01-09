@@ -59,7 +59,7 @@ function help( pushname ) {
  ➥╿➵ *!tts*
  ➥╿➵ *!takagisan*
  ➥╿➵ *!ringtone*
- ➥╿➵ *!aftarchannel*
+ ➥╿➵ *!daftarchannel*
  ➥╿➵ *!jadwaltv*
  ➥╿➵ *!jadwaltvnow*
  ➥╿➵ *!ss*
