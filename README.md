@@ -49,9 +49,9 @@ you've just cloned!!
 |       ✅        |   LogoTeks             |
 |       ✅        |   Game                 |
 |       ✅        |   Text to speech                |
-|       ✅        |   MemeIndo               |
-|       ✅        |   KPOP               |
-|       ✅        |   Puisi               |
+|       ✅        |   Get a random MemeIndo images              |
+|       ✅        |   Get a random  KPOP images              |
+|       ✅        |   Get a random Puisi  teks             |
 |       ✅        |   Get a random waifu images     |
 |       ✅        |   Get a random quotes           |
 |       ✅        |   Get a random anime quotes     |
