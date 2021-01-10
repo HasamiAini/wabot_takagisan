@@ -50,6 +50,7 @@ function help( pushname ) {
  ➥╿➵ *!faktaunik*
  ➥╿➵ *!bijak*
  ➥╿➵ *!logoteks*
+ ➥╿➵ *!semangat*
  ➥╿➵ *!puisi*
  ➥╿➵ *!quotes*
  ➥╿➵ *!createmaker*
@@ -89,6 +90,7 @@ function help( pushname ) {
  ➥╿➵ *!tafsir*
  ➥╿➵ *!alaudio*
  ➪☾ ⌨️Picture Commands⌨️ ☽
+ ➥╿➵ *!drama twitter*
  ➥╿➵ *!randomwallpaper*
  ➥╿➵ *!walpaper*
  ➥╿➵ *!happygirl*
