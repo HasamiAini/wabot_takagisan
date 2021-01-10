@@ -449,7 +449,7 @@ module.exports = msgHandler = async (client, message) => {
                 client.reply(from, '*Gomenasai Onichan Ada yang error!*', id)
             })
             break
-      case 'kpop':
+      case '!kpop':
         if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
             if (args.length == 0) return client.reply(from, `Untuk menggunakan ${prefix}kpop\nSilahkan ketik: ${prefix}kpop [query]\nContoh: ${prefix}kpop bts\n\nquery yang tersedia:\nblackpink, exo, bts, twice`, id)
             if (args[0] == 'blackpink' || args[0] == 'exo' || args[0] == 'bts' || args[0] == 'twice') {
@@ -559,7 +559,7 @@ module.exports = msgHandler = async (client, message) => {
             const sesPic = await client.getSnapshot()
             client.sendFile(from, sesPic, 'session.png', 'Oni-chan Ecchi..:(', id)
             break
-            case '!#aftarchannel':
+            case '!daftarchannel':
             client.reply(from, listChannel, id)
             break
                 case '!ig':
@@ -730,7 +730,7 @@ module.exports = msgHandler = async (client, message) => {
     case '!vn1':
             client.sendPtt(from, './media/Takagisan.mp3',)
             break
-            case '#ringtone':
+            case '!ringtone':
     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)   
             const ringtone = fs.readFileSync('./lib/ringtone.json')
             const ringtoneJson = JSON.parse(ringtone)
@@ -929,7 +929,7 @@ module.exports = msgHandler = async (client, message) => {
             }
             break
     //NEWFITUR
-                case 'drama':
+                case '!drama':
             if (args.length == 0) return aruga.reply(from, `Untuk menggunakan !drama\nSilahkan ketik: $!drama [query]\nContoh: !drama twitter\n\nquery yang tersedia:\ntwitter`, id)
             if (args[0] == 'twitter') {
                 fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/' + args[0] + '.txt')
