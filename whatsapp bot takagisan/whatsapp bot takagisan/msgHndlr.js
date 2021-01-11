@@ -505,6 +505,7 @@ module.exports = msgHandler = async (client, message) => {
             client.sendFileFromUrl(from, milfKey.image, 'milf.jpg', milfKey.teks)
             break
                 //Download Commands UNTUK FITUR DOWNLOAD SILAHKAN CHAT OWNER UNTUK MENDAPATKAN API-KEY YANG VALID >083191735552
+                //UNTUK FITUR DOWNLOAD YOUTUBE API BISA DIDAPATKAN MELALUI NOMOR OWNER >083191735552
             case "!ytmp3":
           if (!isGroupMsg) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
             if (!isGroupAdmins) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
