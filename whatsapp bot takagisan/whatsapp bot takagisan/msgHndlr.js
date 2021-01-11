@@ -504,28 +504,60 @@ module.exports = msgHandler = async (client, message) => {
             const milfKey = milfJson[milfIndex]
             client.sendFileFromUrl(from, milfKey.image, 'milf.jpg', milfKey.teks)
             break
-                //Download Commands
-           case '!ytmp3':
-            if (args.length === 1) return client.reply(from, 'Kirim perintah *!ytmp3 [linkYt]*, untuk contoh silahkan kirim perintah *!readme*')
-            let isLinks = args[1].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
-            if (!isLinks) return client.reply(from, mess.error.Iv, id)
-            try {
-                client.reply(from, mess.wait, id)
-                const resp = await get.get(`https://mhankbarbars.herokuapp.com/api/yta?url=${args[1]}&apiKey=${apiKey}`).json()
-                if (resp.error) {
-                    client.reply(from, resp.error, id)
-                } else {
-                    const { title, thumb, filesize, result } = await resp
-                    if (Number(filesize.split(' MB')[0]) >= 30.00) return client.reply(from, 'Maaf durasi video sudah melebihi batas maksimal!', id)
-                    client.sendFileFromUrl(from, thumb, 'thumb.jpg', `➸ *Title* : ${title}\n➸ *Filesize* : ${filesize}\n\nSilahkan tunggu sebentar proses pengiriman file membutuhkan waktu beberapa menit.`, id)
-                    await client.sendFileFromUrl(from, result, `${title}.mp3`, '', id).catch(() => client.reply(from, mess.error.Yt3, id))
-                    //await client.sendAudio(from, result, id)
+                //Download Commands UNTUK FITUR DOWNLOAD SILAHKAN CHAT OWNER UNTUK MENDAPATKAN API-KEY YANG VALID >083191735552
+            case "!ytmp3":
+          if (!isGroupMsg) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
+            if (!isGroupAdmins) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
+            if (!isBotGroupAdmins) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
+        const url = args[0];
+        const videoid = url.match(
+          /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
+        );
+        if (videoid == null) aruga.reply(from, "Maaf, video invalid 😕", id);
+        ytdl.getInfo(url).then((info) => {
+          if (info.length_seconds > 3000) {
+            aruga.reply(from, "terlalu panjang.. ");
+          } else {
+            aruga.reply(
+              from,
+              `Sebentar yaa ${pushname}, video kamu lagi di proses...`,
+              id
+            );
+            const YoutubeMp3Downloader = require("youtube-mp3-downloader");
+
+            //Configure YoutubeMp3Downloader with your settings
+            const YD = new YoutubeMp3Downloader({
+              ffmpegPath: "./bin/ffmpeg.exe",
+              outputPath: "./media", // Where should the downloaded and en>
+              youtubeVideoQuality: "highest", // What video quality sho>
+              queueParallelism: 100, // How many parallel down>
+              progressTimeout: 40, // How long should be the>
+            });
+
+            YD.download(videoid[1]);
+
+            YD.on("finished", function (err, data) {
+              // const musik = MessageMedia.fromFilePath(data.file);
+
+              aruga.reply(
+                from,
+                `Halo ${pushname}, video youtube yang anda minta berhasil diproses\nNama : *${data.title}*`,
+                id
+              );
+              fs.rename(
+                `./media/${data.videoTitle}.mp3`,
+                "./media/ytmp3.mp3",
+                function () {
+                  aruga.sendPtt(from, "./media/ytmp3.mp3", id);
                 }
-            } catch (err) {
-                client.sendText(ownerNumber[0], 'Error ytmp3 : '+ err)
-                client.reply(from, mess.error.Yt3, id)
-            }
-            break
+              );
+            });
+            YD.on("error", function (error) {
+              console.log(error);
+            });
+          }
+        });
+        break;
         case '!ytmp4':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!ytmp4 [linkYt]*, untuk contoh silahkan kirim perintah *!readme*')
             let isLin = args[1].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
