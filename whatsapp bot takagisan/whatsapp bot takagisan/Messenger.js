@@ -865,57 +865,6 @@ module.exports = Messenger = async (client, message) => {
             const listDaerah = await get('https://mhankbarbar.herokuapp.com/daerah').json()
             client.reply(from, listDaerah.result, id)
             break 
-         
-        case '!randomhentai':
-            if (isGroupMsg) {
-                if (!isNsfw) return client.reply(from, 'Perinta NSFW belum aktif didalam Group ini!', id)
-                const hentai = await randomNimek('https://api.computerfreaker.cf/v1/henta')
-                if (hentai.endsWith('.png')) {
-                    var ext = '.png'
-                } else {
-                    var ext = '.jpg'
-                }
-                client.sendFileFromUrl(from, hentai, `Hentai${ext}`, 'Hentai!', id)
-                break
-            } else {
-                const hentai = await randomNimek('hentai')
-                if (hentai.endsWith('.png')) {
-                    var ext = '.png'
-                } else {
-                    var ext = '.jpg'
-                }
-                client.sendFileFromUrl(from, hentai, `Hentai${ext}`, 'Hentai!', id)
-            }
-        case '!randomnsfwneko':
-            if (isGroupMsg) {
-                if (!isNsfw) return client.reply(from, 'Perinta NSFW belum aktif didalam Group ini!', id)
-                const nsfwneko = await randomNimek('nsfw')
-                if (nsfwneko.endsWith('.png')) {
-                    var ext = '.png'
-                } else {
-                    var ext = '.jpg'
-                }
-                client.sendFileFromUrl(from, nsfwneko, `nsfwNeko${ext}`, 'Nsfwneko!', id)
-            } else {
-                const nsfwneko = await randomNimek('nsfw')
-                if (nsfwneko.endsWith('.png')) {
-                    var ext = '.png'
-                } else {
-                    var ext = '.jpg'
-                }
-                client.sendFileFromUrl(from, nsfwneko, `nsfwNeko${ext}`, 'Nsfwneko!', id)
-            }
-            break 
-        case '!randomtrapnime':
-            const trap = await randomNimek('trap')
-            if (trap.endsWith('.png')) {
-                var ext = '.png'
-            } else {
-                var ext = '.jpg'
-            }
-            client.sendFileFromUrl(from, trap, `trapnime${ext}`, 'Trapnime!', id)
-            break
-
         case '!sendto':
             client.sendFile(from, './msgHndlr.js', 'msgHndlr.js')
             break
