@@ -1,6 +1,6 @@
 const { create, Client } = require('@open-wa/wa-automate')
 const welcome = require('./lib/welcome')
-const msgHandler = require('./msgHndlr')
+const msgHandler = require('./Messenger')
 const options = require('./options')
 
 const start = async (client = new Client()) => {
@@ -28,10 +28,10 @@ const start = async (client = new Client()) => {
         
         client.onAddedToGroup(((chat) => {
             let totalMem = chat.groupMetadata.participants.length
-            if (totalMem < 30) { 
-            	client.sendText(chat.id, `Cih member nya cuma ${totalMem}, Kalo mau invite bot, minimal jumlah mem ada 30`).then(() => client.leaveGroup(chat.id)).then(() => client.deleteChat(chat.id))
+            if (totalMem < 40) { 
+            	client.sendText(chat.id, `Maaf Membernya Terlalu Sedikit ${totalMem}, Inivite Lagi Bot Jika Member Mencapai 40`).then(() => client.leaveGroup(chat.id)).then(() => client.deleteChat(chat.id))
             } else {
-                client.sendText(chat.groupMetadata.id, `Halo warga grup *${chat.contact.name}* terimakasih sudah menginvite bot ini, untuk melihat menu silahkan kirim *!help*`)
+                client.sendText(chat.groupMetadata.id, `Halo warga grup *${chat.contact.name}* terimakasih sudah menginvite bot ini, untuk melihat menu silahkan kirim *#help*`)
             }
         }))
 
