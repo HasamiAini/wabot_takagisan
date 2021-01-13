@@ -4,7 +4,7 @@ const msgHandler = require('./Messenger')
 const options = require('./options')
 
 const start = async (client = new Client()) => {
-        console.log('[SERVER] Server Started!')
+        console.log('[SERVER] Bot_Takagisan Ready!')
         // Force it to keep the current session
         client.onStateChanged((state) => {
             console.log('[Client State]', state)
