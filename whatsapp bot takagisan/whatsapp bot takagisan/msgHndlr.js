@@ -506,7 +506,8 @@ module.exports = msgHandler = async (client, message) => {
             break
                 //Download Commands UNTUK FITUR DOWNLOAD SILAHKAN CHAT OWNER UNTUK MENDAPATKAN API-KEY YANG VALID >083191735552
                 //UNTUK FITUR DOWNLOAD YOUTUBE API BISA DIDAPATKAN MELALUI NOMOR OWNER >083191735552
-//            case "!ytmp3":
+//           //DAPATKAN API MELALUI OWNER >083191735552 
+    //        case "!ytmp3":
  //         if (!isGroupMsg) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
   //          if (!isGroupAdmins) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
    //         if (!isBotGroupAdmins) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
@@ -559,25 +560,27 @@ module.exports = msgHandler = async (client, message) => {
     //      }
       //  });
 //        break;
-        case '!ytmp4':
-            if (args.length === 1) return client.reply(from, 'Kirim perintah *!ytmp4 [linkYt]*, untuk contoh silahkan kirim perintah *!readme*')
-            let isLin = args[1].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
-            if (!isLin) return client.reply(from, mess.error.Iv, id)
-            try {
-                client.reply(from, mess.wait, id)
-                const ytv = await get.get(`https://mhankbarbars.herokuapp.com/api/ytv?url=${args[1]}&apiKey=${apiKey}`).json()
-                if (ytv.error) {
-                    client.reply(from, ytv.error, id)
-                } else {
-                    if (Number(ytv.filesize.split(' MB')[0]) > 40.00) return client.reply(from, 'Maaf durasi video sudah melebihi batas maksimal!', id)
-                    client.sendFileFromUrl(from, ytv.thumb, 'thumb.jpg', `➸ *Title* : ${ytv.title}\n➸ *Filesize* : ${ytv.filesize}\n\nSilahkan tunggu sebentar proses pengiriman file membutuhkan waktu beberapa menit.`, id)
-                    await client.sendFileFromUrl(from, ytv.result, `${ytv.title}.mp4`, '', id).catch(() => client.reply(from, mess.error.Yt4, id))
-                }
-            } catch (er) {
-                client.sendText(ownerNumber[0], 'Error ytmp4 : '+ er)
-                client.reply(from, mess.error.Yt4, id)
+                 //DAPATKAN API MELALUI OWNER >083191735552
+//        case '!ytmp4':
+  //          if (args.length === 1) return client.reply(from, 'Kirim perintah *!ytmp4 [linkYt]*, untuk contoh silahkan kirim perintah *!readme*')
+    //        let isLin = args[1].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
+      //      if (!isLin) return client.reply(from, mess.error.Iv, id)
+        //    try {
+          //      client.reply(from, mess.wait, id)
+            //    const ytv = await get.get(`https://mhankbarbars.herokuapp.com/api/ytv?url=${args[1]}&apiKey=${apiKey}`).json()
+              //  if (ytv.error) {
+   //                 client.reply(from, ytv.error, id)
+     //           } else {
+       //             if (Number(ytv.filesize.split(' MB')[0]) > 40.00) return client.reply(from, 'Maaf durasi video sudah melebihi batas maksimal!', id)
+         //           client.sendFileFromUrl(from, ytv.thumb, 'thumb.jpg', `➸ *Title* : ${ytv.title}\n➸ *Filesize* : ${ytv.filesize}\n\nSilahkan tunggu sebentar proses pengiriman file membutuhkan waktu beberapa menit.`, id)
+           //         await client.sendFileFromUrl(from, ytv.result, `${ytv.title}.mp4`, '', id).catch(() => client.reply(from, mess.error.Yt4, id))
+  //              }
+    //        } catch (er) {
+      //          client.sendText(ownerNumber[0], 'Error ytmp4 : '+ er)
+        //        client.reply(from, mess.error.Yt4, id)
             }
-            break 
+   //        break 
+        //DAPATKAN API MELALUI OWNER >083191735552
                  case '!fb':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!fb [linkFb]* untuk contoh silahkan kirim perintah *!readme*', id)
             if (!args[1].includes('facebook.com')) return client.reply(from, mess.error.Iv, id)
