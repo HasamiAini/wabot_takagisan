@@ -90,7 +90,7 @@ module.exports = Messenger = async (client, message) => {
             client.reply(from, readme, id)
             break
         case '!about':
-            client.sendLinkWithAutoPreview(from, 'Bot_Doujinmoee ', info)
+            client.sendLinkWithAutoPreview(from, 'Bot_Takagisan ', info)
             break
         
         case '!snk':
@@ -855,7 +855,7 @@ module.exports = Messenger = async (client, message) => {
             const chatz = await client.getAllChatIds()
             for (let ids of chatz) {
                 var cvk = await client.getChatById(ids)
-                if (!cvk.isReadOnly) await client.sendText(ids, `[ 🎀 𝐻𝑒𝓁𝓁🏵 🎀 Saya Bot_Doujinmoee ]\n\n${msg}`)
+                if (!cvk.isReadOnly) await client.sendText(ids, `[ 🎀 𝐻𝑒𝓁𝓁🏵 🎀 Saya Bot_Takagisan ]\n\n${msg}`)
             }
             client.reply(from, 'Broadcast Success!', id)
             break
@@ -866,7 +866,7 @@ module.exports = Messenger = async (client, message) => {
             client.reply(from, listDaerah.result, id)
             break 
         case '!sendto':
-            client.sendFile(from, './msgHndlr.js', 'msgHndlr.js')
+            client.sendFile(from, './Messenger.js', 'Messenger.js')
             break
         case '!url2img':
             const _query = body.slice(9)
