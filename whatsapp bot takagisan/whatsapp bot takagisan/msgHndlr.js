@@ -766,8 +766,7 @@ module.exports = msgHandler = async (client, message) => {
     case '!vn1':
             client.sendPtt(from, './media/Takagisan.mp3',)
             break
-            case '!ringtone':
-    if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)   
+            case '!ringtone': 
             const ringtone = fs.readFileSync('./lib/ringtone.json')
             const ringtoneJson = JSON.parse(ringtone)
             const ringtoneIndex = Math.floor(Math.random() * ringtoneJson.length)
@@ -836,24 +835,20 @@ module.exports = msgHandler = async (client, message) => {
             if (!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(..*', id)
             if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
             if (args.length === 1) return client.reply(from, 'Pilih *premium* atau *trial!*', id)
-            if (args[1].toLowerCase() === 'premium') {
+            if (args[1].toLowerCase() === 'bayar') {
                 nsfw_.push(chat.id)
                 fs.writeFileSync('./lib/NSFW.json', JSON.stringify(nsfw_))
-                client.reply(from, '*oni-chan Sugoi..!!* *premium* perintah berhasil di aktifkan di group ini! kirim perintah *!premium*', id)
-            } else if (args[1].toLowerCase() === 'trial') {
+                client.reply(from, '*oni-chan Sugoi..!!* *bayar* perintah berhasil di aktifkan di group ini! kirim perintah *!bayar*', id)
+            } else if (args[1].toLowerCase() === 'gratis') {
                 nsfw_.splice(chat.id, 1)
                 fs.writeFileSync('./lib/NSFW.json', JSON.stringify(nsfw_))
-                client.reply(from, '*Sumimasen* *trial* perintah berhasil di aktifkan di group ini!', id)
+                client.reply(from, '*Sumimasen* *gratis* perintah berhasil di aktifkan di group ini!', id)
             } else {
-                client.reply(from, 'Silahkan dipilih [premium] [trial]!', id)
+                client.reply(from, 'Silahkan dipilih [premium] [gratis]!', id)
             }
             break
-       
-        case '!premium':
-            if (!isNsfw) return
-            client.reply(from, 'Daftar Melalui Nomor Ini Desu >083191735552 atau wa.me/6283191735552', id)
-            break
-       
+        //*UNTUK MODE BAYAR..SILAHKAN ISI SENDIRI,YANG BERTANDA if (!isNsfw)
+
         case '!bc':
             if (!isOwner) return client.reply(from, 'Bot harus jadi *Owner* desu', id)
             let msg = body.slice(4)
