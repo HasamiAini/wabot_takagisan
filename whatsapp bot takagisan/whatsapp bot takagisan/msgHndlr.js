@@ -26,7 +26,7 @@ const errorurl2 = 'https://steamuserimages-a.akamaihd.net/ugc/954087817129084207
 moment.tz.setDefault('Asia/Jakarta').locale('id')
 
 
-module.exports = msgHandler = async (client, message) => {
+module.exports = Messenger = async (client, message) => {
     try {
         const { type, id, from, t, sender, isGroupMsg, chat, caption, isMedia, mimetype, quotedMsg, quotedMsgObj, mentionedJidList } = message
         let { body } = message
