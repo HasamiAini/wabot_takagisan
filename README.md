@@ -22,7 +22,10 @@ you've just cloned!!
 ```bash
 > npm install
 ```
+```
+npm install gify-cli -g
 
+```
 > npm start
 ```
 
