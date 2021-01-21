@@ -60,7 +60,6 @@ function help( pushname ) {
  ➥╿➵ *!tts*
  ➥╿➵ *!takagisan*
  ➥╿➵ *!out*
- ➥╿➵ *!tts*
  ➥╿➵ *!takagisan*
  ➥╿➵ *!ringtone*
  ➥╿➵ *!daftarchannel*
