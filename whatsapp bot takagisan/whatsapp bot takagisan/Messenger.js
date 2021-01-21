@@ -506,81 +506,80 @@ module.exports = Messenger = async (client, message) => {
             break
                 //Download Commands UNTUK FITUR DOWNLOAD SILAHKAN CHAT OWNER UNTUK MENDAPATKAN API-KEY YANG VALID >083191735552
                 //UNTUK FITUR DOWNLOAD YOUTUBE API BISA DIDAPATKAN MELALUI NOMOR OWNER >083191735552
-//           //DAPATKAN API MELALUI OWNER >083191735552 
-    //        case "!ytmp3":
- //         if (!isGroupMsg) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
-  //          if (!isGroupAdmins) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
-   //         if (!isBotGroupAdmins) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
-    //    const url = args[0];
-  //      const videoid = url.match(
-  //        /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
-   //     );
-     //   if (videoid == null) aruga.reply(from, "Maaf, video invalid 😕", id);
-       // ytdl.getInfo(url).then((info) => {
-//          if (info.length_seconds > 3000) {
- //           aruga.reply(from, "terlalu panjang.. ");
-  //        } else {
-   //         aruga.reply(
-    //          from,
-     //         `Sebentar yaa ${pushname}, video kamu lagi di proses...`,
-      //        id
-       //     );
-        //    const YoutubeMp3Downloader = require("youtube-mp3-downloader");
-//
-  //          //Configure YoutubeMp3Downloader with your settings
-    //        const YD = new YoutubeMp3Downloader({
-      //        ffmpegPath: "./bin/ffmpeg.exe",
-        //      outputPath: "./media", // Where should the downloaded and en>
-          //    youtubeVideoQuality: "highest", // What video quality sho>
-            //  queueParallelism: 100, // How many parallel down>
-              //progressTimeout: 40, // How long should be the>
-  //          });
+         /*   case "!ytmp3":
+          if (!isGroupMsg) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
+            if (!isGroupAdmins) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
+            if (!isBotGroupAdmins) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
+        const url = args[0];
+        const videoid = url.match(
+          /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
+        );
+        if (videoid == null) aruga.reply(from, "Maaf, video invalid 😕", id);
+        ytdl.getInfo(url).then((info) => {
+          if (info.length_seconds > 3000) {
+            aruga.reply(from, "terlalu panjang.. ");
+          } else {
+            aruga.reply(
+              from,
+              `Sebentar yaa ${pushname}, video kamu lagi di proses...`,
+              id
+            );
+            const YoutubeMp3Downloader = require("youtube-mp3-downloader");
 
-    //        YD.download(videoid[1]);
-//
-  //          YD.on("finished", function (err, data) {
-    //          // const musik = MessageMedia.fromFilePath(data.file);
-//
-  //            aruga.reply(
-    //            from,
-      //          `Halo ${pushname}, video youtube yang anda minta berhasil diproses\nNama : *${data.title}*`,
-        //        id
-          //    );
-  //            fs.rename(
-    //            `./media/${data.videoTitle}.mp3`,
-      //          "./media/ytmp3.mp3",
-        //        function () {
-          //        aruga.sendPtt(from, "./media/ytmp3.mp3", id);
-            //    }
-              //);
-  //          });
-//            YD.on("error", function (error) {
-//              console.log(error);
-  //          });
-    //      }
-      //  });
-//        break;
+            //Configure YoutubeMp3Downloader with your settings
+            const YD = new YoutubeMp3Downloader({
+              ffmpegPath: "./bin/ffmpeg.exe",
+              outputPath: "./media", // Where should the downloaded and en>
+              youtubeVideoQuality: "highest", // What video quality sho>
+              queueParallelism: 100, // How many parallel down>
+              //progressTimeout: 40, // How long should be the>
+            });
+
+            YD.download(videoid[1]);
+
+            YD.on("finished", function (err, data) {
+              // const musik = MessageMedia.fromFilePath(data.file);
+
+              aruga.reply(
+                from,
+                `Halo ${pushname}, video youtube yang anda minta berhasil diproses\nNama : *${data.title}*`,
+                id
+              );
+              fs.rename(
+                `./media/${data.videoTitle}.mp3`,
+                "./media/ytmp3.mp3",
+                function () {
+                  aruga.sendPtt(from, "./media/ytmp3.mp3", id);
+                }
+              );
+            });
+            YD.on("error", function (error) {
+              console.log(error);
+            });
+          }
+        });
+        break;
                  //DAPATKAN API MELALUI OWNER >083191735552
-//        case '!ytmp4':
-  //          if (args.length === 1) return client.reply(from, 'Kirim perintah *!ytmp4 [linkYt]*, untuk contoh silahkan kirim perintah *!readme*')
-    //        let isLin = args[1].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
-      //      if (!isLin) return client.reply(from, mess.error.Iv, id)
-        //    try {
-          //      client.reply(from, mess.wait, id)
-            //    const ytv = await get.get(`https://mhankbarbars.herokuapp.com/api/ytv?url=${args[1]}&apiKey=${apiKey}`).json()
-              //  if (ytv.error) {
-   //                 client.reply(from, ytv.error, id)
-     //           } else {
-       //             if (Number(ytv.filesize.split(' MB')[0]) > 40.00) return client.reply(from, 'Maaf durasi video sudah melebihi batas maksimal!', id)
-         //           client.sendFileFromUrl(from, ytv.thumb, 'thumb.jpg', `➸ *Title* : ${ytv.title}\n➸ *Filesize* : ${ytv.filesize}\n\nSilahkan tunggu sebentar proses pengiriman file membutuhkan waktu beberapa menit.`, id)
-           //         await client.sendFileFromUrl(from, ytv.result, `${ytv.title}.mp4`, '', id).catch(() => client.reply(from, mess.error.Yt4, id))
-  //              }
-    //        } catch (er) {
-      //          client.sendText(ownerNumber[0], 'Error ytmp4 : '+ er)
-        //        client.reply(from, mess.error.Yt4, id)
+        case '!ytmp4':
+            if (args.length === 1) return client.reply(from, 'Kirim perintah *!ytmp4 [linkYt]*, untuk contoh silahkan kirim perintah *!readme*')
+            let isLin = args[1].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
+            if (!isLin) return client.reply(from, mess.error.Iv, id)
+            try {
+                client.reply(from, mess.wait, id)
+                const ytv = await get.get(`https://mhankbarbars.herokuapp.com/api/ytv?url=${args[1]}&apiKey=${apiKey}`).json()
+                if (ytv.error) {
+                    client.reply(from, ytv.error, id)
+                } else {
+                    if (Number(ytv.filesize.split(' MB')[0]) > 40.00) return client.reply(from, 'Maaf durasi video sudah melebihi batas maksimal!', id)
+                    client.sendFileFromUrl(from, ytv.thumb, 'thumb.jpg', `➸ *Title* : ${ytv.title}\n➸ *Filesize* : ${ytv.filesize}\n\nSilahkan tunggu sebentar proses pengiriman file membutuhkan waktu beberapa menit.`, id)
+                    await client.sendFileFromUrl(from, ytv.result, `${ytv.title}.mp4`, '', id).catch(() => client.reply(from, mess.error.Yt4, id))
+                }
+           } catch (er) {
+                client.sendText(ownerNumber[0], 'Error ytmp4 : '+ er)
+               client.reply(from, mess.error.Yt4, id)
             }
-   //        break 
-        //DAPATKAN API MELALUI OWNER >083191735552
+           break 
+         DAPATKAN API MELALUI OWNER >083191735552*/
                  case '!fb':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!fb [linkFb]* untuk contoh silahkan kirim perintah *!readme*', id)
             if (!args[1].includes('facebook.com')) return client.reply(from, mess.error.Iv, id)
@@ -621,11 +620,11 @@ module.exports = Messenger = async (client, message) => {
             client.reply(from, jadwal, id)
             break
         case '!jadwaltvnow':
-            const jadwalNow = await get.get('https://api.haipbis.xyz/jadwaltvnow').json()
+            const jadwalNow = await get.get('https://docs-jojo.herokuapp.com/api/jadwaltvnow').json()
             client.reply(from, `Jam : ${jadwalNow.jam}\n\nJadwalTV : ${jadwalNow.jadwalTV}`, id)
             break
             case '!quotes':
-            const quotes = await get.get('https://mhankbarbar.herokuapp.com/api/randomquotes').json()
+            const quotes = await get.get('https://docs-jojo.herokuapp.com/api/randomquotes').json()
             client.reply(from, `➸ *Quotes* : ${quotes.quotes}\n➸ *Author* : ${quotes.author}`, id)
             break
              case '!brainly':
@@ -831,20 +830,20 @@ module.exports = Messenger = async (client, message) => {
                 client.reply(from, 'Ada yang Error!', id)
             })
             break
-        case '!mode':
+        case '!nsfw':
             if (!isGroupMsg) return client.reply(from, '*Onichan Gomenasai harus di group desu:(..*', id)
             if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
-            if (args.length === 1) return client.reply(from, 'Pilih *premium* atau *trial!*', id)
-            if (args[1].toLowerCase() === 'bayar') {
+            if (args.length === 1) return client.reply(from, 'Pilih *aktif* atau *nonaktifkan!*', id)
+            if (args[1].toLowerCase() === 'aktif') {
                 nsfw_.push(chat.id)
                 fs.writeFileSync('./lib/NSFW.json', JSON.stringify(nsfw_))
-                client.reply(from, '*oni-chan Sugoi..!!* *bayar* perintah berhasil di aktifkan di group ini! kirim perintah *!bayar*', id)
-            } else if (args[1].toLowerCase() === 'gratis') {
+                client.reply(from, '*oni-chan Sugoi..!!* *nsfw* perintah berhasil di aktifkan di group ini!', id)
+            } else if (args[1].toLowerCase() === 'nonaktifkan') {
                 nsfw_.splice(chat.id, 1)
                 fs.writeFileSync('./lib/NSFW.json', JSON.stringify(nsfw_))
-                client.reply(from, '*Sumimasen* *gratis* perintah berhasil di aktifkan di group ini!', id)
+                client.reply(from, '*Sumimasen* *nsfw* perintah berhasil di nonaktifkan di group ini!', id)
             } else {
-                client.reply(from, 'Silahkan dipilih [premium] [gratis]!', id)
+                client.reply(from, 'Silahkan dipilih [aktif] [nonaktifkan]!', id)
             }
             break
         //*UNTUK MODE BAYAR..SILAHKAN ISI SENDIRI,YANG BERTANDA if (!isNsfw)
@@ -887,7 +886,7 @@ module.exports = Messenger = async (client, message) => {
                 client.reply(from, 'Fitur ini hanya bisa di gunakan ketika bot menjadi admin', message.id)
             }
             break
-          //ERROR
+         
                 case '!puisi':
             fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/puisi.txt')
             .then(res => res.text())
@@ -979,12 +978,12 @@ module.exports = Messenger = async (client, message) => {
                 await client.reply(from, `Hadeh Onichan BAKAJANAINO?\n[❗] Kirim perintah *#logoteks [ |Teks1| Teks2 ]*,\n\n contoh : *#bot |takagisan| vers.4.5*`, id)
             }
             break
-                case 'games':
-                case 'game':
+                case '!games':
+                case '!game':
     client.reply(from, 'Sebelum bermain berjanjilah akan melaksanakan apapun perintah yang diberikan.\n\nSilahkan Pilih:\n➥ #kebenaran\n➥ #tantangan', id)
     break
-    case 'kebenaran':
-    case 'truth':
+    case '!kebenaran':
+    case '!truth':
     if (!isGroupMsg) return client.reply(from, menuId.textPrem())
             fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/kebenaran.txt')
             .then(res => res.text())
@@ -997,8 +996,8 @@ module.exports = Messenger = async (client, message) => {
                 client.reply(from, 'Hayolohhh, ada yang error!!', id)
             })
             break
-    case 'tantangan':
-    case 'dare':
+    case '!tantangan':
+    case '!dare':
     if (!isGroupMsg) return client.reply(from, menuId.textPrem())
             fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/tantangan.txt')
             .then(res => res.text())
@@ -1098,7 +1097,6 @@ module.exports = Messenger = async (client, message) => {
             break
             
      case '!mecha':
-      if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)
             const mecha = fs.readFileSync('./lib/mecha.json')
             const mechaJson = JSON.parse(mecha)
             const mechaIndex = Math.floor(Math.random() * mechaJson.length)
@@ -1107,7 +1105,7 @@ module.exports = Messenger = async (client, message) => {
             break
     
      case '!user':
-     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
+         client.reply(from, ' Contoh Perintah *!user naruto* ', id) 
         const username = body.slice(6)
         const result = await axios.get(`https://api.jikan.moe/v3/user/${username}`)
         const jikan =  result.data
@@ -1156,7 +1154,7 @@ Plan to Read: ${jikan.manga_stats.plan_to_read}`
         await client.sendFileFromUrl(from, `${jikan.image_url}`,`user.png`, Data)
         break
      case '!karakter':
-     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
+             client.reply(from, ' Contoh Perintah *!karakter Naruto* ', id) 
             if (isMedia) {
             const mediaData = await decryptMedia(message)
             const imageBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
@@ -1194,43 +1192,9 @@ Plan to Read: ${jikan.manga_stats.plan_to_read}`
                }
             }
             break
-    case '!myanime':
-            const keyword = message.body.replace('!#anime', '')
-            try {
-            const data = await fetch(
-           `https://api.jikan.moe/v3/search/anime?q=${keyword}`
-            )
-            const parsed = await data.json()
-            if (!parsed) {
-              await client.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Sorry, Couldn\'t find the requested anime', id)
-              return null
-              }
-            const { title, synopsis, episodes, url, rated, score, image_url } = parsed.results[0]
-            const content = `*Anime Found!*
-✨️ *Title:* ${title}
-
-🎆️ *Episodes:* ${episodes}
-
-💌️ *Rating:* ${rated}
-
-❤️ *Score:* ${score}
-
-💚️ *Synopsis:* ${synopsis}
-
-🌐️ *URL*: ${url}`
-
-            const image = await bent("buffer")(image_url)
-            const base64 = `data:image/jpg;base64,${image.toString("base64")}`
-            client.sendImage(from, base64, title, content)
-           } catch (err) {
-             console.error(err.message)
-             await client.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Sorry, Couldn\'t find the requested anime')
-           }
-          break
 
      case '!costom':
      if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
-     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
                 arg = body.trim().split('|')
                 if ((isMedia || isQuotedImage) && arg.length >= 2) {
                 const top = arg[1]
@@ -1245,7 +1209,6 @@ Plan to Read: ${jikan.manga_stats.plan_to_read}`
                 }
                 break
     case '!profile':
-    if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
             var role = 'None'
               if (isGroupMsg) {
               if (!quotedMsg) {
@@ -1280,7 +1243,7 @@ Plan to Read: ${jikan.manga_stats.plan_to_read}`
             }
             break
     case '!groupinfo' :
-    if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
+             client.reply(from, ' *Pesan Error* ', id) 
             if (!isGroupMsg) return client.reply(from, '.', message.id) 
             var totalMem = chat.groupMetadata.participants.length
             var desc = chat.groupMetadata.desc
@@ -1336,7 +1299,6 @@ ${desc}`)
      break
       
     case '!subreddit':
-    if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
              arg = body.trim().split(' ')
              const sr = arg[1]
              try {
@@ -1366,7 +1328,6 @@ ${desc}`)
                 }
                 break
     case '!buatgroup':
-    if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
             arg = body.trim().split(' ')
             const gcname = arg[1]
             client.createGroup(gcname, mentionedJidList)
@@ -1378,7 +1339,6 @@ ${desc}`)
             break
          break
      case '!gives':
-     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
             const side = Math.floor(Math.random() * 2) + 1
             if (side == 1) {
                client.sendStickerfromUrl(from, 'https://i.ibb.co/LJjkVK5/heads.png')
@@ -1389,7 +1349,6 @@ ${desc}`)
 
     case '!bganime' :
     if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
-    if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
             const walnime = ['https://cdn.nekos.life/wallpaper/QwGLg4oFkfY.png','https://cdn.nekos.life/wallpaper/bUzSjcYxZxQ.jpg','https://cdn.nekos.life/wallpaper/j49zxzaUcjQ.jpg','https://cdn.nekos.life/wallpaper/YLTH5KuvGX8.png','https://cdn.nekos.life/wallpaper/Xi6Edg133m8.jpg','https://cdn.nekos.life/wallpaper/qvahUaFIgUY.png','https://cdn.nekos.life/wallpaper/leC8q3u8BSk.jpg','https://cdn.nekos.life/wallpaper/tSUw8s04Zy0.jpg','https://cdn.nekos.life/wallpaper/sqsj3sS6EJE.png','https://cdn.nekos.life/wallpaper/HmjdX_s4PU4.png','https://cdn.nekos.life/wallpaper/Oe2lKgLqEXY.jpg','https://cdn.nekos.life/wallpaper/GTwbUYI-xTc.jpg','https://cdn.nekos.life/wallpaper/nn_nA8wTeP0.png','https://cdn.nekos.life/wallpaper/Q63o6v-UUa8.png','https://cdn.nekos.life/wallpaper/ZXLFm05K16Q.jpg','https://cdn.nekos.life/wallpaper/cwl_1tuUPuQ.png','https://cdn.nekos.life/wallpaper/wWhtfdbfAgM.jpg','https://cdn.nekos.life/wallpaper/3pj0Xy84cPg.jpg','https://cdn.nekos.life/wallpaper/sBoo8_j3fkI.jpg','https://cdn.nekos.life/wallpaper/gCUl_TVizsY.png','https://cdn.nekos.life/wallpaper/LmTi1k9REW8.jpg','https://cdn.nekos.life/wallpaper/sbq_4WW2PUM.jpg','https://cdn.nekos.life/wallpaper/QOSUXEbzDQA.png','https://cdn.nekos.life/wallpaper/khaqGIHsiqk.jpg','https://cdn.nekos.life/wallpaper/iFtEXugqQgA.png','https://cdn.nekos.life/wallpaper/deFKIDdRe1I.jpg','https://cdn.nekos.life/wallpaper/OHZVtvDm0gk.jpg','https://cdn.nekos.life/wallpaper/YZYa00Hp2mk.jpg','https://cdn.nekos.life/wallpaper/R8nPIKQKo9g.png','https://cdn.nekos.life/wallpaper/_brn3qpRBEE.jpg','https://cdn.nekos.life/wallpaper/ADTEQdaHhFI.png','https://cdn.nekos.life/wallpaper/MGvWl6om-Fw.jpg','https://cdn.nekos.life/wallpaper/YGmpjZW3AoQ.jpg','https://cdn.nekos.life/wallpaper/hNCgoY-mQPI.jpg','https://cdn.nekos.life/wallpaper/3db40hylKs8.png','https://cdn.nekos.life/wallpaper/iQ2FSo5nCF8.jpg','https://cdn.nekos.life/wallpaper/meaSEfeq9QM.png','https://cdn.nekos.life/wallpaper/CmEmn79xnZU.jpg','https://cdn.nekos.life/wallpaper/MAL18nB-yBI.jpg','https://cdn.nekos.life/wallpaper/FUuBi2xODuI.jpg','https://cdn.nekos.life/wallpaper/ez-vNNuk6Ck.jpg','https://cdn.nekos.life/wallpaper/K4-z0Bc0Vpc.jpg','https://cdn.nekos.life/wallpaper/Y4JMbswrNg8.jpg','https://cdn.nekos.life/wallpaper/ffbPXIxt4-0.png','https://cdn.nekos.life/wallpaper/x63h_W8KFL8.jpg','https://cdn.nekos.life/wallpaper/lktzjDRhWyg.jpg','https://cdn.nekos.life/wallpaper/j7oQtvRZBOI.jpg','https://cdn.nekos.life/wallpaper/MQQEAD7TUpQ.png','https://cdn.nekos.life/wallpaper/lEG1-Eeva6Y.png','https://cdn.nekos.life/wallpaper/Loh5wf0O5Aw.png','https://cdn.nekos.life/wallpaper/yO6ioREenLA.png','https://cdn.nekos.life/wallpaper/4vKWTVgMNDc.jpg','https://cdn.nekos.life/wallpaper/Yk22OErU8eg.png','https://cdn.nekos.life/wallpaper/Y5uf1hsnufE.png','https://cdn.nekos.life/wallpaper/xAmBpMUd2Zw.jpg','https://cdn.nekos.life/wallpaper/f_RWFoWciRE.jpg','https://cdn.nekos.life/wallpaper/Y9qjP2Y__PA.jpg','https://cdn.nekos.life/wallpaper/eqEzgohpPwc.jpg','https://cdn.nekos.life/wallpaper/s1MBos_ZGWo.jpg','https://cdn.nekos.life/wallpaper/PtW0or_Pa9c.png','https://cdn.nekos.life/wallpaper/32EAswpy3M8.png','https://cdn.nekos.life/wallpaper/Z6eJZf5xhcE.png','https://cdn.nekos.life/wallpaper/xdiSF731IFY.jpg','https://cdn.nekos.life/wallpaper/Y9r9trNYadY.png','https://cdn.nekos.life/wallpaper/8bH8CXn-sOg.jpg','https://cdn.nekos.life/wallpaper/a02DmIFzRBE.png','https://cdn.nekos.life/wallpaper/MnrbXcPa7Oo.png','https://cdn.nekos.life/wallpaper/s1Tc9xnugDk.jpg','https://cdn.nekos.life/wallpaper/zRqEx2gnfmg.jpg','https://cdn.nekos.life/wallpaper/PtW0or_Pa9c.png','https://cdn.nekos.life/wallpaper/0ECCRW9soHM.jpg','https://cdn.nekos.life/wallpaper/kAw8QHl_wbM.jpg','https://cdn.nekos.life/wallpaper/ZXcaFmpOlLk.jpg','https://cdn.nekos.life/wallpaper/WVEdi9Ng8UE.png','https://cdn.nekos.life/wallpaper/IRu29rNgcYU.png','https://cdn.nekos.life/wallpaper/LgIJ_1AL3rM.jpg','https://cdn.nekos.life/wallpaper/DVD5_fLJEZA.jpg','https://cdn.nekos.life/wallpaper/siqOQ7k8qqk.jpg','https://cdn.nekos.life/wallpaper/CXNX_15eGEQ.png','https://cdn.nekos.life/wallpaper/s62tGjOTHnk.jpg','https://cdn.nekos.life/wallpaper/tmQ5ce6EfJE.png','https://cdn.nekos.life/wallpaper/Zju7qlBMcQ4.jpg','https://cdn.nekos.life/wallpaper/CPOc_bMAh2Q.png','https://cdn.nekos.life/wallpaper/Ew57S1KtqsY.jpg','https://cdn.nekos.life/wallpaper/hVpFbYJmZZc.jpg','https://cdn.nekos.life/wallpaper/sb9_J28pftY.jpg','https://cdn.nekos.life/wallpaper/JDoIi_IOB04.jpg','https://cdn.nekos.life/wallpaper/rG76AaUZXzk.jpg','https://cdn.nekos.life/wallpaper/9ru2luBo360.png','https://cdn.nekos.life/wallpaper/ghCgiWFxGwY.png','https://cdn.nekos.life/wallpaper/OSR-i-Rh7ZY.png','https://cdn.nekos.life/wallpaper/65VgtPyweCc.jpg','https://cdn.nekos.life/wallpaper/3vn-0FkNSbM.jpg','https://cdn.nekos.life/wallpaper/u02Y0-AJPL0.jpg','https://cdn.nekos.life/wallpaper/_-Z-0fGflRc.jpg','https://cdn.nekos.life/wallpaper/3VjNKqEPp58.jpg','https://cdn.nekos.life/wallpaper/NoG4lKnk6Sc.jpg','https://cdn.nekos.life/wallpaper/xiTxgRMA_IA.jpg','https://cdn.nekos.life/wallpaper/yq1ZswdOGpg.png','https://cdn.nekos.life/wallpaper/4SUxw4M3UMA.png','https://cdn.nekos.life/wallpaper/cUPnQOHNLg0.jpg','https://cdn.nekos.life/wallpaper/zczjuLWRisA.jpg','https://cdn.nekos.life/wallpaper/TcxvU_diaC0.png','https://cdn.nekos.life/wallpaper/7qqWhEF_uoY.jpg','https://cdn.nekos.life/wallpaper/J4t_7DvoUZw.jpg','https://cdn.nekos.life/wallpaper/xQ1Pg5D6J4U.jpg','https://cdn.nekos.life/wallpaper/aIMK5Ir4xho.jpg','https://cdn.nekos.life/wallpaper/6gneEXrNAWU.jpg','https://cdn.nekos.life/wallpaper/PSvNdoISWF8.jpg','https://cdn.nekos.life/wallpaper/SjgF2-iOmV8.jpg','https://cdn.nekos.life/wallpaper/vU54ikOVY98.jpg','https://cdn.nekos.life/wallpaper/QjnfRwkRU-Q.jpg','https://cdn.nekos.life/wallpaper/uSKqzz6ZdXc.png','https://cdn.nekos.life/wallpaper/AMrcxZOnVBE.jpg','https://cdn.nekos.life/wallpaper/N1l8SCMxamE.jpg','https://cdn.nekos.life/wallpaper/n2cBaTo-J50.png','https://cdn.nekos.life/wallpaper/ZXcaFmpOlLk.jpg','https://cdn.nekos.life/wallpaper/7bwxy3elI7o.png','https://cdn.nekos.life/wallpaper/7VW4HwF6LcM.jpg','https://cdn.nekos.life/wallpaper/YtrPAWul1Ug.png','https://cdn.nekos.life/wallpaper/1p4_Mmq95Ro.jpg','https://cdn.nekos.life/wallpaper/EY5qz5iebJw.png','https://cdn.nekos.life/wallpaper/aVDS6iEAIfw.jpg','https://cdn.nekos.life/wallpaper/veg_xpHQfjE.jpg','https://cdn.nekos.life/wallpaper/meaSEfeq9QM.png','https://cdn.nekos.life/wallpaper/Xa_GtsKsy-s.png','https://cdn.nekos.life/wallpaper/6Bx8R6D75eM.png','https://cdn.nekos.life/wallpaper/zXOGXH_b8VY.png','https://cdn.nekos.life/wallpaper/VQcviMxoQ00.png','https://cdn.nekos.life/wallpaper/CJnRl-PKWe8.png','https://cdn.nekos.life/wallpaper/zEWYfFL_Ero.png','https://cdn.nekos.life/wallpaper/_C9Uc5MPaz4.png','https://cdn.nekos.life/wallpaper/zskxNqNXyG0.jpg','https://cdn.nekos.life/wallpaper/g7w14PjzzcQ.jpg','https://cdn.nekos.life/wallpaper/KavYXR_GRB4.jpg','https://cdn.nekos.life/wallpaper/Z_r9WItzJBc.jpg','https://cdn.nekos.life/wallpaper/Qps-0JD6834.jpg','https://cdn.nekos.life/wallpaper/Ri3CiJIJ6M8.png','https://cdn.nekos.life/wallpaper/ArGYIpJwehY.jpg','https://cdn.nekos.life/wallpaper/uqYKeYM5h8w.jpg','https://cdn.nekos.life/wallpaper/h9cahfuKsRg.jpg','https://cdn.nekos.life/wallpaper/iNPWKO8d2a4.jpg','https://cdn.nekos.life/wallpaper/j2KoFVhsNig.jpg','https://cdn.nekos.life/wallpaper/z5Nc-aS6QJ4.jpg','https://cdn.nekos.life/wallpaper/VUFoK8l1qs0.png','https://cdn.nekos.life/wallpaper/rQ8eYh5mXN8.png','https://cdn.nekos.life/wallpaper/D3NxNISDavQ.png','https://cdn.nekos.life/wallpaper/Z_CiozIenrU.jpg','https://cdn.nekos.life/wallpaper/np8rpfZflWE.jpg','https://cdn.nekos.life/wallpaper/ED-fgS09gik.jpg','https://cdn.nekos.life/wallpaper/AB0Cwfs1X2w.jpg','https://cdn.nekos.life/wallpaper/DZBcYfHouiI.jpg','https://cdn.nekos.life/wallpaper/lC7pB-GRAcQ.png','https://cdn.nekos.life/wallpaper/zrI-sBSt2zE.png','https://cdn.nekos.life/wallpaper/_RJhylwaCLk.jpg','https://cdn.nekos.life/wallpaper/6km5m_GGIuw.png','https://cdn.nekos.life/wallpaper/3db40hylKs8.png','https://cdn.nekos.life/wallpaper/oggceF06ONQ.jpg','https://cdn.nekos.life/wallpaper/ELdH2W5pQGo.jpg','https://cdn.nekos.life/wallpaper/Zun_n5pTMRE.png','https://cdn.nekos.life/wallpaper/VqhFKG5U15c.png','https://cdn.nekos.life/wallpaper/NsMoiW8JZ60.jpg','https://cdn.nekos.life/wallpaper/XE4iXbw__Us.png','https://cdn.nekos.life/wallpaper/a9yXhS2zbhU.jpg','https://cdn.nekos.life/wallpaper/jjnd31_3Ic8.jpg','https://cdn.nekos.life/wallpaper/Nxanxa-xO3s.png','https://cdn.nekos.life/wallpaper/dBHlPcbuDc4.jpg','https://cdn.nekos.life/wallpaper/6wUZIavGVQU.jpg','https://cdn.nekos.life/wallpaper/_-Z-0fGflRc.jpg','https://cdn.nekos.life/wallpaper/H9OUpIrF4gU.jpg','https://cdn.nekos.life/wallpaper/xlRdH3fBMz4.jpg','https://cdn.nekos.life/wallpaper/7IzUIeaae9o.jpg','https://cdn.nekos.life/wallpaper/FZCVL6PyWq0.jpg','https://cdn.nekos.life/wallpaper/5dG-HH6d0yw.png','https://cdn.nekos.life/wallpaper/ddxyA37HiwE.png','https://cdn.nekos.life/wallpaper/I0oj_jdCD4k.jpg','https://cdn.nekos.life/wallpaper/ABchTV97_Ts.png','https://cdn.nekos.life/wallpaper/58C37kkq39Y.png','https://cdn.nekos.life/wallpaper/HMS5mK7WSGA.jpg','https://cdn.nekos.life/wallpaper/1O3Yul9ojS8.jpg','https://cdn.nekos.life/wallpaper/hdZI1XsYWYY.jpg','https://cdn.nekos.life/wallpaper/h8pAJJnBXZo.png','https://cdn.nekos.life/wallpaper/apO9K9JIUp8.jpg','https://cdn.nekos.life/wallpaper/p8f8IY_2mwg.jpg','https://cdn.nekos.life/wallpaper/HY1WIB2r_cE.jpg','https://cdn.nekos.life/wallpaper/u02Y0-AJPL0.jpg','https://cdn.nekos.life/wallpaper/jzN74LcnwE8.png','https://cdn.nekos.life/wallpaper/IeAXo5nJhjw.jpg','https://cdn.nekos.life/wallpaper/7lgPyU5fuLY.jpg','https://cdn.nekos.life/wallpaper/f8SkRWzXVxk.png','https://cdn.nekos.life/wallpaper/ZmDTpGGeMR8.jpg','https://cdn.nekos.life/wallpaper/AMrcxZOnVBE.jpg','https://cdn.nekos.life/wallpaper/ZhP-f8Icmjs.jpg','https://cdn.nekos.life/wallpaper/7FyUHX3fE2o.jpg','https://cdn.nekos.life/wallpaper/CZoSLK-5ng8.png','https://cdn.nekos.life/wallpaper/pSNDyxP8l3c.png','https://cdn.nekos.life/wallpaper/AhYGHF6Fpck.jpg','https://cdn.nekos.life/wallpaper/ic6xRRptRes.jpg','https://cdn.nekos.life/wallpaper/89MQq6KaggI.png','https://cdn.nekos.life/wallpaper/y1DlFeHHTEE.png']
             let walnimek = walnime[Math.floor(Math.random() * walnime.length)]
             client.sendFileFromUrl(from, walnimek, 'Nimek.jpg', '', message.id)
@@ -1399,7 +1358,6 @@ ${desc}`)
     case '!randomnime':
     case '!randomanimek':
     case '!randomnimek':
-     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
             const randomanime = fs.readFileSync('./lib/randomanime.json')
             const randomanimeJson = JSON.parse(randomanime)
             const randomanimeIndex = Math.floor(Math.random() * randomanimeJson.length)
@@ -1410,8 +1368,7 @@ ${desc}`)
     case '!infoanime':  
     case '!infonime':
     case '!infoanimek':
-    case '!infonimek':
-     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)      
+    case '!infonimek':     
             const infoanime = fs.readFileSync('./lib/infoanime.json')
             const infoanimeJson = JSON.parse(infoanime)
             const infoanimeIndex = Math.floor(Math.random() * infoanimeJson.length)
@@ -1422,7 +1379,6 @@ ${desc}`)
    case '!infoseiyuu':
    case '!infoseyu':
    case '!infoseyuu':
-    if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)
             const infoseiyu = fs.readFileSync('./lib/infoseiyu.json')
             const infoseiyuJson = JSON.parse(infoseiyu)
             const infoseiyuIndex = Math.floor(Math.random() * infoseiyuJson.length)
@@ -1448,8 +1404,7 @@ ${desc}`)
                 client.reply(from, `Gomenasai Onichan Bukan seperti itu !neko nime untuk memanggil perintah`)
             }
             break
-    case '!ahegao': 
-    if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)   
+    case '!ahegao':  
             const ahegao = fs.readFileSync('./lib/ahegao.json')
             const ahegaoJson = JSON.parse(ahegao)
             const ahegaoIndex = Math.floor(Math.random() * ahegaoJson.length)
@@ -1457,8 +1412,6 @@ ${desc}`)
             client.sendFileFromUrl(from, ahegaoKey.image, 'ahegao.jpg', ahegaoKey.teks)
             break
     case '!lewd':
-    case '/lewd':
-    case '#lewd':
      if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id) 
     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)   
             const lewd = fs.readFileSync('./lib/lewd.json')
@@ -1468,10 +1421,7 @@ ${desc}`)
             client.sendFileFromUrl(from, lewdKey.image, 'Lewd.jpg', lewdKey.teks)
             break
     case '!cosplay': 
-    case '#cosplay':
-    case '/cosplay':
-     if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id)
-     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)   
+     if (!isGroupMsg) return client.reply(from, 'Onichan Gomenasai harus di group desu!', id) 
             const cosplay = fs.readFileSync('./lib/cosplay.json')
             const cosplayJson = JSON.parse(cosplay)
             const cosplayIndex = Math.floor(Math.random() * cosplayJson.length)
@@ -1479,12 +1429,10 @@ ${desc}`)
             client.sendFileFromUrl(from, cosplayKey.image, 'cosplay.jpg', cosplayKey.teks)
             break
     case '!menuringtone':
-            if (!isNsfw) return
             client.reply(from, '*Onegaishimasu*\n1. ringtone\n2. ringtoneloli', id)
             break
     case '!darkjokes': 
      if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id) 
-     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
             const darkjoke = fs.readFileSync('./lib/darkjoke.json')
             const darkjokeJson = JSON.parse(darkjoke)
             const darkjokeIndex = Math.floor(Math.random() * darkjokeJson.length)
@@ -1492,8 +1440,7 @@ ${desc}`)
             client.sendFileFromUrl(from, darkjokeKey.image, 'darkjoke.jpg', darkjokeKey.teks)
             break
 
-    case '!ringtoneloli':
-    if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)   
+    case '!ringtoneloli':  
             const ringtonnime = fs.readFileSync('./lib/ringtonnime.json')
             const ringtonnimeJson = JSON.parse(ringtonnime)
             const ringtonnimeIndex = Math.floor(Math.random() * ringtonnimeJson.length)
@@ -1502,7 +1449,6 @@ ${desc}`)
             break
     
      case '!yaoi':
-     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)
             const yaoi = fs.readFileSync('./lib/yaoi.json')
             const yaoiJson = JSON.parse(yaoi)
             const yaoiIndex = Math.floor(Math.random() * yaoiJson.length)
@@ -1511,7 +1457,6 @@ ${desc}`)
             break
 
      case '!yuri':
-     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)
             const yurichan = fs.readFileSync('./lib/yurichan.json')
             const yurichanJson = JSON.parse(yurichan)
             const yurichanIndex = Math.floor(Math.random() * yurichanJson.length)
@@ -1519,7 +1464,6 @@ ${desc}`)
             client.sendFileFromUrl(from, yurichanKey.image, 'yurichan.jpg', yurichanKey.teks)
             break
      case '!randomsongs': 
-     if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id) 
             const songsanime = fs.readFileSync('./lib/songsanime.json')
             const songsanimeJson = JSON.parse(songsanime)
             const songsanimeIndex = Math.floor(Math.random() * songsanimeJson.length)
@@ -1528,7 +1472,6 @@ ${desc}`)
             break
 
      case '!randomdoujin':
-      if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)
         if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
             const doujin = fs.readFileSync('./lib/doujin.json')
             const doujinJson = JSON.parse(doujin)
@@ -1538,7 +1481,6 @@ ${desc}`)
             break
       
      case '!milfsan': 
-      if (!isNsfw) return client.reply(from, ' *Anone..Okanenya oni-chan* ', id)
         if (!isGroupAdmins) return client.reply(from, '*DASAR MEMBER SOK-SOK MAKE FITUR ADMIN!*', id)
             const milfsan = fs.readFileSync('./lib/milfsan.json')
             const milfsanJson = JSON.parse(milfsan)
@@ -1550,8 +1492,6 @@ ${desc}`)
     //NEWFITUR
 
     case '!doujinmoee': 
-    case '#doujinmoee':
-    case '/doujinmoee':  
             const doujinmoee = fs.readFileSync('./lib/doujinmoee.json')
             const doujinmoeeJson = JSON.parse(doujinmoee)
             const doujinmoeeIndex = Math.floor(Math.random() * doujinmoeeJson.length)
