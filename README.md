@@ -2,7 +2,10 @@
 Wabot Takagisan
 |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
 
+___
 
+![MhankBarBar github stats](https://github-readme-stats.vercel.app/api?username=mhankbarbar&show_icons=true&theme=buefy&show_owner=true)
+___
 ____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____
  |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
 
@@ -76,7 +79,7 @@ do it carefully, to make it work
 |       ✅        |   Get a random waifu images     |
 |       ✅        |   Get a random quotes           |
 |       ✅        |   Get a random anime quotes     |
-|       ✅        |   Get info gempa from BMKG      |
+|       ✅        |   Get a random Memeindo      |
 |       ✅        |   Weather's report's     |
 |       ✅        |   Wikipedia                 |
 |       ✅        |   Anime searcher    |
