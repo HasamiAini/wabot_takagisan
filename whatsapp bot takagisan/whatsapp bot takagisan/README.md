@@ -21,14 +21,16 @@ ____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ ___
 
   _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____
  |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
+ 
+## use the command below, if you want to download via the link
 
 ```bash
 > git clone https://github.com/HasamiAini/Bot_Takagisan.git
 ```
 
 ## Install the dependencies:
-Before running the below command, make sure you're in the project directory that
-you've just cloned!!
+follow the installation instructions below to continue,
+do it carefully, to make it work
 
 ```bash
 > npm install
@@ -37,10 +39,11 @@ you've just cloned!!
 npm install gify-cli -g
 ```
 
+```
 > npm start
 ```
 
-## Features
+## all features
 
 | Sticker Creator |                Feature           |
 | :-----------: | :--------------------------------: |
