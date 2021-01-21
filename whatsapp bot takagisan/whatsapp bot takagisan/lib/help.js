@@ -1,6 +1,6 @@
 //LINK GITHUB TOLONG JANGAN DIHAPUS...
 const botname = '*Bot_Takagisan*'
-const prefix = '#'
+const prefix = '!'
 function help( pushname ) {
     return `         👋️ *Yahalo Minna-San* , Jibun no namae ${botname}. 
 
@@ -22,12 +22,11 @@ function help( pushname ) {
   ╿
 ➪☾ ⌨️Group Commands⌨️ ☽
 ┠➵ *!stickergif*
-╿➵ *!costom*
 ┠➵ *!groupinfo*
 ╿➵ *!profile*
 ┠➵ *!stikergiphy*
 ┠➵ *!memeindo*
-┠➵ *!game*
+┠➵ *!games*
 ┠➵ *!antisticker*
 ┠➵ *!nolink*
 ┠➵ *!linkgroup*
@@ -74,7 +73,6 @@ function help( pushname ) {
  ➥╿➵ *!mecha*
  ➥╿➵ *!bganime*
  ➥╿➵ *!karakter*
- ➥╿➵ *!anime*
  ➥╿➵ *!cat*
  ➥╿➵ *!quotenime*
  ➥╿➵ *!pokemon*
@@ -109,56 +107,26 @@ exports.help = help()
 
 function readme() {
     return ` 📝 *TUTORIAL CARA MENGGUNAKAN* 📝  
-
-
-
-*[infosurah]* Perintah ini untuk memberikan informasi pada surah surah ayat suci Al-Quran,Cara Menggunakannya
-*Contoh:* *_!infosurah id Al-fatiha_* *{artinya menampilkan info tentang surah Al-fatiha dengan bahasa indonesia}*
-
-*[doujinmoee]* Perintah ini untuk memberikan doujin terbaru di website doujinmoee {Bukan Berbentuk PDF Melainkan Link Download}
-*PERINGATAN..~!!*:Perintah ini mengandung Konten Dewasa Diatas Umur 18+ *{Jangan Gunakan Perintah ini untuk umur dibawahnya atau hanya mencoba-coba}*
-*Postingan Akan Di Update Setiap Harinya..!!!*
-
-
-[*dh*] Perintah ini untuk mendownload walpaper anime boy Secara Random (Download Husbu)[PROSES Pengiriman 5-10Detik]
-Contoh Perintah: *!downloadhusbu/!dh/!DownloadHusbu/!HusbuDownload/!husbudownload*
-
-
-[*wd*] Perintah ini untuk mendownload walpaper anime Girl Secara Random (Download Waifu)
-Contoh Perintah: *!downloadwaifu/!dw/!DownloadWaifu/!WaifuDownload/!waifudownload*[PROSES Pengiriman 3-8Detik]
-
-
-*[kode bhs]* Diisi dengan kode bahasa, contoh *id*, *en*, dll. Dan *[teks]*
-Contoh : *!tts id Test*
-Note : *Max 250 huruf*
-
-
-*quotemaker* diisi dengan Teks,creator,background
-Contoh : *!quotemaker |ANIME|RAYAKASE|Shark*
-
-
-*[lirik]* diisi dengan perintah lalu judul lagi....
-Contoh : *!lirik Shiawase*`
+_~Ketik Perintah *!neko nime* Untuk Memanggil random pict anime neko_
+_~Cara menggunakan fitur *!karakter...Contoh...: ketik *!karakter naruto* untuk memanggil latar belakang naruto_
+_~Cara menggunakan fitur *!user...Contoh...: ketik *!user naruto* untuk memanggil deskripsi anime naruto_
+_~Fitur !doujinmoee merupakan fitur 18+..jangan gunakan fitur jika masih dibawah umur...Cara menggunakan
+    Contoh: *!doujinmoee* untuk menampilkan konten 18+
+_!Ketik Perintah *!drama twitter* untuk memanggil random pict.._
+_Cara menggunakan *stikergiphy* Ketik *!stikergiphy link website giphy*
+*Thanks^^*
+`
 }
 exports.readme = readme()
 function info() {
     return `📜 *TENTANG BOT Takagisan Vers.4.0* 📜 
-*BOT SETIAP HARINYA AKAN DIPERIKSA OLEH OWNER BOT*
-*UNTUK MEMINTA SUPPORT DARI KALIAN BERUPA DONASI...*
-*JADI MOHON JANGAN KAGET BILA BOT BERINTERAKSI SEPERTI*
-*ORANG..BOT JANGAN DICHAT LAYAKNYA MANUSIA..*
-*KARENA BOT TIDAK BISA BERINTERAKSI JIKA TIDAK*
-*MENGGUNAKAN FITURNYA SAJA..*
-*GUNAKAN BOT DENGAN JEDA WAKTU 2-5DETIK*
-BISA DICEK DI *!DONASI*
-GUNAKAN PERINTAH !SNK UNTUK SYARAT BOT
-LINK GROUP 18+
-GROUP BOT_TAKAGISAN:https://chat.whatsapp.com/EcIp7XK3fB70JzzTCNnfYz
-GROUP 1:https://chat.whatsapp.com/DoSjFfMrcSUGWJi1rDmhOX
-GROUP 2:https://chat.whatsapp.com/LsKBB7aNVSp5TDZv8QaSrH
-LINK github BOT_TAKAGISAN
+Bot_Takagisan Merupan Bot yang dibuat hanya untuk
+mengisi kegabutan dan hiburan bagi penggunanya...
+Programbot menggunakan Nodejs...Gunakan Dengan Bijak.
+Download Link Githubnya Dibawah Ini
+*LINK github BOT_TAKAGISAN*
 https://github.com/HasamiAini/wabot_takagisan
-
+*GROUP BOT_TAKAGISAN:* https://chat.whatsapp.com/EcIp7XK3fB70JzzTCNnfYz
 `
 }
 exports.info = info()
@@ -169,15 +137,11 @@ function snk() {
  JANGAN LUPA BANTU SUPPORT BOT DENGAN CARA
  KETIK *!DONASI*   
 1.JANGAN DISPAM DENGAN FITUR YANG TIDAK ADA
-2.JANGAN BUAT FITUR SEENAKNYA
-3.GUNAKAN FITUR  YANG DISEDIAKAN
-4.BOT JANGAN DITELPON JIKA TIDAK INGIN DIBLOCK
-JIKA ANDA DIBLOCK OLEH BOT..HUBUNGI OWNER:083191735552
-5.JANGAN GUNAKAN FITUR TAMBAHAN CONTOH WAIFU:BENAR WAIFU SAGIRI:SALAH
-6.GUNAKAN BOT DENGAN BIJAKSANA...
-7.BOT JANGAN DICHAT JIKA TIDAK PENTING...
-8. *JANGAN JADIKAN BOT SEBAGAI ADMIN DI GROUP*
-    *KECUALI SUDAH ADA IZIN ONWER/PEMILIK BOT*
+2.GUNAKAN FITUR  YANG DISEDIAKAN
+3.BOT JANGAN DITELPON JIKA TIDAK INGIN DIBLOCK
+4.JANGAN GUNAKAN FITUR TAMBAHAN CONTOH WAIFU:BENAR WAIFU SAGIRI:SALAH
+5.GUNAKAN BOT DENGAN BIJAKSANA...
+6.BOT JANGAN DICHAT JIKA TIDAK PENTING...
 LINK github BOT_TAKAGISAN
 https://github.com/HasamiAini/wabot_takagisan `
 }
@@ -186,11 +150,9 @@ function donate() {
     return `💰 *BACA PENTING...!!!!* 💰
 💵 *VIA Pulsa* 083191735552:
 💵 *VIA GOPAY* 083191735552:
-💵 *BERIKAN SEIKHLAS HATI*
 💵 *VIA SAWERIA* https://saweria.co/hasamiain
 💵 *VIA TREEKTER* https://bit.ly/2K8x21K:
 💵 *VIA APLIKASI DANA* 083191735552
-💵 *BERIKAN SEIKHLAS HATI*
 📱  *OWNERBOT*:083191735552 ATAU wa.me/62831735552
 *Thanks♪(･ω･)ﾉ* !
 LINK github BOT_TAKAGISAN
