@@ -36,7 +36,7 @@ do it carefully, to make it work
 > npm install
 ```
 ```
-npm install gify-cli -g
+> npm install gify-cli -g
 ```
 
 ```
