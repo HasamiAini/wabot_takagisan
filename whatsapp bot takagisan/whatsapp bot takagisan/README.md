@@ -1,4 +1,5 @@
 # wabot_takagisan
+## Yaharo Minasan <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="20px">
 Wabot Takagisan
 |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
 
@@ -59,6 +60,15 @@ do it carefully, to make it work
 |       ✅        |   Instagram Video/Image Downloader                  |
 |       ✅        |   Facebook Video Downloader                  |
 
+| Feature 18+ |                     Feature                |
+| :------------: | :---------------------------------------------: |
+|       ✅        |   Random Doujin                   |
+|       ✅        |   Content 18+                  |
+|       ✅        |   Get a random Lewd Image                  |
+|       ✅        |   Get a random Yuri Image                  |
+|       ✅        |   Get a random Yaoi Image                  |
+|       ✅        |   Get a random Hentai Image                  |
+
 
 | Other  |                     Feature                     |
 | :------------: | :---------------------------------------------: |
@@ -67,12 +77,15 @@ do it carefully, to make it work
 |       ✅        |   Get a random waifu images     |
 |       ✅        |   Get a random quotes           |
 |       ✅        |   Get a random anime quotes     |
-|       ✅        |   Get info gempa from BMKG      |
+|       ✅        |   Get a random Memeindo      |
 |       ✅        |   Weather's report's     |
 |       ✅        |   Wikipedia                 |
 |       ✅        |   Anime searcher    |
 |       ✅        |   Get a random cat images       |
 |       ✅        |   Get a random dog images       |
+|       ✅        |   Bucin       |
+|       ✅        |   Cita-Cita       |
+|       ✅        |   Drama       |
 |      And        |   Others...                     |
 
 
