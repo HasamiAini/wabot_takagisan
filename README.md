@@ -1,35 +1,49 @@
 # wabot_takagisan
 Wabot Takagisan
-## Clone this project
-.-') _      ('-.    .-. .-')    ('-.                          .-')     ('-.         .-') _
+|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
+
+
+____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____
+ |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
+
+
+ .-') _      ('-.    .-. .-')    ('-.                          .-')     ('-.         .-') _
 (  OO) )    ( OO ).-.\  ( OO )  ( OO ).-.                     ( OO ).  ( OO ).-.    ( OO ) )
 /     '._   / . --. /,--. ,--.  / . --. /  ,----.     ,-.-') (_)---\_) / . --. /,--./ ,--,'
 |'--...__)  | \-.  \ |  .'   /  | \-.  \  '  .-./-')  |  |OO)/    _ |  | \-.  \ |   \ |  |\
-'--.  .--'.-'-'  |  ||      /,.-'-'  |  | |  |_( O- ) |  |  \\  :` `..-'-'  |  ||    \|  | )
-   |  |    \| |_.'  ||     ' _)\| |_.'  | |  | .--, \ |  |(_/ '..`''.)\| |_.'  ||  .     |/
-   |  |     |  .-.  ||  .   \   |  .-.  |(|  | '. (_/,|  |_.'.-._)   \ |  .-.  ||  |\    |
+'--.  .--'.-'-'  |  ||      /,.-'-'  |  | |  |_( O- ) |  |  \\  :   ..-'-'  |  ||    \|  | )
+   |  |    \| |_.'  ||     ' _)\| |_.'  | |  | .--, \ |  |(_/ '..''.\| |_.'  ||  .     
+      |  |     |  .-.  ||  .   \   |  .-.  |(|  | '. (_/,|  |_.'.-._)   \ |  .-.  ||  |\    |
    |  |     |  | |  ||  |\   \  |  | |  | |  '--'  |(_|  |   \       / |  | |  ||  | \   |
-   `--'     `--' `--'`--' '--'  `--' `--'  `------'   `--'    `-----'  `--' `--'`--'  `--'
+   --'     --' --'--' '--'  --' --'  ------'   --'    -----'  --' --'--'  --'
+
+
+  _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____
+ |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
+
+## Clone this project 
+## use the command below, if you want to download via the link
 
 ```bash
 > git clone https://github.com/HasamiAini/Bot_Takagisan.git
 ```
 
 ## Install the dependencies:
-Before running the below command, make sure you're in the project directory that
-you've just cloned!!
+follow the installation instructions below to continue,
+do it carefully, to make it work
 
 ```bash
 > npm install
 ```
 ```
-npm install gify-cli -g
+> npm install gify-cli -g
+```
 
 ```
 > npm start
 ```
 
-## Features
+## all features
 
 | Sticker Creator |                Feature           |
 | :-----------: | :--------------------------------: |
@@ -49,12 +63,7 @@ npm install gify-cli -g
 | Other  |                     Feature                     |
 | :------------: | :---------------------------------------------: |
 |       ✅        |   Get a random meme             |
-|       ✅        |   LogoTeks             |
-|       ✅        |   Game                 |
 |       ✅        |   Text to speech                |
-|       ✅        |   Get a random MemeIndo images              |
-|       ✅        |   Get a random  KPOP images              |
-|       ✅        |   Get a random Puisi  teks             |
 |       ✅        |   Get a random waifu images     |
 |       ✅        |   Get a random quotes           |
 |       ✅        |   Get a random anime quotes     |
@@ -62,7 +71,6 @@ npm install gify-cli -g
 |       ✅        |   Weather's report's     |
 |       ✅        |   Wikipedia                 |
 |       ✅        |   Anime searcher    |
-|       ✅        |   Walpaper               |
 |       ✅        |   Get a random cat images       |
 |       ✅        |   Get a random dog images       |
 |      And        |   Others...                     |
@@ -71,13 +79,6 @@ npm install gify-cli -g
 | Group Only  |                     Feature                     |
 | :------------: | :---------------------------------------------: |
 |       ✅        |   Promote User                  |
-|       ✅        |   Anti Spam Sticker                  |
-|       ✅        |   Promote User                  |
-|       ✅        |   Anti Link Group                  |
-|       ✅        |   Banned Member                  |
-|       ✅        |   Unbanned Member                  |
-|       ✅        |   Promote User                  |
-|       ✅        |   Profile Group                  |
 |       ✅        |   Demote User                   |
 |       ✅        |   Kick User                     |
 |       ✅        |   Add User                      |
