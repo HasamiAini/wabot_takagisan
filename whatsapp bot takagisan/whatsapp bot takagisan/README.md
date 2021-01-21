@@ -1,5 +1,18 @@
+<div align="center">
+<img src="https://resize.cdn.otakumode.com/ex/1200.630/0.111.596.314/u/f0da3d54cf33414f90114b28b3f9c571.jpg" alt="Botto-re" width="500" />
+ 
+ 
+ ## Yaharo Minasan <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="20px">
+</div>
+
+
+
 # wabot_takagisan
-## Yaharo Minasan <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="20px">
+
+
+
+
+
 Wabot Takagisan
 |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
 
