@@ -38,7 +38,7 @@ const fb = async (url) => {
         'capt': json.result.title, 'exts': '.mp4', 'url': json.result.linkVideo.sdQuality
     }
     return {
-        'capt': '[ ERROR ] Not found!', 'exts': '.jpg', 'url': 'https://c4.wallpaperflare.com/wallpaper/976/117/318/anime-girls-404-not-found-glowing-eyes-girls-frontline-wallpaper-preview.jpg'
+        'capt': '[ ERROR ] Not found!', 'exts': '.jpg', 'url': 'https://drudesk.com/sites/default/files/styles/3_front_blogs_block/public/2018-02/404-error-page-not-found.jpg'
     }
 }
 
