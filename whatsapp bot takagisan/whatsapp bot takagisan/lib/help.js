@@ -50,7 +50,9 @@ function help( pushname ) {
  ➥╿➵ *!bijak*
  ➥╿➵ *!logoteks*
  ➥╿➵ *!semangat*
+ ➥╿➵ *!bucin*
  ➥╿➵ *!puisi*
+ ➥╿➵ *!citacita*
  ➥╿➵ *!quotes*
  ➥╿➵ *!createmaker*
  ➥╿➵ *!jadwalshalat*
