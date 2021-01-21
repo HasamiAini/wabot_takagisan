@@ -3,16 +3,6 @@
  
  
  ## Yaharo Minasan <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="20px">
- > A whatsapp bot made using open-wa/wa-automate-nodejs library
-
-<p>
-  <img src ="https://miro.medium.com/max/548/1*o474X_2eTiF2Dnn39h6Rjg.jpeg" />
-  <img src="https://camo.githubusercontent.com/5c22deff6293ca12d3bc1159c6cc3a5cc9579550/68747470733a2f2f696d672e736869656c64732e696f2f6e6f64652f762f406f70656e2d77612f77612d6175746f6d617465" />
-  <a href="https://github.com/SomnathDas/Whatsapp-Botto-Re/commit-activity" target="_blank">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
-  </a>
-</p>
-
 </div>
 
 
