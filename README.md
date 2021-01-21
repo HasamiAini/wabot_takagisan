@@ -59,6 +59,15 @@ do it carefully, to make it work
 |       ✅        |   Instagram Video/Image Downloader                  |
 |       ✅        |   Facebook Video Downloader                  |
 
+| Feature 18+ |                     Feature                |
+| :------------: | :---------------------------------------------: |
+|       ✅        |   Random Doujin                   |
+|       ✅        |   Content 18+                  |
+|       ✅        |   Get a random Lewd Image                  |
+|       ✅        |   Get a random Yuri Image                  |
+|       ✅        |   Get a random Yaoi Image                  |
+|       ✅        |   Get a random Hentai Image                  |
+
 
 | Other  |                     Feature                     |
 | :------------: | :---------------------------------------------: |
@@ -73,6 +82,9 @@ do it carefully, to make it work
 |       ✅        |   Anime searcher    |
 |       ✅        |   Get a random cat images       |
 |       ✅        |   Get a random dog images       |
+|       ✅        |   Bucin       |
+|       ✅        |   Cita-Cita       |
+|       ✅        |   Drama       |
 |      And        |   Others...                     |
 
 
