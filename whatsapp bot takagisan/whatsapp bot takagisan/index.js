@@ -31,7 +31,7 @@ const start = async (client = new Client()) => {
             if (totalMem < 40) { 
             	client.sendText(chat.id, `Maaf Membernya Terlalu Sedikit ${totalMem}, Inivite Lagi Bot Jika Member Mencapai 40`).then(() => client.leaveGroup(chat.id)).then(() => client.deleteChat(chat.id))
             } else {
-                client.sendText(chat.groupMetadata.id, `Halo warga grup *${chat.contact.name}* terimakasih sudah menginvite bot ini, untuk melihat menu silahkan kirim *#help*`)
+                client.sendText(chat.groupMetadata.id, `Halo warga grup *${chat.contact.name}* terimakasih sudah menginvite bot ini, untuk melihat menu silahkan kirim *!help*`)
             }
         }))
 
