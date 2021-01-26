@@ -56,7 +56,10 @@ do it carefully, to make it work
 ```
 > npm start
 ```
-- [how to install](https://www.youtube.com/watch?v=8zXNLJNQMJY&t=9s)
+- [HOW TO INSTALL](https://www.youtube.com/watch?v=8zXNLJNQMJY&t=0s&ab_channel=HasamiChan)
+- [INSTAGRAM](https://www.instagram.com/hasamiaini/)
+- [WHATSAPP](https://wa.me/6283191735552)
+- [WHATSAPP GROUP](https://chat.whatsapp.com/GL1yVuFWNlH9D0HiYjM3Hp)
 
 ## all features
 
