@@ -56,6 +56,7 @@ do it carefully, to make it work
 ```
 > npm start
 ```
+- [how to install](https://www.youtube.com/watch?v=8zXNLJNQMJY&t=9s)
 
 ## all features
 
