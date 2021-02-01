@@ -507,19 +507,19 @@ module.exports = Messenger = async (client, message) => {
                 //Download Commands UNTUK FITUR DOWNLOAD SILAHKAN CHAT OWNER UNTUK MENDAPATKAN API-KEY YANG VALID >083191735552
                 //UNTUK FITUR DOWNLOAD YOUTUBE API BISA DIDAPATKAN MELALUI NOMOR OWNER >083191735552
          /*   case "!ytmp3":
-          if (!isGroupMsg) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
-            if (!isGroupAdmins) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
-            if (!isBotGroupAdmins) return aruga.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
+          if (!isGroupMsg) return client.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
+            if (!isGroupAdmins) return client.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
+            if (!isBotGroupAdmins) return client.reply(from, '*FITUR INI UNTUK PRABAYAR..!!!:(..*', id)
         const url = args[0];
         const videoid = url.match(
           /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
         );
-        if (videoid == null) aruga.reply(from, "Maaf, video invalid 😕", id);
+        if (videoid == null) client.reply(from, "Maaf, video invalid 😕", id);
         ytdl.getInfo(url).then((info) => {
           if (info.length_seconds > 3000) {
-            aruga.reply(from, "terlalu panjang.. ");
+            client.reply(from, "terlalu panjang.. ");
           } else {
-            aruga.reply(
+            client.reply(
               from,
               `Sebentar yaa ${pushname}, video kamu lagi di proses...`,
               id
@@ -540,7 +540,7 @@ module.exports = Messenger = async (client, message) => {
             YD.on("finished", function (err, data) {
               // const musik = MessageMedia.fromFilePath(data.file);
 
-              aruga.reply(
+              client.reply(
                 from,
                 `Halo ${pushname}, video youtube yang anda minta berhasil diproses\nNama : *${data.title}*`,
                 id
@@ -549,7 +549,7 @@ module.exports = Messenger = async (client, message) => {
                 `./media/${data.videoTitle}.mp3`,
                 "./media/ytmp3.mp3",
                 function () {
-                  aruga.sendPtt(from, "./media/ytmp3.mp3", id);
+                  client.sendPtt(from, "./media/ytmp3.mp3", id);
                 }
               );
             });
