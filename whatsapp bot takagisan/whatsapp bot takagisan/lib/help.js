@@ -7,99 +7,99 @@ function help( pushname ) {
   ┏  🖥ᵔ ω ͡ᵔ *Takagisan BOT* ͡ᵔ ω ͡ᵔ🖥 
   ╿
   ┡➪☾ ⌨️BOT Commands⌨️ ☽
-  ┠➵ *!help*
-  ┠➵ *!ban*
-  ┠➵ *!unban*
-  ┠➵ *!readme*
-  ┠➵ *!about*
-  ┠➵ *!snk*
-  ┠➵ *!sticker*
-  ┠➵ *!donasi*
-  ┠➵ *!ownerbot*
-  ┠➵ *!botstat*
-  ┠➵ *!bot*
-  ┠➵ *!lihatblock*
+  ┠➵ *${prefix}help*
+  ┠➵ *${prefix}ban*
+  ┠➵ *${prefix}unban*
+  ┠➵ *${prefix}readme*
+  ┠➵ *${prefix}about*
+  ┠➵ *${prefix}snk*
+  ┠➵ *${prefix}sticker*
+  ┠➵ *${prefix}donasi*
+  ┠➵ *${prefix}ownerbot*
+  ┠➵ *${prefix}botstat*
+  ┠➵ *${prefix}bot*
+  ┠➵ *${prefix}lihatblock*
   ╿
 ➪☾ ⌨️Group Commands⌨️ ☽
-┠➵ *!stickergif*
-┠➵ *!groupinfo*
-╿➵ *!profile*
-┠➵ *!stikergiphy*
-┠➵ *!memeindo*
-┠➵ *!games*
-┠➵ *!antisticker*
-┠➵ *!nolink*
-┠➵ *!linkgroup*
-┠➵ *!memeindo*
-┠➵ *!meme*
-┠➵ *!kick*
-┠➵ *!promote*
-┠➵ *!out*
-┠➵ *!demote*
-┠➵ *!join*
-┠➵ *!delete*
-┠➵ *!adminlist*
-┠➵ *!ownergroup*
-┠➵ *!kickall*
-┠➵ *!leaveall*
-┠➵ *!clearall*
-┠➵ *!add*
+┠➵ *${prefix}stickergif*
+┠➵ *${prefix}groupinfo*
+╿➵ *${prefix}profile*
+┠➵ *${prefix}stikergiphy*
+┠➵ *${prefix}memeindo*
+┠➵ *${prefix}games*
+┠➵ *${prefix}antisticker*
+┠➵ *${prefix}nolink*
+┠➵ *${prefix}linkgroup*
+┠➵ *${prefix}memeindo*
+┠➵ *${prefix}meme*
+┠➵ *${prefix}kick*
+┠➵ *${prefix}promote*
+┠➵ *${prefix}out*
+┠➵ *${prefix}demote*
+┠➵ *${prefix}join*
+┠➵ *${prefix}delete*
+┠➵ *${prefix}adminlist*
+┠➵ *${prefix}ownergroup*
+┠➵ *${prefix}kickall*
+┠➵ *${prefix}leaveall*
+┠➵ *${prefix}clearall*
+┠➵ *${prefix}add*
 ➪☾ ⌨️Others Commands⌨️ ☽
- ➥╿➵ *!brainly*
- ➥╿➵ *!faktaunik*
- ➥╿➵ *!bijak*
- ➥╿➵ *!logoteks*
- ➥╿➵ *!semangat*
- ➥╿➵ *!bucin*
- ➥╿➵ *!puisi*
- ➥╿➵ *!citacita*
- ➥╿➵ *!quotes*
- ➥╿➵ *!createmaker*
- ➥╿➵ *!jadwalshalat*
- ➥╿➵ *!lirik*
- ➥╿➵ *!tts*
- ➥╿➵ *!takagisan*
- ➥╿➵ *!out*
- ➥╿➵ *!takagisan*
- ➥╿➵ *!ringtone*
- ➥╿➵ *!daftarchannel*
- ➥╿➵ *!jadwaltv*
- ➥╿➵ *!jadwaltvnow*
- ➥╿➵ *!ss*
- ➥╿➵ *!ringtone*
+ ➥╿➵ *${prefix}brainly*
+ ➥╿➵ *${prefix}faktaunik*
+ ➥╿➵ *${prefix}bijak*
+ ➥╿➵ *${prefix}logoteks*
+ ➥╿➵ *${prefix}semangat*
+ ➥╿➵ *${prefix}bucin*
+ ➥╿➵ *${prefix}puisi*
+ ➥╿➵ *${prefix}citacita*
+ ➥╿➵ *${prefix}quotes*
+ ➥╿➵ *${prefix}createmaker*
+ ➥╿➵ *${prefix}jadwalshalat*
+ ➥╿➵ *${prefix}lirik*
+ ➥╿➵ *${prefix}tts*
+ ➥╿➵ *${prefix}takagisan*
+ ➥╿➵ *${prefix}out*
+ ➥╿➵ *${prefix}takagisan*
+ ➥╿➵ *${prefix}ringtone*
+ ➥╿➵ *${prefix}daftarchannel*
+ ➥╿➵ *${prefix}jadwaltv*
+ ➥╿➵ *${prefix}jadwaltvnow*
+ ➥╿➵ *${prefix}ss*
+ ➥╿➵ *${prefix}ringtone*
  ➪☾ ⌨️Anime Commands⌨️ ☽
- ➥╿➵ *!wait* (Mencari Sauce Anime)
- ➥╿➵ *!dog*
- ➥╿➵ *!user*
- ➥╿➵ *!mecha*
- ➥╿➵ *!bganime*
- ➥╿➵ *!karakter*
- ➥╿➵ *!cat*
- ➥╿➵ *!quotenime*
- ➥╿➵ *!pokemon*
- ➥╿➵ *!waifu*
- ➥╿➵ *!milf*
- ➥╿➵ *!loli*
- ➥╿➵ *!husbu*
- ➥╿➵ *!neko nime*
+ ➥╿➵ *${prefix}wait* (Mencari Sauce Anime)
+ ➥╿➵ *${prefix}dog*
+ ➥╿➵ *${prefix}user*
+ ➥╿➵ *${prefix}mecha*
+ ➥╿➵ *${prefix}bganime*
+ ➥╿➵ *${prefix}karakter*
+ ➥╿➵ *${prefix}cat*
+ ➥╿➵ *${prefix}quotenime*
+ ➥╿➵ *${prefix}pokemon*
+ ➥╿➵ *${prefix}waifu*
+ ➥╿➵ *${prefix}milf*
+ ➥╿➵ *${prefix}loli*
+ ➥╿➵ *${prefix}husbu*
+ ➥╿➵ *${prefix}neko nime*
  ➪☾ ⌨️Islam Commands⌨️ ☽
- ➥╿➵ *!listsurah*
- ➥╿➵ *!infosurah*
- ➥╿➵ *!surah*
- ➥╿➵ *!tafsir*
- ➥╿➵ *!alaudio*
+ ➥╿➵ *${prefix}listsurah*
+ ➥╿➵ *${prefix}infosurah*
+ ➥╿➵ *${prefix}surah*
+ ➥╿➵ *${prefix}tafsir*
+ ➥╿➵ *${prefix}alaudio*
  ➪☾ ⌨️Picture Commands⌨️ ☽
- ➥╿➵ *!drama twitter*
- ➥╿➵ *!randomwallpaper*
- ➥╿➵ *!walpaper*
- ➥╿➵ *!happygirl*
- ➥╿➵ *!happyboy*
- ➥╿➵ *!sadgirl*
- ➥╿➵ *!sadboy*
- ➥╿➵ *!dh*
- ➥╿➵ *!dw*
+ ➥╿➵ *${prefix}drama twitter*
+ ➥╿➵ *${prefix}randomwallpaper*
+ ➥╿➵ *${prefix}walpaper*
+ ➥╿➵ *${prefix}happygirl*
+ ➥╿➵ *${prefix}happyboy*
+ ➥╿➵ *${prefix}sadgirl*
+ ➥╿➵ *${prefix}sadboy*
+ ➥╿➵ *${prefix}dh*
+ ➥╿➵ *${prefix}dw*
  ➪☾ ⌨️content 18+ Commands⌨️ ☽
- ➥╿➵ *!doujinmoee*
+ ➥╿➵ *${prefix}doujinmoee*
  *GROUP BOT_TAKAGISAN:https://chat.whatsapp.com/EcIp7XK3fB70JzzTCNnfYz*
 
 `
