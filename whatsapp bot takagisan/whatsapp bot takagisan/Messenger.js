@@ -15,11 +15,9 @@ const { stdout } = require('process')
 const nsfw_ = JSON.parse(fs.readFileSync('./lib/NSFW.json'))
 const welkom = JSON.parse(fs.readFileSync('./lib/welcome.json'))
 const { RemoveBgResult, removeBackgroundFromImageBase64, removeBackgroundFromImageFile } = require('remove.bg')
-const GroupLinkDetector = antilink.includes(chatId)
 let antisticker = JSON.parse(fs.readFileSync('./lib/helper/antisticker.json'))
 let stickerspam = JSON.parse(fs.readFileSync('./lib/helper/stickerspam.json'))
 let antilink = JSON.parse(fs.readFileSync('./lib/helper/antilink.json'))
-var antlink = antilink.includes(chat.id)
 
 const errorurl = 'https://steamuserimages-a.akamaihd.net/ugc/954087817129084207/5B7E46EE484181A676C02DFCAD48ECB1C74BC423/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false'
 const errorurl2 = 'https://steamuserimages-a.akamaihd.net/ugc/954087817129084207/5B7E46EE484181A676C02DFCAD48ECB1C74BC423/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false'
