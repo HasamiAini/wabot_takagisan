@@ -104,7 +104,6 @@ function help( pushname ) {
 ╿➵ *${prefix}darkjokes*
 ╿➵ *${prefix}yaoi*
 ╿➵ *${prefix}yuri*
-╿➵ *${prefix}*
 ╚═〘 BOT_TAKAGISAN 〙
 
 `
