@@ -5,102 +5,107 @@ function help( pushname ) {
     return `         👋️ *Yahalo Minna-San* , Jibun no namae ${botname}. 
 
   ┏  🖥ᵔ ω ͡ᵔ *Takagisan BOT* ͡ᵔ ω ͡ᵔ🖥 
-  ╿
-  ┡➪☾ ⌨️BOT Commands⌨️ ☽
-  ┠➵ *${prefix}help*
-  ┠➵ *${prefix}ban*
-  ┠➵ *${prefix}unban*
-  ┠➵ *${prefix}readme*
-  ┠➵ *${prefix}about*
-  ┠➵ *${prefix}snk*
-  ┠➵ *${prefix}sticker*
-  ┠➵ *${prefix}donasi*
-  ┠➵ *${prefix}ownerbot*
-  ┠➵ *${prefix}botstat*
-  ┠➵ *${prefix}bot*
-  ┠➵ *${prefix}lihatblock*
-  ╿
-➪☾ ⌨️Group Commands⌨️ ☽
-┠➵ *${prefix}stickergif*
-┠➵ *${prefix}groupinfo*
-╿➵ *${prefix}profile*
-┠➵ *${prefix}stikergiphy*
-┠➵ *${prefix}memeindo*
-┠➵ *${prefix}games*
-┠➵ *${prefix}antisticker*
-┠➵ *${prefix}nolink*
-┠➵ *${prefix}linkgroup*
-┠➵ *${prefix}memeindo*
-┠➵ *${prefix}meme*
-┠➵ *${prefix}kick*
-┠➵ *${prefix}promote*
-┠➵ *${prefix}out*
-┠➵ *${prefix}demote*
-┠➵ *${prefix}join*
-┠➵ *${prefix}delete*
-┠➵ *${prefix}adminlist*
-┠➵ *${prefix}ownergroup*
-┠➵ *${prefix}kickall*
-┠➵ *${prefix}leaveall*
-┠➵ *${prefix}clearall*
-┠➵ *${prefix}add*
-➪☾ ⌨️Others Commands⌨️ ☽
- ➥╿➵ *${prefix}brainly*
- ➥╿➵ *${prefix}faktaunik*
- ➥╿➵ *${prefix}bijak*
- ➥╿➵ *${prefix}logoteks*
- ➥╿➵ *${prefix}semangat*
- ➥╿➵ *${prefix}bucin*
- ➥╿➵ *${prefix}puisi*
- ➥╿➵ *${prefix}citacita*
- ➥╿➵ *${prefix}quotes*
- ➥╿➵ *${prefix}createmaker*
- ➥╿➵ *${prefix}jadwalshalat*
- ➥╿➵ *${prefix}lirik*
- ➥╿➵ *${prefix}tts*
- ➥╿➵ *${prefix}takagisan*
- ➥╿➵ *${prefix}out*
- ➥╿➵ *${prefix}takagisan*
- ➥╿➵ *${prefix}ringtone*
- ➥╿➵ *${prefix}daftarchannel*
- ➥╿➵ *${prefix}jadwaltv*
- ➥╿➵ *${prefix}jadwaltvnow*
- ➥╿➵ *${prefix}ss*
- ➥╿➵ *${prefix}ringtone*
- ➪☾ ⌨️Anime Commands⌨️ ☽
- ➥╿➵ *${prefix}wait* (Mencari Sauce Anime)
- ➥╿➵ *${prefix}dog*
- ➥╿➵ *${prefix}user*
- ➥╿➵ *${prefix}mecha*
- ➥╿➵ *${prefix}bganime*
- ➥╿➵ *${prefix}karakter*
- ➥╿➵ *${prefix}cat*
- ➥╿➵ *${prefix}quotenime*
- ➥╿➵ *${prefix}pokemon*
- ➥╿➵ *${prefix}waifu*
- ➥╿➵ *${prefix}milf*
- ➥╿➵ *${prefix}loli*
- ➥╿➵ *${prefix}husbu*
- ➥╿➵ *${prefix}neko nime*
- ➪☾ ⌨️Islam Commands⌨️ ☽
- ➥╿➵ *${prefix}listsurah*
- ➥╿➵ *${prefix}infosurah*
- ➥╿➵ *${prefix}surah*
- ➥╿➵ *${prefix}tafsir*
- ➥╿➵ *${prefix}alaudio*
- ➪☾ ⌨️Picture Commands⌨️ ☽
- ➥╿➵ *${prefix}drama twitter*
- ➥╿➵ *${prefix}randomwallpaper*
- ➥╿➵ *${prefix}walpaper*
- ➥╿➵ *${prefix}happygirl*
- ➥╿➵ *${prefix}happyboy*
- ➥╿➵ *${prefix}sadgirl*
- ➥╿➵ *${prefix}sadboy*
- ➥╿➵ *${prefix}dh*
- ➥╿➵ *${prefix}dw*
- ➪☾ ⌨️content 18+ Commands⌨️ ☽
- ➥╿➵ *${prefix}doujinmoee*
- *GROUP BOT_TAKAGISAN:https://chat.whatsapp.com/EcIp7XK3fB70JzzTCNnfYz*
+   ╔═════════❖••❖═══════╗
+╔➪〘📝 INFORMATION 📝〙
+╿═════════❖••❖═══════╝
+╿
+╿➵ *BOT_Stress* 
+╿➵ *VERS.5.0*
+╿➵ *Owner Bot:* wa.me/6283191735552
+╿➵ *Total Sewa Premium:* 0
+╿➵ *Total Yang Sewa:* 20
+╿➵ *Total All Fitur:* 
+╿➵ *Total Group* 20
+╿➵ *Bot Dibuat Tanggal* 12-09-2020
+╿
+╿➪〘 ⌨️Bot_Command⌨️ 〙
+╿➵ *${prefix}ownerbot*
+╿➵ *${prefix}botstat*
+╿➵ *${prefix}lihatblock*
+╿➵ *${prefix}join*
+╿➵ *${prefix}ss*
+╿➵ *${prefix}bot*
+╿➪〘 ⌨️Other_Command⌨️ 〙
+╿➵ *${prefix}sticker*
+╿➵ *${prefix}stickergif*
+╿➵ *${prefix}stickergiphy*
+╿➵ *${prefix}jadwaltvnow*
+╿➵ *${prefix}lirik*
+╿➵ *${prefix}tts*
+╿➵ *${prefix}daftardaerah*
+╿➵ *${prefix}duck*
+╿➵ *${prefix}gives*
+╿➵ *${prefix}doujinmoee*
+╿➪〘 ⌨️Group_Command⌨️ 〙
+╿➵ *${prefix}linkgroup*
+╿➵ *${prefix}kick*
+╿➵ *${prefix}out*
+╿➵ *${prefix}promote*
+╿➵ *${prefix}demote*
+╿➵ *${prefix}delete*
+╿➵ *${prefix}adminlist*
+╿➵ *${prefix}ownergroup*
+╿➵ *${prefix}daftarmember*
+╿➵ *${prefix}kickall*
+╿➵ *${prefix}add*
+╿➵ *${prefix}welcome*
+╿➵ *${prefix}revLinkGrup*
+╿➪〘 ⌨️Hiburan_Command⌨️ 〙
+╿➵ *${prefix}meme*
+╿➵ *${prefix}memeindo*
+╿➵ *${prefix}meme*
+╿➵ *${prefix}kpop*
+╿➵ *${prefix}quotemaker*
+╿➪〘 ⌨️Anime_Command⌨️ 〙
+╿➵ *${prefix}wait*
+╿➵ *${prefix}dog*
+╿➵ *${prefix}cat*
+╿➵ *${prefix}pokemon*
+╿➵ *${prefix}husbu*
+╿➵ *${prefix}loli*
+╿➵ *${prefix}waifu*
+╿➵ *${prefix}milf*
+╿➵ *${prefix}randomwalpaper*
+╿➵ *${prefix}walpaper*
+╿➵ *${prefix}happygirl*
+╿➵ *${prefix}happyboy*
+╿➵ *${prefix}sadgirl*
+╿➵ *${prefix}sadboy*
+╿➵ *${prefix}dh*
+╿➵ *${prefix}dw*
+╿➵ *${prefix}mecha*
+╿➵ *${prefix}user*
+╿➵ *${prefix}karakter*
+╿➵ *${prefix}bganime*
+╿➵ *${prefix}karakter*
+╿➪〘 ⌨️Motivasi_Command⌨️ 〙
+╿➵ *${prefix}quotenime*
+╿➵ *${prefix}bucin*
+╿➵ *${prefix}citacita*
+╿➵ *${prefix}quotes*
+╿➵ *${prefix}puisi*
+╿➵ *${prefix}drama*
+╿➵ *${prefix}semangat*
+╿➵ *${prefix}fakta*
+╿➵ *${prefix}bijak*
+╿➵ *${prefix}game*
+╿➪〘 ⌨️Owner_Command⌨️ 〙
+╿➵ *${prefix}leaveall*
+╿➵ *${prefix}clearall*
+╿➵ *${prefix}bc*
+╿➪〘 ⌨️Premium_Command⌨️ 〙
+╿➵ *${prefix}ban*
+╿➵ *${prefix}covid*
+╿➵ *${prefix}unban*
+╿➵ *${prefix}subreddit*
+╿➵ *${prefix}ahegao*
+╿➵ *${prefix}lewd*
+╿➵ *${prefix}cosplay*
+╿➵ *${prefix}darkjokes*
+╿➵ *${prefix}yaoi*
+╿➵ *${prefix}yuri*
+╿➵ *${prefix}*
+╚═〘 BOT_TAKAGISAN 〙
 
 `
 }
