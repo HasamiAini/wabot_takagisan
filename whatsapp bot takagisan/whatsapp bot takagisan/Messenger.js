@@ -451,6 +451,19 @@ module.exports = Messenger = async (client, message) => {
                 client.reply(from, '*Gomenasai Onichan Ada yang error!*', id)
             })
             break
+	case '!soundcita'://Piyobot
+          fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/windabasudara.txt')
+            .then(res => res.text())
+            .then(body => {
+            let cita = body.split('\n')
+            let raya = cita[Math.floor(Math.random() * cita.length)]
+            client.sendFileFromUrl(from, raya, 'takagisan.mp3', id)
+                .then(() => console.log('Success sending cita'))
+              })
+             .catch(() => {
+            client.reply(from, 'Ada yang Error!', id)
+             })
+             break
       case '!kpop':
         if (!isGroupMsg) return client.reply(from, 'Mohon Maaf Fitur Khusus Group!', id)
             if (args.length == 0) return client.reply(from, `Untuk menggunakan ${prefix}kpop\nSilahkan ketik: ${prefix}kpop [query]\nContoh: ${prefix}kpop bts\n\nquery yang tersedia:\nblackpink, exo, bts, twice`, id)
