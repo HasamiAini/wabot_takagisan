@@ -9,32 +9,33 @@ function help( pushname ) {
 ╔➪〘📝 INFORMATION 📝〙
 ╿═════════❖••❖═══════╝
 ╿
-╿➵ *BOT_Stress* 
+╿➵ *BOT_Takagisan* 
 ╿➵ *VERS.5.0*
 ╿➵ *Owner Bot:* wa.me/6283191735552
-╿➵ *Total Sewa Premium:* 0
-╿➵ *Total Yang Sewa:* 20
-╿➵ *Total All Fitur:* 
-╿➵ *Total Group* 20
-╿➵ *Bot Dibuat Tanggal* 12-09-2020
 ╿
 ╿➪〘 ⌨️Bot_Command⌨️ 〙
 ╿➵ *${prefix}ownerbot*
 ╿➵ *${prefix}botstat*
+╿➵ *${prefix}iklan1*
+╿➵ *${prefix}iklan2*
+╿➵ *${prefix}iklan3*
+╿➵ *${prefix}iklan4*
 ╿➵ *${prefix}lihatblock*
 ╿➵ *${prefix}join*
 ╿➵ *${prefix}ss*
 ╿➵ *${prefix}bot*
+╿➵ *${prefix}layanan*
+╿➵ *TOTAL FITUR:* 6
 ╿➪〘 ⌨️Other_Command⌨️ 〙
-╿➵ *${prefix}sticker*
-╿➵ *${prefix}stickergif*
 ╿➵ *${prefix}stickergiphy*
 ╿➵ *${prefix}jadwaltvnow*
 ╿➵ *${prefix}lirik*
 ╿➵ *${prefix}tts*
+╿➵ *${prefix}stickergif*
 ╿➵ *${prefix}daftardaerah*
 ╿➵ *${prefix}duck*
 ╿➵ *${prefix}gives*
+╿➵ *TOTAL FITUR:* 18
 ╿➵ *${prefix}doujinmoee*
 ╿➪〘 ⌨️Group_Command⌨️ 〙
 ╿➵ *${prefix}linkgroup*
@@ -50,14 +51,23 @@ function help( pushname ) {
 ╿➵ *${prefix}add*
 ╿➵ *${prefix}welcome*
 ╿➵ *${prefix}revLinkGrup*
+╿➵ *TOTAL FITUR:* 12
 ╿➪〘 ⌨️Hiburan_Command⌨️ 〙
 ╿➵ *${prefix}meme*
+╿➵ *${prefix}jadian*
+╿➵ *${prefix}slap*
+╿➵ *${prefix}slap*
 ╿➵ *${prefix}memeindo*
 ╿➵ *${prefix}meme*
 ╿➵ *${prefix}kpop*
 ╿➵ *${prefix}quotemaker*
+╿➵ *TOTAL FITUR:* 7
 ╿➪〘 ⌨️Anime_Command⌨️ 〙
 ╿➵ *${prefix}wait*
+╿➵ *${prefix}rhug*
+╿➵ *${prefix}animeavatar*
+╿➵ *${prefix}baka*
+╿➵ *${prefix}randomwaifu*
 ╿➵ *${prefix}dog*
 ╿➵ *${prefix}cat*
 ╿➵ *${prefix}pokemon*
@@ -78,6 +88,7 @@ function help( pushname ) {
 ╿➵ *${prefix}karakter*
 ╿➵ *${prefix}bganime*
 ╿➵ *${prefix}karakter*
+╿➵ *TOTAL FITUR:* 27
 ╿➪〘 ⌨️Motivasi_Command⌨️ 〙
 ╿➵ *${prefix}quotenime*
 ╿➵ *${prefix}bucin*
@@ -89,12 +100,29 @@ function help( pushname ) {
 ╿➵ *${prefix}fakta*
 ╿➵ *${prefix}bijak*
 ╿➵ *${prefix}game*
+╿➵ *TOTAL FITUR:* 10
 ╿➪〘 ⌨️Owner_Command⌨️ 〙
 ╿➵ *${prefix}leaveall*
 ╿➵ *${prefix}clearall*
 ╿➵ *${prefix}bc*
+╿➵ *TOTAL FITUR:* 3
 ╿➪〘 ⌨️Premium_Command⌨️ 〙
+╿➵ *${prefix}soundcita*
+╿➵ *${prefix}infobmkg*
+╿➵ *${prefix}nickff*
+╿➵ *${prefix}hasilcarding*
+╿➵ *${prefix}harta*
+╿➵ *${prefix}stickdarcula*
+╿➵ *${prefix}gpsticker*
+╿➵ *${prefix}tebakgambar2*
+╿➵ *${prefix}randomstiker*
 ╿➵ *${prefix}ban*
+╿➵ *${prefix}bjanime*
+╿➵ *${prefix}rhentai*
+╿➵ *${prefix}kissgif*
+╿➵ *${prefix}cumgif*
+╿➵ *${prefix}bjgif*
+╿➵ *${prefix}nsfwgif*
 ╿➵ *${prefix}covid*
 ╿➵ *${prefix}unban*
 ╿➵ *${prefix}subreddit*
@@ -104,6 +132,7 @@ function help( pushname ) {
 ╿➵ *${prefix}darkjokes*
 ╿➵ *${prefix}yaoi*
 ╿➵ *${prefix}yuri*
+╿➵ *TOTAL FITUR:* 17
 ╚═〘 BOT_TAKAGISAN 〙
 
 `
