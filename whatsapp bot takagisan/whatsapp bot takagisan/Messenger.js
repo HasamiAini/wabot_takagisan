@@ -84,56 +84,21 @@ module.exports = Messenger = async (client, message) => {
         switch(command) {
         //Bot Commands
         case '!menu':
-            client.reply(from, '*Jawab Otomatis*\n*UNTUK PROMO MINGGU INI BELUM ADA*\n*LIST  ALL HARGA DROP*. \nKetik kata yang bercetak tebal\n👉 *!liatff*\n👉 *!liatmlex*\n👉 *!giftff*\n👉 *!cekpubg1*\n👉 *!cekpubg2*\n👉 *!liatmlsup*\n👉 *!liatcdom*\n👉 *!giftskinml*\n👉 *!liatsquadverif*\n👉 *!liatnamasquad*\n👉 *!cekhago*\n👉 *!pembayaran*\n👉 *!cekpremium*\n👉 *infogifskinml*\n👉 *!help*\nCara cuan :Turun rate drop ❎\nNaik harga jual ✅*', id)
-        break
         case '!help':
             client.sendText(from, help)
             break
-        case '!liatff':
+        case '!readme':
             client.reply(from, readme, id)
             break
-        case '!infogifskinml':
-            client.reply(from, infoskinml, id)
-            break
-        case '!#liatmlfast':
-            client.sendLinkWithAutoPreview(from, '*JAWAB OTOMATIS* ', info)
+        case '!info':
+            client.sendLinkWithAutoPreview(from, '*BACA PENTING* ', info)
             break
         
-        case '!liatmlex':
+        case '!snk':
             client.reply(from, snk, id)
             break
-        case '!giftff':
-            client.sendLinkWithAutoPreview(from, '*JAWAB OTOMATIS*', donate)
-        break
-        case '!liatmlsup':
-            client.reply(from, textml, id)
-            break
-        case '!liatcdom':
-            client.reply(from, textCdom, id)
-        break
-        case '!giftskinml':
-            client.reply(from, textGift, id)
-        break
-        case '!liatsquadverif':
-            client.reply(from, textSquad, id)
-        break
-        case '!liatnamasquad':
-            client.reply(from, textSq, id)
-        break
-        case '!pembayaran':
-            client.reply(from, textPembayaran, id)
-        break
-        case '!cekpremium':
-            client.reply(from, textPremium, id)
-        break
-        case '!cekhago':
-            client.reply(from, textHago, id)
-        break
-        case '!cekpubg1':
-            client.reply(from, textPubg, id)
-        break
-        case '!cekpubg2':
-            client.reply(from, textCek, id)
+        case '!donasi':
+            client.sendLinkWithAutoPreview(from, '*MY SUPPORT*', donate)
         break
         case '!sticker':
         case '!stiker':
@@ -967,8 +932,26 @@ module.exports = Messenger = async (client, message) => {
             }
             break
     //NEWFITUR
+            case 'igdown':
+                    if (args.length == 0) return client.reply(from, `Kirim perintah ${prefix}ig2 linkig`, id)
+                    client.reply(from, '_Scrapping Metadataa..._', id)
+                    axios.get(`https://api.zeks.xyz/api/ig?url=${body.slice(5)}&apikey=apivinz`)
+			        .then(async(res) => {
+			            client.sendFileFromUrl(from, `${res.data.result[0].url}`, 'ig.mp4', '', id)
+			            .catch(() => {
+			        client.reply(from, 'Error njing', id)
+	            	})
+	                })
+	            break
+                 case 'ttp':
+                    client.reply(from, mess.wait, id)
+                     axios.get(`https://client-api.herokuapp.com/api/ttp?text=${body.slice(5)}&apikey=BotWeA`)
+                    .then(async(res) => {
+                        client.sendImageAsSticker(from, res.data.base64)
+                     })
+                     break
                 case '!drama':
-            if (args.length == 0) return aruga.reply(from, `Untuk menggunakan !drama\nSilahkan ketik: $!drama [query]\nContoh: !drama twitter\n\nquery yang tersedia:\ntwitter`, id)
+            if (args.length == 0) return client.reply(from, `Untuk menggunakan !drama\nSilahkan ketik: $!drama [query]\nContoh: !drama twitter\n\nquery yang tersedia:\ntwitter`, id)
             if (args[0] == 'twitter') {
                 fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/' + args[0] + '.txt')
                 .then(res => res.text())
@@ -1716,6 +1699,227 @@ ${desc}`)
                 await client.sendFileFromUrl(from, errorurl2, 'error.png', ' Maaf, Soal Quiz tidak ditemukan')
            }
            break
+               //COMMAND_ANIME
+               case '!spank':
+                if (!ispremium) return client.reply(from, 'Command Premium!\ngagal! Maaf anda belum terdaftar sebagai user premium\nsilahkan chat owner bot untuk mendaftar.', id)
+			    client.reply(from, mess.wait, id)
+			    axios.get('https://nekos.life/api/v2/img/spank').then(res => {
+			    client.sendFileFromUrl(from, res.data.url)
+			    })
+		    	break
+               case '!randompat':
+			        client.reply(from, mess.wait, id)
+			        axios.get('https://nekos.life/api/v2/img/pat').then(res => {
+			        client.sendFileFromUrl(from, res.data.url)
+		             })
+			        .catch((err) => {
+			        client.reply(from, `Error`, id)
+	                 })
+	            break
+               case '!classic':
+                     if (!isNsfw) return client.reply(from, 'Command Premium!\ngagal! Maaf anda belum terdaftar sebagai user premium\nsilahkan chat owner bot untuk mendaftar.', id)
+			        client.reply(from, mess.wait, id)
+			        axios.get('https://nekos.life/api/v2/img/classic').then(res => {
+			        client.sendFileFromUrl(from, res.data.url)
+			        })
+		            	break
+               case '!kuni':
+                if (!ispremium) return client.reply(from, 'Command Premium!\ngagal! Maaf anda belum terdaftar sebagai user premium\nsilahkan chat owner bot untuk mendaftar.', id)
+			        client.reply(from, mess.wait, id)
+			        axios.get('https://nekos.life/api/v2/img/kuni').then(res => {
+		             client.sendFileFromUrl(from, res.data.url)
+		        	})
+			            break
+               case '!trapnime':
+                    if (!ispremium) return client.reply(from, 'Command Premium!\ngagal! Maaf anda belum terdaftar sebagai user premium\nsilahkan chat owner bot untuk mendaftar.', id)
+			        client.reply(from, mess.wait, id)
+			        axios.get('https://nekos.life/api/v2/img/trap').then(res => {
+			        client.sendFileFromUrl(from, res.data.url, 'img.jpg', '', id)
+			        })
+			        break
+               case '!cuddle':
+                if (!isGroupMsg) return client.reply(from, 'Command Premium!\ngagal! Maaf anda belum terdaftar sebagai user premium\nsilahkan chat owner bot untuk mendaftar.', id)
+			    client.reply(from, mess.wait, id)
+			    axios.get('https://nekos.life/api/v2/img/cuddle').then(res => {
+			    client.sendFileFromUrl(from, res.data.url)
+			    })
+			break
+           case '!tickle':
+            if (!isGroupMsg) return client.reply(from, 'Ara..ara..mau gunakan bot secara illegal?hubungi 083191735552 wa.me/6283191735552', id)
+             if (!ispremium) return client.reply(from, 'FITUR PREMIUM HUBUNGI wa.me/6283191735552', id)
+            client.reply(from, mess.wait, id)
+            axios.get('https://nekos.life/api/v2/img/tickle').then(res => {
+            client.sendFileFromUrl(from, res.data.url)
+            })
+            break
+           case '!cakep':
+            if (!isGroupMsg) return client.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
+            const gmekk = await client.getGroupMembersId(groupId)
+            let gmikk = gmekk[Math.floor(Math.random() * gmekk.length)]
+            const mmkkkk = `YANG PALING CAKEP DI GRUP SINI ADALAH @${gmikk.replace(/@c.us/g, '')}\n\n_Di Persembahkan Oleh_ *~Bot_Takagisan*\nMy Owner Contact:wa.me/6283191735552`
+            client.sendTextWithMentions(from, mmkkkk, id)
+            break
+           case 'anal2':
+                    if (!ispremium) return client.reply(from, 'FITUR PREMIUM HUBUNGI wa.me/6283191735552', id)
+		            client.reply(from, mess.wait, id)
+		            axios.get('https://nekos.life/api/v2/img/anal').then(res => {
+		            client.sendFileFromUrl(from, res.data.url)
+		                })
+		            break
+           case '!triggered':
+                    if (!isGroupMsg) return client.reply(from, 'Ara..Ara..Mau gunakan fitur illegal ya? Hubungi >wa.me/6283191735552', id)
+		            if (args.length == 0) return client.reply(from, `Untuk membuat gif triggered\nGunakan ${prefix}triggered link foto\nContoh : ${prefix}trigggered https://avatars.githubusercontent.com/Urbaee`, id)
+		            client.reply(from, mess.wait, id)
+		            const giftr = body.slice(11)
+		            await client.sendFileFromUrl(from, `https://api.zeks.xyz/api/triger?apikey=apivinz&img=${giftr}`, 'img.gif', '', id)
+		            await client.sendStickerfromUrl(from, `https://api.zeks.xyz/api/triger?apikey=apivinz&img=${giftr}`, id)
+		            break
+           case '!lesbi':
+                    if (!ispremium) return client.reply(from, 'FITUR PREMIUM HUBUNGI wa.me/6283191735552', id)
+		                client.reply(from, mess.wait, id)
+		                axios.get('https://nekos.life/api/v2/img/les').then(res => {
+		            client.sendStickerfromUrl(from, res.data.url)
+                    })
+		                break
+           case '!ttgif':
+            if (!ispremium) return client.reply(from, 'FITUR PREMIUM HUBUNGI wa.me/6283191735552', id)
+                client.reply(from, mess.wait,id)
+                axios.get('https://nekos.life/api/v2/img/boobs').then(res => {
+                client.sendStickerfromUrl(from, res.data.url)
+                })
+                break
+           case '!anal':
+                    if (!ispremium) return client.reply(from, 'FITUR PREMIUM HUBUNGI wa.me/6283191735552', id)
+		            client.reply(from, mess.wait, id)
+		            axios.get('https://nekos.life/api/v2/img/anal').then(res => {
+		                client.sendStickerfromUrl(from, res.data.url)
+		                })
+		            break
+           case '!bocil':
+                     client.reply(from, mess.wait, id)
+                     await client.sendFileFromUrl(from, 'http://piyobot.000webhostapp.com/gg.mp4', 'gg.mp4', 'Wika..Wika', id)
+                    break
+           case '!feetgif':
+                    if (!isPremium) return client.reply(from, 'FITUR PREMIUM HUBUNGI wa.me/6283191735552', id)
+		            client.reply(from, mess.wait, id)
+		            axios.get('https://nekos.life/api/v2/img/feetg').then(res => {
+		            client.sendStickerfromUrl(from, res.data.url)
+		            })
+		            break
+                    
+                    case '!chika'://piyobot
+                    if (!isPremium) return client.reply(from, ' *FITUR KHUSUS PREMIUM..DAFTAR KE wa.me/6283191735552* ', id) 
+                 await client.reply(from, `media sedang dikirim , tunggu sampe10-20 detik`, id)
+                fetch('https://raw.githubusercontent.com/AlvioAdjiJanuar/chika/main/chika.txt')
+                 .then(res => res.text())
+                  .then(body => {
+                  let chika = body.split('\n')
+                 let chikax = chika[Math.floor(Math.random() * chika.length)]
+                    client.sendFileFromUrl(from, `https://piyobot.000webhostapp.com/${chikax}.mp4`, 'chika.mp4', 'Nih tod', id)
+                 .then(() => console.log('Success sending Video'))
+                       })
+                  .catch(() => {
+                      client.reply(from, 'Ada yang Error!', id)
+                      })
+                     break
+                     case '!silverpb':
+                        case '!silverbp':
+                        if (args.length == 0) return client.reply(from, `Bot akan mengirimkan Silver Play Button dengan kata yang anda masukkan\nContoh : ${prefix}silverpb Urbaee`, id)
+                        const yuzu = body.slice(10)
+                        await axios.get(`https://api.zeks.xyz/api/splaybutton?text=${yuzu}&apikey=apivinz`).then(res => {
+                        client.sendFileFromUrl(from, `${res.data.result}`, 'image.jpg', 'Congratss!!', id)
+                        .catch(() => {
+                        client.reply(from, 'Error ngab', id)
+                                })
+                         })
+                        .catch(() => {
+                        client.reply(from, 'Error ngab...', id)
+                        })
+                        break
+                     case '!goldpb':
+                    case '!goldbp':
+                    if (args.length == 0) return client.reply(from, `Bot akan mengirimkan Gold Play Button dengan nama yang kalian custom sendiri\nContoh : ${prefix}goldpb Urbaee`, id)
+                    const yuza = body.slice(8)
+                    await axios.get(`https://api.zeks.xyz/api/gplaybutton?text=${yuza}&apikey=apivinz`).then(res => {
+                    console.log('Getting Picture');
+                    client.sendFileFromUrl(from, `${res.data.result}`, 'image.jpg', 'Congratsss for 1 Million Subscribers', id)
+                    })
+                    .catch(() => {
+                    client.reply(from, 'Error....', id)
+                      })
+                     break
+                     case '!ytmp3':
+                        if (!isPremium) return client.reply(from, `DAFTAR FITUR PREMIUM DULU GAYS...wa.me/6283191735552`, id)
+                        if (!isGroupMsg) return client.reply(from, `Perintah ini hanya bisa di gunakan dalam group!`, id)
+                        if (args.length == 0) return client.reply(from, `Untuk mendownload lagu dari youtube\nketik: ${prefix}ytmp3 [link_yt]`, id)
+                          client.reply(from, mess.wait, id)
+		                axios.get(`https://st4rz.herokuapp.com/api/yta2?url=${body.slice(7)}`)
+                     .then(async(res) => {
+				        await client.sendFileFromUrl(from, res.data.thumb, '', `「 *YOUTUBE MP3* 」\n\nJudul: ${res.data.title}\nExecute: ${res.data.ext}\n\n*_Mohon tunggu sebentar..sedang mengirim file_*\n*_Tolong jangan dispam..!!!_*`, id)
+				        await client.sendFileFromUrl(from, res.data.result, '', '', id)
+                      		.catch((err) => {
+				        client.reply(from, `URL ${linkmp3} Sudah pernah didownload sebelumnya, Link akan direset selama 30 menit`,id)
+			             })
+		            	})
+			        .catch(err => {
+			        	client.reply(from, 'error', id)
+			            })
+    			        break  
+                     case '!fakta2':
+                         client.reply(from, mess.wait, id)
+			            axios.get(`https://videfikri.com/api/fakta`).then(res => {
+				            const faktuy = `${res.data.result.fakta}\n\nBy : ZeusXz`
+				        client.reply(from, faktuy, id)
+			            })
+			            break
+                     case '!fiersa':
+                    client.reply(from, mess.wait, id)
+                fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/fiersa-besari.txt')
+                    .then(res => res.text())
+                    .then(body => {
+                let ff = body.split('\n')
+                let randomff = ff[Math.floor(Math.random() * ff.length)]
+                client.reply(from, randomff, id)
+                 })
+                     .catch(() => {
+                     client.reply(from, 'Ada yang Error!', id)
+                     })
+                     break
+                case '!trumptweet':
+                    if (!isPremium) return client.reply(from, ' *FITUR KHUSUS PREMIUM..DAFTAR KE wa.me/6283191735552* ', id) 
+                if (args.length == 0) return  client.reply(from, `Kirim perintah #trumptweet [ Teks ], contoh #trumptweet ZeusXZ`, id)
+                 client.reply(from, mess.wait, id)
+                const tump = body.slice(12)
+                const trumj = await axios.get(`https://nekobot.xyz/api/imagegen?type=trumptweet&text=${tump}`)
+                const tumh = trumj.data
+                if (tumh.message.endsWith('.png')) {
+                    var ext = '.png'
+                } else {
+                    var ext = '.jpg'
+                }
+                 client.sendFileFromUrl(from, tumh.message, `Nekonime${ext}`, 'Noh mhank', id)
+                                break
+            case '!jumpscare'://Piyobot
+               client.reply(from, mess.wait, id)
+                fetch('https://raw.githubusercontent.com/AlvioAdjiJanuar/lord/main/jumpscare.txt')
+                .then(res => res.text())
+                   .then(body => {
+                 let lord = body.split('\n')
+                let nadhira = lord[Math.floor(Math.random() * lord.length)]
+                 client.sendFileFromUrl(from, nadhira, 'lord.mp4','Nih ngab', id)
+                .then(() => console.log('Success sending lord'))
+                  })
+                  .catch(() => {
+                      client.reply(from, 'Ada yang Error!', id)
+                 })
+                     break
+                case '!wallpaper2':
+                case '!walpaper2':
+                    client.reply(from, mess.wait, id);
+                    axios.get('https://akaneko-api.herokuapp.com/api/mobileWallpapers').then(res => {
+                        client.sendFileFromUrl(from, res.data.url,'Desktop Wallpaper.jpeg', 'Nih...', id);
+                    });
+                    break
     case '!gpsticker':
         if (!isPremium) return client.reply(from, ' *FITUR KHUSUS PREMIUM..DAFTAR KE wa.me/6283191735552* ', id)  
 	   client.reply(from, mess.wait, id)
@@ -1723,6 +1927,17 @@ ${desc}`)
 	      let giphy = giph[Math.floor(Math.random() * giph.length)]
 		   client.sendStickerfromUrl(from, giphy)
 		   break
+           case '!nekopoiapp':
+          client.reply(from, mess.wait, id)
+           await  client.sendFileFromUrl(from, `https://bit.ly/nekopoiapp`, 'nekopoi.apk', `Silahkan Didownload`,  id)
+           .then(() => console.log('Success send apk'))
+            break           
+           case '!xnxxapp':
+            client.reply(from, mess.wait, id)
+             await  client.sendFileFromUrl(from, `https://piyobot.000webhostapp.com/XXNX%20Mod%20agustusan%20(SFILE.MOBI).apk`, 'xxnx.apk', id)
+             await  client.reply(from, 'Silahkan Didownload Sendiri', id)
+            .then(() => console.log('Success send apk'))
+            break
 
     case '!doujinmoee': 
             const doujinmoee = fs.readFileSync('./lib/doujinmoee.json')
@@ -1731,7 +1946,7 @@ ${desc}`)
             const doujinmoeeKey = doujinmoeeJson[doujinmoeeIndex]
             client.sendFileFromUrl(from, doujinmoeeKey.image, 'doujinmoee.jpg', doujinmoeeKey.teks)
             break
-            case 'jadian':
+            case '!jadian':
                     if (!isGroupMsg) return client.reply(from, 'perintah ini hanya dapat digunakan di dalam grup', id)
                     const mem = groupMembers
                     const aku = mem[Math.floor(Math.random() * mem.length)];
@@ -1739,7 +1954,7 @@ ${desc}`)
                     const sapa = `Cieee... @${aku.replace(/[@c.us]/g, '')} (💘) @${kamu.replace(/[@c.us]/g, '')} baru jadian nih\nBagi pj nya dong\n`
                     await client.sendTextWithMentions(from, sapa)
                     break    
-            case 'bjanime':
+            case '!bjanime':
                 if (!isPremium) return client.reply(from, ' *FITUR KHUSUS PREMIUM..DAFTAR KE wa.me/6283191735552* ', id)  
                 client.reply(from, mess.wait, id);
                 axios.get('https://nekos.life/api/v2/img/blowjob').then(res => {
@@ -1747,28 +1962,28 @@ ${desc}`)
                 });
                 break
                
-               case 'rhentai':
+               case '!rhentai':
                 if (!isPremium) return client.reply(from, ' *FITUR KHUSUS PREMIUM..DAFTAR KE wa.me/6283191735552* ', id)  
                client.reply(from, mess.wait, id);
                axios.get('https://nekos.life/api/v2/img/hentai').then(res => {
                	client.sendFileFromUrl(from, res.data.url);
                });
                break
-               case 'kissgif':
+               case '!kissgif':
                 if (!isPremium) return client.reply(from, ' *FITUR KHUSUS PREMIUM..DAFTAR KE wa.me/6283191735552* ', id)  
                client.reply(from, mess.wait, id);
                axios.get('https://nekos.life/api/v2/img/kiss').then(res => {
                	client.sendFileFromUrl(from, res.data.url);
                });
                break
-                case 'cumgif':
+                case '!cumgif':
                     if (!isPremium) return client.reply(from, ' *FITUR KHUSUS PREMIUM..DAFTAR KE wa.me/6283191735552* ', id)  
                 client.reply(from, mess.wait, id);
                 axios.get('https://nekos.life/api/v2/img/cum').then(res => {
                 	client.sendFileFromUrl(from, res.data.url)
                 });
                 break
-                case 'bjgif':
+                case '!bjgif':
                     if (!isPremium) return client.reply(from, ' *FITUR KHUSUS PREMIUM..DAFTAR KE wa.me/6283191735552* ', id)  
                 client.reply(from, mess.wait, id);
                 axios.get('https://nekos.life/api/v2/img/bj').then(res => {
@@ -1776,7 +1991,7 @@ ${desc}`)
                 });
               break 
                         
-                case 'nsfwgif':
+                case '!nsfwgif':
                     if (!isPremium) return client.reply(from, ' *FITUR KHUSUS PREMIUM..DAFTAR KE wa.me/6283191735552* ', id)  
                 client.reply(from, mess.wait, id);
                 axios.get('https://nekos.life/api/v2/img/nsfw_neko_gif').then(res => {
@@ -1789,25 +2004,25 @@ ${desc}`)
                     client.sendFileFromUrl(from, res.data.url, 'Waifu UwU');
                 });
                 break
-                case 'slap':
+                case '!slap':
                 client.reply(from, mess.wait, id);
                 axios.get('https://nekos.life/api/v2/img/slap').then(res => {
                 	client.sendFileFromUrl(from, res.data.url);
                 });
                 break
-                case 'rhug':
+                case '!rhug':
                 client.reply(from, mess.wait, id);
                 axios.get('https://nekos.life/api/v2/img/hug').then(res => {
                 	client.sendFileFromUrl(from, res.data.url);
                 });
                 break
-                case 'animeavatar':
+                case '!animeavatar':
                     client.reply(from, mess.wait, id);
                     axios.get('https://nekos.life/api/v2/img/avatar').then(res => {
                         client.sendFileFromUrl(from, res.data.url, 'Avatar UwU');
                     });
                     break
-                case 'baka':
+                case '!baka':
                 client.reply(from, mess.wait, id);
                 axios.get('https://nekos.life/api/v2/img/baka').then(res => {
                     client.sendFileFromUrl(from, res.data.url, 'baka')
