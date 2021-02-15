@@ -16,27 +16,27 @@ function help( pushname ) {
 ╿➪〘 ⌨️Bot_Command⌨️ 〙
 ╿➵ *${prefix}ownerbot*
 ╿➵ *${prefix}botstat*
-╿➵ *${prefix}iklan1*
-╿➵ *${prefix}iklan2*
-╿➵ *${prefix}iklan3*
-╿➵ *${prefix}iklan4*
 ╿➵ *${prefix}lihatblock*
 ╿➵ *${prefix}join*
 ╿➵ *${prefix}ss*
 ╿➵ *${prefix}bot*
 ╿➵ *${prefix}layanan*
-╿➵ *TOTAL FITUR:* 6
+╿➵ *TOTAL FITUR:* 7
 ╿➪〘 ⌨️Other_Command⌨️ 〙
 ╿➵ *${prefix}stickergiphy*
+╿➵ *${prefix}bocil*
+╿➵ *${prefix}ttgif*
+╿➵ *${prefix}triggered*
 ╿➵ *${prefix}jadwaltvnow*
 ╿➵ *${prefix}lirik*
+╿➵ *${prefix}jadwaltv2*
 ╿➵ *${prefix}tts*
 ╿➵ *${prefix}stickergif*
 ╿➵ *${prefix}daftardaerah*
 ╿➵ *${prefix}duck*
 ╿➵ *${prefix}gives*
-╿➵ *TOTAL FITUR:* 18
 ╿➵ *${prefix}doujinmoee*
+╿➵ *TOTAL FITUR:* 13
 ╿➪〘 ⌨️Group_Command⌨️ 〙
 ╿➵ *${prefix}linkgroup*
 ╿➵ *${prefix}kick*
@@ -51,9 +51,10 @@ function help( pushname ) {
 ╿➵ *${prefix}add*
 ╿➵ *${prefix}welcome*
 ╿➵ *${prefix}revLinkGrup*
-╿➵ *TOTAL FITUR:* 12
+╿➵ *TOTAL FITUR:* 13
 ╿➪〘 ⌨️Hiburan_Command⌨️ 〙
 ╿➵ *${prefix}meme*
+╿➵ *${prefix}cakep*
 ╿➵ *${prefix}jadian*
 ╿➵ *${prefix}slap*
 ╿➵ *${prefix}slap*
@@ -61,14 +62,17 @@ function help( pushname ) {
 ╿➵ *${prefix}meme*
 ╿➵ *${prefix}kpop*
 ╿➵ *${prefix}quotemaker*
-╿➵ *TOTAL FITUR:* 7
+╿➵ *TOTAL FITUR:* 9
 ╿➪〘 ⌨️Anime_Command⌨️ 〙
 ╿➵ *${prefix}wait*
+╿➵ *${prefix}walpaper2*
 ╿➵ *${prefix}rhug*
 ╿➵ *${prefix}animeavatar*
 ╿➵ *${prefix}baka*
 ╿➵ *${prefix}randomwaifu*
 ╿➵ *${prefix}dog*
+╿➵ *${prefix}xnxxapp*
+╿➵ *${prefix}nekopoiapp*
 ╿➵ *${prefix}cat*
 ╿➵ *${prefix}pokemon*
 ╿➵ *${prefix}husbu*
@@ -77,6 +81,7 @@ function help( pushname ) {
 ╿➵ *${prefix}milf*
 ╿➵ *${prefix}randomwalpaper*
 ╿➵ *${prefix}walpaper*
+╿➵ *${prefix}randompat*
 ╿➵ *${prefix}happygirl*
 ╿➵ *${prefix}happyboy*
 ╿➵ *${prefix}sadgirl*
@@ -88,19 +93,21 @@ function help( pushname ) {
 ╿➵ *${prefix}karakter*
 ╿➵ *${prefix}bganime*
 ╿➵ *${prefix}karakter*
-╿➵ *TOTAL FITUR:* 27
+╿➵ *TOTAL FITUR:* 31
 ╿➪〘 ⌨️Motivasi_Command⌨️ 〙
 ╿➵ *${prefix}quotenime*
 ╿➵ *${prefix}bucin*
 ╿➵ *${prefix}citacita*
+╿➵ *${prefix}fiersa*
 ╿➵ *${prefix}quotes*
 ╿➵ *${prefix}puisi*
 ╿➵ *${prefix}drama*
 ╿➵ *${prefix}semangat*
 ╿➵ *${prefix}fakta*
+╿➵ *${prefix}fakta2*
 ╿➵ *${prefix}bijak*
 ╿➵ *${prefix}game*
-╿➵ *TOTAL FITUR:* 10
+╿➵ *TOTAL FITUR:* 11
 ╿➪〘 ⌨️Owner_Command⌨️ 〙
 ╿➵ *${prefix}leaveall*
 ╿➵ *${prefix}clearall*
@@ -108,6 +115,12 @@ function help( pushname ) {
 ╿➵ *TOTAL FITUR:* 3
 ╿➪〘 ⌨️Premium_Command⌨️ 〙
 ╿➵ *${prefix}soundcita*
+╿➵ *${prefix}ytmp3*
+╿➵ *${prefix}cika*
+╿➵ *${prefix}goldbp*
+╿➵ *${prefix}tickle*
+╿➵ *${prefix}silverpb*
+╿➵ *${prefix}trumptweet*
 ╿➵ *${prefix}infobmkg*
 ╿➵ *${prefix}nickff*
 ╿➵ *${prefix}hasilcarding*
@@ -131,8 +144,16 @@ function help( pushname ) {
 ╿➵ *${prefix}cosplay*
 ╿➵ *${prefix}darkjokes*
 ╿➵ *${prefix}yaoi*
+╿➵ *${prefix}lesbi*
+╿➵ *${prefix}anal2*
 ╿➵ *${prefix}yuri*
-╿➵ *TOTAL FITUR:* 17
+╿➵ *${prefix}kuni*
+╿➵ *${prefix}classic*
+╿➵ *${prefix}trapnime*
+╿➵ *${prefix}anal*
+╿➵ *${prefix}spank*
+╿➵ *${prefix}feetgif*
+╿➵ *TOTAL FITUR:* 42
 ╚═〘 BOT_TAKAGISAN 〙
 
 `
