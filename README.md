@@ -95,6 +95,7 @@ do it carefully, to make it work
 | :------------: | :---------------------------------------------: |
 |       ✅        |   Random Doujin                   |
 |       ✅        |   Content 18+                  |
+|       ✅        |   Picture Hentai                  |
 |       ✅        |   Get a random Lewd Image                  |
 |       ✅        |   Get a random Yuri Image                  |
 |       ✅        |   Get a random Yaoi Image                  |
@@ -114,9 +115,12 @@ do it carefully, to make it work
 |       ✅        |   Anime searcher    |
 |       ✅        |   Get a random cat images       |
 |       ✅        |   Get a random dog images       |
+|       ✅        |   Image Generator       |
 |       ✅        |   Bucin       |
 |       ✅        |   Cita-Cita       |
+|       ✅        |   Nulis       |
 |       ✅        |   Drama       |
+|       ✅        |   Jadian       |
 |      And        |   Others...                     |
 
 
