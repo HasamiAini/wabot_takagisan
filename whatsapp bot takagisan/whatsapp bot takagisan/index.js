@@ -1,37 +1,37 @@
-const { create, Client } = require('@open-wa/wa-automate')
+const { create, takagisan } = require('@open-wa/wa-automate')
 const welcome = require('./lib/welcome')
 const msgHandler = require('./Messenger')
 const options = require('./options')
 
-const start = async (client = new Client()) => {
+const start = async (takagisan = new takagisan()) => {
         console.log('[SERVER] Bot_Takagisan Ready!')
         // Force it to keep the current session
-        client.onStateChanged((state) => {
+        takagisan.onStateChanged((state) => {
             console.log('[Client State]', state)
-            if (state === 'CONFLICT' || state === 'UNLAUNCHED') client.forceRefocus()
+            if (state === 'CONFLICT' || state === 'UNLAUNCHED') takagisan.forceRefocus()
         })
         // listening on message
-        client.onMessage((async (message) => {
-            client.getAmountOfLoadedMessages()
+        takagisan.onMessage((async (message) => {
+            takagisan.getAmountOfLoadedMessages()
             .then((msg) => {
                 if (msg >= 3000) {
-                    client.cutMsgCache()
+                    takagisan.cutMsgCache()
                 }
             })
-            msgHandler(client, message)
+            msgHandler(takagisan, message)
         }))
 
-        client.onGlobalParicipantsChanged((async (heuh) => {
-            await welcome(client, heuh)
+        takagisan.onGlobalParicipantsChanged((async (heuh) => {
+            await welcome(takagisan, heuh)
             //left(client, heuh)
             }))
         
         client.onAddedToGroup(((chat) => {
             let totalMem = chat.groupMetadata.participants.length
             if (totalMem < 40) { 
-            	client.sendText(chat.id, `Maaf Membernya Terlalu Sedikit ${totalMem}, Inivite Lagi Bot Jika Member Mencapai 40`).then(() => client.leaveGroup(chat.id)).then(() => client.deleteChat(chat.id))
+            	takagisan.sendText(chat.id, `Maaf Membernya Terlalu Sedikit ${totalMem}, Inivite Lagi Bot Jika Member Mencapai 40`).then(() => client.leaveGroup(chat.id)).then(() => client.deleteChat(chat.id))
             } else {
-                client.sendText(chat.groupMetadata.id, `Halo warga grup *${chat.contact.name}* terimakasih sudah menginvite bot ini, untuk melihat menu silahkan kirim *!help*`)
+                takagisan.sendText(chat.groupMetadata.id, `Halo warga grup *${chat.contact.name}* terimakasih sudah menginvite bot ini, untuk melihat menu silahkan kirim *!help*`)
             }
         }))
 
@@ -41,9 +41,9 @@ const start = async (client = new Client()) => {
         }))*/
 
         // listening on Incoming Call
-        client.onIncomingCall(( async (call) => {
-            await client.sendText(call.peerJid, 'Bot Tidak Bisa DiTelpon..Telpon=BLOCKIR..!!!')
-            .then(() => client.contactBlock(call.peerJid))
+        takagisan.onIncomingCall(( async (call) => {
+            await takagisan.sendText(call.peerJid, 'Bot Tidak Bisa DiTelpon..Telpon=BLOCKIR..!!!')
+            .then(() => takagisan.contactBlock(call.peerJid))
         }))
     }
 
