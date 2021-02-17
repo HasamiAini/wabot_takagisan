@@ -52,6 +52,26 @@ ____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ ___
 
   _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____
  |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
+ 
+ 
+ <p align="left">
+<a href="https://github.com/HasamiAini/wabot_takagisan">
+ <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=HasamiAini&repo=wabot_takagisan&theme=dark" />
+  </p>
+
+  
+  
+## Things I Code With
+<p>
+    <img
+        src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white" />
+    <img
+        src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" />
+  
+  
+ 
+<p align="center"><a href="https://wa.me/628988722528?text=!help" target="_blank">Takagisan Bot</a>.</p>
+</div>
 
 ## Clone this project 
 ## use the command below, if you want to download via the link
@@ -74,6 +94,16 @@ do it carefully, to make it work
 ```
 > npm start
 ```
+### Information
+- Change ownerNumber on [this section](https://github.com/HasamiAini/wabot_takagisan/blob/main/whatsapp%20bot%20takagisan/whatsapp%20bot%20takagisan/Messenger.js#L72)
+- Change menu on [this section](https://github.com/HasamiAini/wabot_takagisan/blob/main/whatsapp%20bot%20takagisan/whatsapp%20bot%20takagisan/lib/help.js)
+- Get Api NoBackground on [this website](https://www.remove.bg/)
+- Get Api ScreenShot on [this website](https://apiflash.com/)
+
+---
+
+
+
 
 ## all features
 
