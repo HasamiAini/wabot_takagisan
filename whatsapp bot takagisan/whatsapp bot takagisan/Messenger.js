@@ -96,7 +96,7 @@ module.exports = Messenger = async (takagisan, message) => {
         case '!snk':
             takagisan.reply(from, snk, id)
             break
-        case '!giftff':
+        case '!donate':
             takagisan.sendLinkWithAutoPreview(from, '*SUPPORT*', donate)
         break
         case '!sticker':
