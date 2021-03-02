@@ -21,10 +21,10 @@ const start = async (takagisan = new takagisan()) => {
             msgHandler(takagisan, message)
         }))
 
-        takagisan.onGlobalParicipantsChanged((async (heuh) => {
-            await welcome(takagisan, heuh)
-            //left(client, heuh)
-            }))
+        client.onGlobalParticipantsChanged((async (heuh) => {
+        await welcome(client, heuh) 
+        left(client, heuh)
+        }))
         
         client.onAddedToGroup(((chat) => {
             let totalMem = chat.groupMetadata.participants.length
