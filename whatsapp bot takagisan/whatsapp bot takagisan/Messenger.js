@@ -143,7 +143,6 @@ module.exports = Messenger = async (takagisan, message) => {
              //Groups Commands
         case '!stickergif':
         case '!stikergif':
-            if (!isMe) return
             if (isMedia || isQuotedVideo) {
                 if (mimetype === 'video/mp4' && message.duration < 10 || mimetype === 'image/gif' && message.duration < 10) {
                     var mediaData = await decryptMedia(message, uaOverride)
