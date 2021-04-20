@@ -22,11 +22,11 @@ const start = async (takagisan = new takagisan()) => {
         }))
 
         client.onGlobalParticipantsChanged((async (heuh) => {
-        await welcome(client, heuh) 
-        left(client, heuh)
+        await welcome(takagisan, heuh) 
+        left(takagisan, heuh)
         }))
         
-        client.onAddedToGroup(((chat) => {
+        takagisan.onAddedToGroup(((chat) => {
             let totalMem = chat.groupMetadata.participants.length
             if (totalMem < 40) { 
             	takagisan.sendText(chat.id, `Maaf Membernya Terlalu Sedikit ${totalMem}, Inivite Lagi Bot Jika Member Mencapai 40`).then(() => client.leaveGroup(chat.id)).then(() => client.deleteChat(chat.id))
