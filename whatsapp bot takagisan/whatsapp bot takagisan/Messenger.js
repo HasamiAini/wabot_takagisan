@@ -122,7 +122,7 @@ module.exports = Messenger = async (takagisan, message) => {
             }
             break
              case '!ownerbot':
-            takagisan.sendContact(from, '6283191735552@c.us')
+            takagisan.sendContact(from, '6737229909@c.us')
             break
             case '!botstat': {
             const loadedMsg = await takagisan.getAmountOfLoadedMessages()
